@@ -17,7 +17,7 @@ export const Route = createFileRoute("/word-finder")({
     ],
     links: [{ rel: "canonical", href: "/word-finder" }],
   }),
-  component: WordFinder;
+  component: WordFinder,
 });
 
 const LENGTHS = [2, 3, 4, 5, 6, 7];
