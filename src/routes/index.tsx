@@ -66,22 +66,43 @@ function Home() {
 
             {/* Hero search */}
             <div className="mx-auto mt-8 max-w-xl">
+              <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
               <div className="glass-strong flex items-center gap-2 rounded-2xl p-2 shadow-glow">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
                   <Search className="h-5 w-5" />
                 </div>
                 <input
-                  placeholder="Enter your letters, e.g. QUARTZN…"
-                  className="flex-1 bg-transparent px-2 py-2 text-base outline-none placeholder:text-muted-foreground"
+                  id="hero-search"
+                  placeholder="Type your letters, e.g. QUARTZN"
+                  autoCapitalize="characters"
+                  className="h-12 flex-1 bg-transparent px-2 text-base font-semibold tracking-wider outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-muted-foreground"
                 />
-                <Link to="/word-finder" className="rounded-xl bg-gradient-to-r from-primary to-gold px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">
-                  Find words
+                <Link
+                  to="/word-finder"
+                  className="inline-flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-gold px-5 text-sm font-bold text-primary-foreground shadow-glow"
+                >
+                  Find words now
                 </Link>
+              </div>
+              <p className="mt-2 text-center text-xs text-muted-foreground">
+                Use <kbd className="rounded bg-muted px-1.5 py-0.5">?</kbd> for blank tiles. We'll find every legal word.
+              </p>
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
+                <span className="text-muted-foreground">Try:</span>
+                {["QUARTZN", "LISTENING", "AERST?"].map((ex) => (
+                  <Link
+                    key={ex}
+                    to="/word-finder"
+                    className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary"
+                  >
+                    {ex}
+                  </Link>
+                ))}
               </div>
               <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
                 <TrendingUp className="h-3 w-3" /> Trending:
                 {trending.slice(0, 5).map((w) => (
-                  <Link key={w} to="/word-finder" className="rounded-full border border-border bg-background/60 px-2.5 py-1 font-medium text-foreground transition hover:border-primary hover:text-primary">
+                  <Link key={w} to="/word-finder" className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-medium text-foreground transition hover:border-primary hover:text-primary">
                     {w}
                   </Link>
                 ))}
@@ -123,7 +144,28 @@ function Home() {
         </div>
       </section>
 
-      {/* Live preview */}
+      {/* How it works */}
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6 text-center">
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">How Lexora works</div>
+          <h2 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Three taps to the perfect word</h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            { n: "1", title: "Pick a tool", desc: "Scrabble, Crossword or Word Finder." },
+            { n: "2", title: "Enter letters or pattern", desc: "Use ? for unknown tiles." },
+            { n: "3", title: "Get ranked answers", desc: "Sorted by score, length, rarity." },
+          ].map((s) => (
+            <div key={s.n} className="rounded-3xl border border-border bg-card p-6 shadow-card">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold font-display text-lg font-black text-primary-foreground shadow-glow">
+                {s.n}
+              </div>
+              <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>

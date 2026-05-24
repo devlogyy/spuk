@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Shuffle } from "lucide-react";
-import { TileInput } from "@/components/TileInput";
+import { Search, Shuffle, Sparkles } from "lucide-react";
+import { SmartInput } from "@/components/SmartInput";
+import { PrimaryActionButton } from "@/components/PrimaryActionButton";
+import { EmptyState } from "@/components/EmptyState";
+import { LoadingResults } from "@/components/LoadingResults";
+import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
 
@@ -21,16 +25,38 @@ export const Route = createFileRoute("/word-finder")({
 });
 
 const LENGTHS = [2, 3, 4, 5, 6, 7];
+const EXAMPLES = ["LISTENING", "QUARTZN", "PYTHON"];
 
 function WordFinder() {
-  const [letters, setLetters] = useState("LISTENING");
+  const [letters, setLetters] = useState("");
   const [length, setLength] = useState<number | null>(null);
+  const [submitted, setSubmitted] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = () => {
+    if (!letters.trim()) return;
+    setLoading(true);
+    setTimeout(() => {
+      setSubmitted(letters);
+      setLoading(false);
+    }, 450);
+  };
+
+  const runExample = (ex: string) => {
+    setLetters(ex);
+    setLoading(true);
+    setTimeout(() => {
+      setSubmitted(ex);
+      setLoading(false);
+    }, 450);
+  };
 
   const results = useMemo(() => {
-    let r = generateResults(letters, 24);
+    if (!submitted) return [];
+    let r = generateResults(submitted, 24);
     if (length) r = r.filter((w) => w.word.length === length);
     return r;
-  }, [letters, length]);
+  }, [submitted, length]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
@@ -42,32 +68,93 @@ function WordFinder() {
           Unscramble anything. <span className="text-gradient">Instantly.</span>
         </h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Anagrams, combinations, possible words — all sorted, scored and ready to play.
+          Type your letters, tap <strong>Find Words</strong>, and see every possible word — sorted, scored and ready to play.
         </p>
       </motion.header>
 
       <div className="mt-8 space-y-6">
-        <TileInput value={letters} onChange={setLetters} max={20} />
+        <HowItWorks />
 
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Length:</span>
-          <button onClick={() => setLength(null)} className={`rounded-full border px-3 py-1 text-xs font-medium transition ${length === null ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>
-            Any
-          </button>
-          {LENGTHS.map((l) => (
-            <button key={l} onClick={() => setLength(l)} className={`rounded-full border px-3 py-1 text-xs font-medium transition ${length === l ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>
-              {l}
+        <div className="space-y-4 rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6">
+          <SmartInput
+            label="Your letters"
+            value={letters}
+            onChange={setLetters}
+            onSubmit={handleSearch}
+            placeholder="e.g. LISTENING"
+            helper="Enter the letters you have. We'll find every word that fits."
+            examples={EXAMPLES}
+            max={20}
+            allow={/[^a-zA-Z]/g}
+          />
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Length:</span>
+            <button
+              onClick={() => setLength(null)}
+              aria-pressed={length === null}
+              className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${
+                length === null ? "border-primary bg-primary/10 text-primary" : "border-border"
+              }`}
+            >
+              Any
             </button>
-          ))}
-          <div className="ml-auto inline-flex items-center gap-1 text-xs text-muted-foreground">
-            <Shuffle className="h-3.5 w-3.5" /> {results.length} results
+            {LENGTHS.map((l) => (
+              <button
+                key={l}
+                onClick={() => setLength(l)}
+                aria-pressed={length === l}
+                className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${
+                  length === l ? "border-primary bg-primary/10 text-primary" : "border-border"
+                }`}
+              >
+                {l}
+              </button>
+            ))}
+            {submitted && (
+              <div className="ml-auto inline-flex items-center gap-1 text-xs text-muted-foreground">
+                <Shuffle className="h-3.5 w-3.5" /> {results.length} results
+              </div>
+            )}
           </div>
+
+          <PrimaryActionButton
+            onClick={handleSearch}
+            loading={loading}
+            disabled={!letters.trim()}
+            sticky
+            icon={<Sparkles className="h-5 w-5" />}
+          >
+            Find Words
+          </PrimaryActionButton>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((r) => (
-            <WordCard key={r.word} {...r} />
-          ))}
+        <div aria-live="polite">
+          {loading && <LoadingResults count={6} />}
+
+          {!loading && !submitted && (
+            <EmptyState
+              icon={<Search className="h-6 w-6" />}
+              title="What letters do you have?"
+              description="Type the letters above to unscramble them, or tap an example to see it in action."
+              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
+            />
+          )}
+
+          {!loading && submitted && results.length > 0 && (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {results.map((r) => (
+                <WordCard key={r.word} {...r} />
+              ))}
+            </div>
+          )}
+
+          {!loading && submitted && results.length === 0 && (
+            <EmptyState
+              title="No words for those letters"
+              description="Try clearing the length filter or different letters."
+            />
+          )}
         </div>
 
         {/* SEO content block */}

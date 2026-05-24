@@ -2,6 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Puzzle, Sparkles, Wand2 } from "lucide-react";
+import { SmartInput } from "@/components/SmartInput";
+import { PrimaryActionButton } from "@/components/PrimaryActionButton";
+import { EmptyState } from "@/components/EmptyState";
+import { LoadingResults } from "@/components/LoadingResults";
+import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
 
@@ -9,7 +14,7 @@ export const Route = createFileRoute("/crossword-solver")({
   head: () => ({
     meta: [
       { title: "Crossword Solver — AI Clue Matching | Lexora" },
-      { name: "description", content: "Solve any crossword with pattern matching and AI clue interpretation. Enter a pattern like C_A__T and get confident answers." },
+      { name: "description", content: "Solve any crossword with pattern matching and AI clue interpretation. Enter a pattern like C?T?? and get confident answers." },
       { property: "og:title", content: "Crossword Solver — Lexora" },
       { property: "og:description", content: "AI crossword solver with pattern matching and clue interpretation." },
       { property: "og:url", content: "/crossword-solver" },
@@ -19,18 +24,56 @@ export const Route = createFileRoute("/crossword-solver")({
   component: CrosswordSolver,
 });
 
+const EXAMPLES = ["C?T??", "?RA??E", "Q??RTZ", "P?X?L"];
+
+// Normalize either ? or _ → ?
+const normalize = (s: string) => s.toUpperCase().replace(/[_\s]/g, "?");
+
 function CrosswordSolver() {
-  const [pattern, setPattern] = useState("Q_A__Z");
+  const [pattern, setPattern] = useState("");
   const [clue, setClue] = useState("");
-  const slots = pattern.toUpperCase().split("");
+  const [submitted, setSubmitted] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const slots = normalize(submitted || pattern).split("");
+
+  const handleSearch = () => {
+    if (!pattern.trim()) return;
+    setLoading(true);
+    setTimeout(() => {
+      setSubmitted(pattern);
+      setLoading(false);
+    }, 450);
+  };
+
+  const runExample = (ex: string) => {
+    setPattern(ex);
+    setLoading(true);
+    setTimeout(() => {
+      setSubmitted(ex);
+      setLoading(false);
+    }, 450);
+  };
 
   const results = useMemo(() => {
-    const all = generateResults("QUARTZJINXVEZ", 18);
-    const pat = pattern.toUpperCase();
+    if (!submitted) return [];
+    const all = generateResults("QUARTZJINXVECATCH", 24);
+    const pat = normalize(submitted);
     return all
       .filter((w) => w.word.length === pat.length)
-      .filter((w) => w.word.split("").every((c, i) => pat[i] === "_" || pat[i] === c))
+      .filter((w) => w.word.split("").every((c, i) => pat[i] === "?" || pat[i] === c))
       .map((w) => ({ ...w, confidence: Math.floor(70 + Math.random() * 28) }));
+  }, [submitted]);
+
+  // live preview: first matching word
+  const livePreview = useMemo(() => {
+    if (!pattern.trim()) return null;
+    const all = generateResults("QUARTZJINXVECATCH", 40);
+    const pat = normalize(pattern);
+    const match = all.find(
+      (w) => w.word.length === pat.length && w.word.split("").every((c, i) => pat[i] === "?" || pat[i] === c),
+    );
+    return match?.word ?? null;
   }, [pattern]);
 
   return (
@@ -43,75 +86,114 @@ function CrosswordSolver() {
           Solve any clue with <span className="text-gradient">AI assistance</span>
         </h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">_</kbd> for unknown letters. Add the clue for AI-ranked matches.
+          Type the letters you have, use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for blanks, then tap <strong>Solve Puzzle</strong>.
         </p>
       </motion.header>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-6">
-          <div className="glass-strong rounded-3xl p-5 shadow-soft">
-            <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Pattern</label>
-            <input
-              value={pattern}
-              onChange={(e) => setPattern(e.target.value.replace(/[^a-zA-Z_]/g, "").slice(0, 15))}
-              className="mt-2 w-full bg-transparent font-display text-3xl font-bold uppercase tracking-[0.3em] outline-none"
-            />
-            <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-8 space-y-6">
+        <HowItWorks
+          steps={[
+            { icon: Puzzle, title: "Enter the pattern", desc: "Use ? for letters you don't know." },
+            { icon: Wand2, title: "Add the clue (optional)", desc: "We rank answers by meaning." },
+            { icon: Sparkles, title: "Get matches", desc: "Confidence-scored, instantly." },
+          ]}
+        />
+
+        <div className="space-y-4 rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6">
+          <SmartInput
+            label="Pattern"
+            value={pattern}
+            onChange={setPattern}
+            onSubmit={handleSearch}
+            placeholder="C ? T ? ?"
+            helper="Use ? for unknown letters. Example: C?T?? matches CATCH."
+            examples={EXAMPLES}
+            max={15}
+            allow={/[^a-zA-Z?_ ]/g}
+          />
+
+          {slots.length > 0 && (
+            <div className="flex flex-wrap gap-2">
               {slots.map((s, i) => (
-                <div key={i} className={`grid h-12 w-12 place-items-center rounded-xl text-xl font-bold ${
-                  s === "_" ? "border-2 border-dashed border-border text-muted-foreground" : "tile"
-                }`}>
-                  {s === "_" ? "" : s}
+                <div
+                  key={i}
+                  className={`grid h-12 w-12 place-items-center rounded-xl text-xl font-bold ${
+                    s === "?" ? "border-2 border-dashed border-border text-muted-foreground" : "tile"
+                  }`}
+                >
+                  {s === "?" ? "?" : s}
                 </div>
               ))}
             </div>
-          </div>
+          )}
 
-          <div className="glass-strong rounded-3xl p-5 shadow-soft">
-            <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              <Wand2 className="h-3.5 w-3.5 text-primary" /> Clue (optional)
+          {livePreview && (
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">Live match:</span>
+              <span className="font-display text-lg font-bold tracking-wider text-primary">
+                {normalize(pattern)} → {livePreview}
+              </span>
+            </div>
+          )}
+
+          <div>
+            <label htmlFor="clue" className="mb-1.5 block text-sm font-semibold">
+              Clue <span className="font-normal text-muted-foreground">(optional)</span>
             </label>
             <input
+              id="clue"
               value={clue}
               onChange={(e) => setClue(e.target.value)}
               placeholder="e.g. Hard crystalline mineral"
-              className="mt-2 w-full bg-transparent text-base outline-none placeholder:text-muted-foreground"
+              className="h-12 w-full rounded-2xl border border-border bg-background px-4 text-base outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
+            <p className="mt-1 text-xs text-muted-foreground">Paste the crossword clue to boost ranking.</p>
           </div>
 
-          <div className="space-y-3">
-            {results.map((r) => (
-              <motion.div key={r.word} layout className="relative">
-                <WordCard {...r} />
-                <div className="absolute right-4 top-4 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
-                  {r.confidence}% match
-                </div>
-              </motion.div>
-            ))}
-            {results.length === 0 && (
-              <div className="rounded-2xl border border-dashed border-border p-10 text-center text-sm text-muted-foreground">
-                No matches for that pattern.
-              </div>
-            )}
-          </div>
+          <PrimaryActionButton
+            onClick={handleSearch}
+            loading={loading}
+            disabled={!pattern.trim()}
+            sticky
+            icon={<Sparkles className="h-5 w-5" />}
+          >
+            Solve Puzzle
+          </PrimaryActionButton>
         </div>
 
-        <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-3xl border border-border bg-gradient-to-br from-primary/10 to-gold/10 p-5">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> AI Clue Assistant
-            </div>
-            <p className="mt-2 text-sm">Add a clue to boost ranking. Lexora's AI matches semantic context and crossword conventions.</p>
-          </div>
-          <div className="rounded-3xl border border-border bg-card p-5 shadow-card">
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Quick patterns</div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["C_A__T", "_RA__E", "Q__RTZ", "P_X_L"].map((p) => (
-                <button key={p} onClick={() => setPattern(p)} className="rounded-full border border-border px-3 py-1 text-xs font-medium tracking-wider transition hover:border-primary hover:text-primary">{p}</button>
+        <div aria-live="polite">
+          {loading && <LoadingResults count={4} />}
+
+          {!loading && !submitted && (
+            <EmptyState
+              icon={<Puzzle className="h-6 w-6" />}
+              title="Enter a pattern to solve"
+              description="Type the letters you know and use ? for the missing ones. Try one:"
+              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
+            />
+          )}
+
+          {!loading && submitted && results.length > 0 && (
+            <div className="space-y-3">
+              {results.map((r) => (
+                <motion.div key={r.word} layout className="relative">
+                  <WordCard {...r} />
+                  <div className="absolute right-4 top-4 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+                    {r.confidence}% match
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-        </aside>
+          )}
+
+          {!loading && submitted && results.length === 0 && (
+            <EmptyState
+              title="No matches for that pattern"
+              description="Double-check the letter count and try again, or pick an example."
+              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
