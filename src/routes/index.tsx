@@ -144,7 +144,28 @@ function Home() {
         </div>
       </section>
 
-      {/* Live preview */}
+      {/* How it works */}
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6 text-center">
+          <div className="text-xs font-semibold uppercase tracking-wider text-primary">How Lexora works</div>
+          <h2 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Three taps to the perfect word</h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            { n: "1", title: "Pick a tool", desc: "Scrabble, Crossword or Word Finder." },
+            { n: "2", title: "Enter letters or pattern", desc: "Use ? for unknown tiles." },
+            { n: "3", title: "Get ranked answers", desc: "Sorted by score, length, rarity." },
+          ].map((s) => (
+            <div key={s.n} className="rounded-3xl border border-border bg-card p-6 shadow-card">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold font-display text-lg font-black text-primary-foreground shadow-glow">
+                {s.n}
+              </div>
+              <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
