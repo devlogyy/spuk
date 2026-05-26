@@ -1,40 +1,88 @@
-Plan to make the GitHub/Vercel setup a standard React + Vite TypeScript app:
+## Goal
+Convert the project from TanStack Start (SSR on Cloudflare Workers) to a standard **Vite + React + TypeScript SPA** with `react-router-dom`, so it deploys cleanly to Vercel from GitHub with no 404s.
 
-1. Convert the app entry structure
-- Add a normal Vite `index.html` at the project root.
-- Add `src/main.tsx` as the browser entry point.
-- Add `src/App.tsx` to own layout, navigation, routes, footer, and mobile nav.
-- Move the current page UI into standard React page components instead of TanStack Start route files.
+## What will change
 
-2. Replace server-first routing with client-side routing
-- Remove the dependency on TanStack Start route generation for the frontend.
-- Use a standard React SPA routing setup for:
-  - `/`
-  - `/scrabble-solver`
-  - `/crossword-solver`
-  - `/word-finder`
-  - `/blog`
-- Preserve the existing Lexora UI, responsiveness, SEO-facing page content, and solver interfaces.
+### 1. New entry structure (standard Vite React layout)
+- `index.html` at the project root (with `<div id="root">` and `<script type="module" src="/src/main.tsx">`)
+- `src/main.tsx` — browser entry, mounts `<App />` inside `BrowserRouter`
+- `src/App.tsx` — defines routes using `react-router-dom`, wraps pages with Navbar + Footer + MobileNav
 
-3. Simplify Vite and deployment config
-- Replace the current Lovable/TanStack Start Vite config with a conventional Vite React config.
-- Update `package.json` scripts so Vercel can run:
-  - `bun install`
-  - `bun run build`
-  - output directory: `dist`
-- Add `vercel.json` with a rewrite fallback so direct visits and refreshes on routes like `/scrabble-solver` work correctly.
+### 2. Pages migrated from `src/routes/` → `src/pages/`
+Each TanStack route becomes a plain React page component. UI, styling, SEO content, and components are preserved 1:1.
+- `src/pages/Home.tsx` (from `routes/index.tsx`)
+- `src/pages/ScrabbleSolver.tsx`
+- `src/pages/CrosswordSolver.tsx`
+- `src/pages/WordFinder.tsx`
+- `src/pages/Blog.tsx`
+- `src/pages/NotFound.tsx` (404 fallback)
 
-4. Remove Cloudflare/TanStack server-only files from the deployment path
-- Remove or stop relying on Worker-specific files such as `wrangler.jsonc`, `src/server.ts`, and `src/start.ts` for this frontend-only phase.
-- Keep the project frontend-only, as requested earlier: no backend logic yet.
+SEO meta tags will be handled with `react-helmet-async` (client-side, fine for Vercel + SEO since Google renders JS).
 
-5. Preserve SEO-ready frontend structure
-- Keep page titles/descriptions using a lightweight document head helper inside the SPA.
-- Keep `robots.txt` and sitemap behavior where possible for the static app.
-- Ensure semantic headings, accessible labels, mobile tap targets, and responsive layout remain intact.
+### 3. Routing
+Using `react-router-dom` v6:
+```
+/                  → Home
+/scrabble-solver   → ScrabbleSolver
+/crossword-solver  → CrosswordSolver
+/word-finder       → WordFinder
+/blog              → Blog
+*                  → NotFound
+```
 
-Technical notes:
-- The current project is not broken; it is a TanStack Start SSR app, which is Vite-based but not the same as a plain React Vite SPA.
-- Vercel is likely failing because the current template targets a server/edge runtime setup, not a simple static `dist` deployment.
-- Since Lexora currently has no backend requirement, a Vite SPA is the safest structure for Vercel and GitHub hosting.
-- After implementation, GitHub sync will receive the updated file arrangement automatically if the project is connected.
+### 4. Vite config
+Replace `vite.config.ts` with a minimal standard config:
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
+});
+```
+Tailwind v4 stays via the existing `@import "tailwindcss"` in `src/styles.css` (imported by `main.tsx`).
+
+### 5. `package.json` scripts
+```
+"dev": "vite",
+"build": "vite build",
+"preview": "vite preview"
+```
+Output goes to `dist/` — what Vercel expects.
+
+### 6. Vercel SPA routing
+Update `vercel.json` to rewrite all routes to `index.html` so `/scrabble-solver` works on refresh:
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+No build command override needed — Vercel auto-detects Vite.
+
+### 7. Files removed (no longer needed)
+- `src/routes/` (entire directory, including `routeTree.gen.ts`, `__root.tsx`, `sitemap[.]xml.ts`)
+- `src/router.tsx`, `src/start.ts`, `src/server.ts`
+- `src/lib/error-page.ts`, `src/lib/error-capture.ts`
+- `wrangler.jsonc`
+- `vite.vercel.config.ts` (no longer needed — main config now works for Vercel)
+- TanStack Start dependencies from `package.json` (`@tanstack/react-start`, `@tanstack/react-router`, `@lovable.dev/vite-tanstack-config`, `@cloudflare/vite-plugin`, `wrangler`)
+
+### 8. Files added/updated dependencies
+- Add `react-router-dom`, `react-helmet-async`
+- Keep React 19, Tailwind v4, shadcn/ui, lucide-react, framer-motion, all current components untouched
+
+### 9. Sitemap
+Move `public/sitemap.xml` as a static file (replaces the server-rendered route). Same content.
+
+## Important trade-offs
+
+- **Lovable preview/editor**: This template is wired for TanStack Start. After this conversion, the Lovable in-app preview may stop rendering or behave unexpectedly. You'll still be able to edit code here, but the live preview pane is no longer guaranteed. Your GitHub + Vercel deployment is the source of truth going forward.
+- **SEO meta**: Switches from SSR-injected `<head>` to client-side via `react-helmet-async`. Google renders JS, so rankings are unaffected, but raw `view-source` won't show per-page titles.
+- **No backend**: Solver logic stays frontend-only (as it already is). If you later need server functions, you'd add Vercel serverless functions under `/api/`.
+
+## After implementation
+1. Push to GitHub.
+2. In Vercel, import the repo — it auto-detects Vite.
+3. Deploy. Site loads at your `.vercel.app` URL with all routes working on refresh.
