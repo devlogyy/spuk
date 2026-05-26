@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Search, Shuffle, Sparkles } from "lucide-react";
 import { SmartInput } from "@/components/SmartInput";
@@ -10,24 +10,10 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
 
-export const Route = createFileRoute("/word-finder")({
-  head: () => ({
-    meta: [
-      { title: "Word Finder & Anagram Solver | Lexora" },
-      { name: "description", content: "Unscramble letters, find anagrams, and discover every possible word. Sort by score, length, popularity or alphabetical. Free and fast." },
-      { property: "og:title", content: "Word Finder — Lexora" },
-      { property: "og:description", content: "Unscramble letters and find every possible word with Lexora's AI Word Finder." },
-      { property: "og:url", content: "/word-finder" },
-    ],
-    links: [{ rel: "canonical", href: "/word-finder" }],
-  }),
-  component: WordFinder,
-});
-
 const LENGTHS = [2, 3, 4, 5, 6, 7];
 const EXAMPLES = ["LISTENING", "QUARTZN", "PYTHON"];
 
-function WordFinder() {
+export default function WordFinder() {
   const [letters, setLetters] = useState("");
   const [length, setLength] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState("");
@@ -36,19 +22,13 @@ function WordFinder() {
   const handleSearch = () => {
     if (!letters.trim()) return;
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(letters);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(letters); setLoading(false); }, 450);
   };
 
   const runExample = (ex: string) => {
     setLetters(ex);
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(ex);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(ex); setLoading(false); }, 450);
   };
 
   const results = useMemo(() => {
@@ -60,6 +40,12 @@ function WordFinder() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Word Finder & Anagram Solver | Lexora</title>
+        <meta name="description" content="Unscramble letters, find anagrams, and discover every possible word. Sort by score, length, popularity or alphabetical. Free and fast." />
+        <link rel="canonical" href="/word-finder" />
+      </Helmet>
+
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Search className="h-3.5 w-3.5 text-primary" /> Word Finder
@@ -76,40 +62,15 @@ function WordFinder() {
         <HowItWorks />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6">
-          <SmartInput
-            label="Your letters"
-            value={letters}
-            onChange={setLetters}
-            onSubmit={handleSearch}
-            placeholder="e.g. LISTENING"
-            helper="Enter the letters you have. We'll find every word that fits."
-            examples={EXAMPLES}
-            max={20}
-            allow={/[^a-zA-Z]/g}
-          />
+          <SmartInput label="Your letters" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. LISTENING" helper="Enter the letters you have. We'll find every word that fits." examples={EXAMPLES} max={20} allow={/[^a-zA-Z]/g} />
 
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Length:</span>
-            <button
-              onClick={() => setLength(null)}
-              aria-pressed={length === null}
-              className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${
-                length === null ? "border-primary bg-primary/10 text-primary" : "border-border"
-              }`}
-            >
-              Any
-            </button>
+            <button onClick={() => setLength(null)} aria-pressed={length === null}
+              className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${length === null ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>Any</button>
             {LENGTHS.map((l) => (
-              <button
-                key={l}
-                onClick={() => setLength(l)}
-                aria-pressed={length === l}
-                className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${
-                  length === l ? "border-primary bg-primary/10 text-primary" : "border-border"
-                }`}
-              >
-                {l}
-              </button>
+              <button key={l} onClick={() => setLength(l)} aria-pressed={length === l}
+                className={`min-h-11 rounded-full border px-3 py-1 text-xs font-medium transition ${length === l ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>{l}</button>
             ))}
             {submitted && (
               <div className="ml-auto inline-flex items-center gap-1 text-xs text-muted-foreground">
@@ -118,13 +79,7 @@ function WordFinder() {
             )}
           </div>
 
-          <PrimaryActionButton
-            onClick={handleSearch}
-            loading={loading}
-            disabled={!letters.trim()}
-            sticky
-            icon={<Sparkles className="h-5 w-5" />}
-          >
+          <PrimaryActionButton onClick={handleSearch} loading={loading} disabled={!letters.trim()} sticky icon={<Sparkles className="h-5 w-5" />}>
             Find Words
           </PrimaryActionButton>
         </div>
@@ -133,31 +88,20 @@ function WordFinder() {
           {loading && <LoadingResults count={6} />}
 
           {!loading && !submitted && (
-            <EmptyState
-              icon={<Search className="h-6 w-6" />}
-              title="What letters do you have?"
-              description="Type the letters above to unscramble them, or tap an example to see it in action."
-              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
-            />
+            <EmptyState icon={<Search className="h-6 w-6" />} title="What letters do you have?" description="Type the letters above to unscramble them, or tap an example to see it in action." examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))} />
           )}
 
           {!loading && submitted && results.length > 0 && (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {results.map((r) => (
-                <WordCard key={r.word} {...r} />
-              ))}
+              {results.map((r) => (<WordCard key={r.word} {...r} />))}
             </div>
           )}
 
           {!loading && submitted && results.length === 0 && (
-            <EmptyState
-              title="No words for those letters"
-              description="Try clearing the length filter or different letters."
-            />
+            <EmptyState title="No words for those letters" description="Try clearing the length filter or different letters." />
           )}
         </div>
 
-        {/* SEO content block */}
         <section className="mt-12 rounded-3xl border border-border bg-card p-6 shadow-card sm:p-10">
           <h2 className="font-display text-2xl font-bold">Popular word lists</h2>
           <p className="mt-2 text-sm text-muted-foreground">Browse curated word lists indexed for crossword & Scrabble players.</p>

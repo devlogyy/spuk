@@ -1,20 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { BookOpen, Clock, User } from "lucide-react";
-
-export const Route = createFileRoute("/blog")({
-  head: () => ({
-    meta: [
-      { title: "Word Game Blog — Strategies, Tips & Guides | Lexora" },
-      { name: "description", content: "Premium guides on Scrabble strategy, crossword tips, vocabulary building and high-scoring word play. Learn from word game pros." },
-      { property: "og:title", content: "Lexora Blog — Word Game Strategies" },
-      { property: "og:description", content: "Scrabble strategy, crossword tips, vocabulary building. Master every word game." },
-      { property: "og:url", content: "/blog" },
-    ],
-    links: [{ rel: "canonical", href: "/blog" }],
-  }),
-  component: Blog,
-});
 
 const categories = ["All", "Scrabble Strategies", "Crossword Tips", "Vocabulary Building", "Puzzle News", "Tutorials", "High Scoring"];
 
@@ -27,9 +13,15 @@ const posts = [
   { tag: "High Scoring", title: "Every Q-without-U word, ranked by usefulness", excerpt: "QI, QAT, QOPH — and a dozen more that pros memorize day one.", author: "Daniel Park", read: "7 min", date: "May 18, 2026" },
 ];
 
-function Blog() {
+export default function Blog() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Word Game Blog — Strategies, Tips & Guides | Lexora</title>
+        <meta name="description" content="Premium guides on Scrabble strategy, crossword tips, vocabulary building and high-scoring word play. Learn from word game pros." />
+        <link rel="canonical" href="/blog" />
+      </Helmet>
+
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <BookOpen className="h-3.5 w-3.5 text-primary" /> The Lexora Blog
@@ -50,14 +42,11 @@ function Blog() {
         ))}
       </div>
 
-      {/* Featured */}
       <article className="mt-8 grid overflow-hidden rounded-3xl border border-border bg-card shadow-card lg:grid-cols-2">
         <div className="relative min-h-64 lg:min-h-full" style={{ background: "var(--gradient-hero)" }}>
           <div className="absolute inset-0 grid place-items-center">
             <div className="flex flex-wrap justify-center gap-2 p-6">
-              {"QUARTZ".split("").map((l, i) => (
-                <div key={i} className="tile grid h-14 w-14 place-items-center text-2xl">{l}</div>
-              ))}
+              {"QUARTZ".split("").map((l, i) => (<div key={i} className="tile grid h-14 w-14 place-items-center text-2xl">{l}</div>))}
             </div>
           </div>
         </div>
@@ -67,38 +56,26 @@ function Blog() {
           <p className="mt-3 text-muted-foreground">{posts[0].excerpt}</p>
           <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1"><User className="h-3.5 w-3.5" /> {posts[0].author}</span>
-            <span>·</span>
-            <span>{posts[0].date}</span>
-            <span>·</span>
+            <span>·</span><span>{posts[0].date}</span><span>·</span>
             <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {posts[0].read}</span>
           </div>
           <button className="mt-6 rounded-full bg-gradient-to-r from-primary to-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">Read article</button>
         </div>
       </article>
 
-      {/* Grid */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {posts.slice(1).map((p, i) => (
-          <motion.article
-            key={p.title}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-            className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
-          >
+          <motion.article key={p.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+            className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow">
             <div className="relative h-44 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-              <div className="absolute inset-0 grid place-items-center">
-                <BookOpen className="h-9 w-9 text-primary/60" />
-              </div>
+              <div className="absolute inset-0 grid place-items-center"><BookOpen className="h-9 w-9 text-primary/60" /></div>
               <div className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur">{p.tag}</div>
             </div>
             <div className="p-5">
               <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h3>
               <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.excerpt}</p>
               <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-                <span>{p.author}</span>
-                <span>{p.read} · {p.date}</span>
+                <span>{p.author}</span><span>{p.read} · {p.date}</span>
               </div>
             </div>
           </motion.article>

@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap, BookOpen,
@@ -6,20 +7,6 @@ import {
 } from "lucide-react";
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Lexora — AI Scrabble Solver, Crossword & Word Finder" },
-      { name: "description", content: "Premium AI-powered word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US & UK dictionaries." },
-      { property: "og:title", content: "Lexora — AI Word Intelligence" },
-      { property: "og:description", content: "Premium AI Scrabble, Crossword & Word Finder platform built for serious players." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Home,
-});
 
 const features = [
   { icon: Grid3x3, title: "Scrabble Solver", desc: "Highest scoring plays with US & UK dictionaries.", to: "/scrabble-solver", color: "from-primary to-gold" },
@@ -36,11 +23,17 @@ const blogPosts = [
   { tag: "Vocabulary", title: "Build a 10,000-word vocabulary in 30 days", read: "12 min", date: "May 2026" },
 ];
 
-function Home() {
+export default function Home() {
   const results = generateResults("QUARTZINGLE", 6);
 
   return (
     <div className="relative">
+      <Helmet>
+        <title>Lexora — AI Scrabble Solver, Crossword & Word Finder</title>
+        <meta name="description" content="Premium AI-powered word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US & UK dictionaries." />
+        <link rel="canonical" href="/" />
+      </Helmet>
+
       {/* Hero */}
       <section className="relative overflow-hidden pb-16 pt-12 sm:pt-20">
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
@@ -64,7 +57,6 @@ function Home() {
               Lexora is the premium AI platform for Scrabble, Crosswords, Anagrams and Word Finder. Smarter suggestions, US & UK dictionaries, real scoring — built for serious players.
             </p>
 
-            {/* Hero search */}
             <div className="mx-auto mt-8 max-w-xl">
               <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
               <div className="glass-strong flex items-center gap-2 rounded-2xl p-2 shadow-glow">
@@ -90,11 +82,7 @@ function Home() {
               <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
                 <span className="text-muted-foreground">Try:</span>
                 {["QUARTZN", "LISTENING", "AERST?"].map((ex) => (
-                  <Link
-                    key={ex}
-                    to="/word-finder"
-                    className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary"
-                  >
+                  <Link key={ex} to="/word-finder" className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary">
                     {ex}
                   </Link>
                 ))}
@@ -118,17 +106,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Feature tools */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-            >
+            <motion.div key={f.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}>
               <Link to={f.to} className="group block h-full rounded-3xl border border-border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
                 <div className={`mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground shadow-glow`}>
                   <f.icon className="h-6 w-6" />
@@ -144,7 +125,6 @@ function Home() {
         </div>
       </section>
 
-      {/* How it works */}
       <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-6 text-center">
           <div className="text-xs font-semibold uppercase tracking-wider text-primary">How Lexora works</div>
@@ -157,15 +137,14 @@ function Home() {
             { n: "3", title: "Get ranked answers", desc: "Sorted by score, length, rarity." },
           ].map((s) => (
             <div key={s.n} className="rounded-3xl border border-border bg-card p-6 shadow-card">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold font-display text-lg font-black text-primary-foreground shadow-glow">
-                {s.n}
-              </div>
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold font-display text-lg font-black text-primary-foreground shadow-glow">{s.n}</div>
               <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
+
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
@@ -173,21 +152,16 @@ function Home() {
             <h2 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Top plays from your rack</h2>
             <p className="mt-1 text-sm text-muted-foreground">Sorted by score · US & UK validated</p>
           </div>
-          <Link to="/scrabble-solver" className="hidden rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary sm:inline-block">
-            Open solver →
-          </Link>
+          <Link to="/scrabble-solver" className="hidden rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary sm:inline-block">Open solver →</Link>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((r) => (
-            <WordCard key={r.word} {...r} />
-          ))}
+          {results.map((r) => (<WordCard key={r.word} {...r} />))}
         </div>
       </section>
 
-      {/* Word of the day + Daily challenge */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-3">
-          <div className="lg:col-span-2 relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-charcoal to-charcoal p-8 text-primary-foreground" style={{ background: "linear-gradient(135deg, var(--charcoal), oklch(0.32 0.08 40))" }}>
+          <div className="lg:col-span-2 relative overflow-hidden rounded-3xl border border-border p-8 text-primary-foreground" style={{ background: "linear-gradient(135deg, var(--charcoal), oklch(0.32 0.08 40))" }}>
             <div className="absolute -right-10 -top-10 h-60 w-60 rounded-full opacity-40 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
             <div className="relative">
               <div className="text-xs font-semibold uppercase tracking-widest text-gold">Word of the day</div>
@@ -199,9 +173,7 @@ function Home() {
               </div>
               <p className="mt-4 max-w-md text-sm text-white/70">A hard crystalline mineral consisting of silica — and one of the highest-scoring 6-letter plays you can lay down.</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {"QUARTZ".split("").map((l, i) => (
-                  <div key={i} className="tile grid h-12 w-12 place-items-center text-xl">{l}</div>
-                ))}
+                {"QUARTZ".split("").map((l, i) => (<div key={i} className="tile grid h-12 w-12 place-items-center text-xl">{l}</div>))}
               </div>
             </div>
           </div>
@@ -214,9 +186,7 @@ function Home() {
             <h3 className="mt-3 font-display text-2xl font-bold">7-letter Bingo</h3>
             <p className="mt-1 text-sm text-muted-foreground">Find every bingo word from today's rack and climb the leaderboard.</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
-              {"AEINRST".split("").map((l, i) => (
-                <div key={i} className="tile grid h-9 w-9 place-items-center text-sm">{l}</div>
-              ))}
+              {"AEINRST".split("").map((l, i) => (<div key={i} className="tile grid h-9 w-9 place-items-center text-sm">{l}</div>))}
             </div>
             <div className="mt-5 flex items-center justify-between text-xs">
               <div className="flex items-center gap-1 text-muted-foreground"><Trophy className="h-3.5 w-3.5 text-gold" /> 12,840 playing</div>
@@ -226,7 +196,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Blog */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between">
           <div>
@@ -237,18 +206,9 @@ function Home() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {blogPosts.map((p, i) => (
-            <motion.article
-              key={p.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
-            >
+            <motion.article key={p.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow">
               <div className="relative h-44 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-                <div className="absolute inset-0 grid place-items-center">
-                  <BookOpen className="h-10 w-10 text-primary/60" />
-                </div>
+                <div className="absolute inset-0 grid place-items-center"><BookOpen className="h-10 w-10 text-primary/60" /></div>
                 <div className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur">{p.tag}</div>
               </div>
               <div className="p-5">
@@ -262,7 +222,6 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="mx-auto mt-24 max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border p-10 text-center shadow-glow" style={{ background: "var(--gradient-hero)" }}>
           <div className="absolute -bottom-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full opacity-50 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
