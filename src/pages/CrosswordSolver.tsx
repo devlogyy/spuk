@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Puzzle, Sparkles, Wand2 } from "lucide-react";
 import { SmartInput } from "@/components/SmartInput";
@@ -10,26 +10,10 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
 
-export const Route = createFileRoute("/crossword-solver")({
-  head: () => ({
-    meta: [
-      { title: "Crossword Solver — AI Clue Matching | Lexora" },
-      { name: "description", content: "Solve any crossword with pattern matching and AI clue interpretation. Enter a pattern like C?T?? and get confident answers." },
-      { property: "og:title", content: "Crossword Solver — Lexora" },
-      { property: "og:description", content: "AI crossword solver with pattern matching and clue interpretation." },
-      { property: "og:url", content: "/crossword-solver" },
-    ],
-    links: [{ rel: "canonical", href: "/crossword-solver" }],
-  }),
-  component: CrosswordSolver,
-});
-
 const EXAMPLES = ["C?T??", "?RA??E", "Q??RTZ", "P?X?L"];
-
-// Normalize either ? or _ → ?
 const normalize = (s: string) => s.toUpperCase().replace(/[_\s]/g, "?");
 
-function CrosswordSolver() {
+export default function CrosswordSolver() {
   const [pattern, setPattern] = useState("");
   const [clue, setClue] = useState("");
   const [submitted, setSubmitted] = useState("");
@@ -40,19 +24,13 @@ function CrosswordSolver() {
   const handleSearch = () => {
     if (!pattern.trim()) return;
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(pattern);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(pattern); setLoading(false); }, 450);
   };
 
   const runExample = (ex: string) => {
     setPattern(ex);
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(ex);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(ex); setLoading(false); }, 450);
   };
 
   const results = useMemo(() => {
@@ -65,19 +43,22 @@ function CrosswordSolver() {
       .map((w) => ({ ...w, confidence: Math.floor(70 + Math.random() * 28) }));
   }, [submitted]);
 
-  // live preview: first matching word
   const livePreview = useMemo(() => {
     if (!pattern.trim()) return null;
     const all = generateResults("QUARTZJINXVECATCH", 40);
     const pat = normalize(pattern);
-    const match = all.find(
-      (w) => w.word.length === pat.length && w.word.split("").every((c, i) => pat[i] === "?" || pat[i] === c),
-    );
+    const match = all.find((w) => w.word.length === pat.length && w.word.split("").every((c, i) => pat[i] === "?" || pat[i] === c));
     return match?.word ?? null;
   }, [pattern]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Crossword Solver — AI Clue Matching | Lexora</title>
+        <meta name="description" content="Solve any crossword with pattern matching and AI clue interpretation. Enter a pattern like C?T?? and get confident answers." />
+        <link rel="canonical" href="/crossword-solver" />
+      </Helmet>
+
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Puzzle className="h-3.5 w-3.5 text-primary" /> Crossword Solver
@@ -91,36 +72,19 @@ function CrosswordSolver() {
       </motion.header>
 
       <div className="mt-8 space-y-6">
-        <HowItWorks
-          steps={[
-            { icon: Puzzle, title: "Enter the pattern", desc: "Use ? for letters you don't know." },
-            { icon: Wand2, title: "Add the clue (optional)", desc: "We rank answers by meaning." },
-            { icon: Sparkles, title: "Get matches", desc: "Confidence-scored, instantly." },
-          ]}
-        />
+        <HowItWorks steps={[
+          { icon: Puzzle, title: "Enter the pattern", desc: "Use ? for letters you don't know." },
+          { icon: Wand2, title: "Add the clue (optional)", desc: "We rank answers by meaning." },
+          { icon: Sparkles, title: "Get matches", desc: "Confidence-scored, instantly." },
+        ]} />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6">
-          <SmartInput
-            label="Pattern"
-            value={pattern}
-            onChange={setPattern}
-            onSubmit={handleSearch}
-            placeholder="C ? T ? ?"
-            helper="Use ? for unknown letters. Example: C?T?? matches CATCH."
-            examples={EXAMPLES}
-            max={15}
-            allow={/[^a-zA-Z?_ ]/g}
-          />
+          <SmartInput label="Pattern" value={pattern} onChange={setPattern} onSubmit={handleSearch} placeholder="C ? T ? ?" helper="Use ? for unknown letters. Example: C?T?? matches CATCH." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?_ ]/g} />
 
           {slots.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {slots.map((s, i) => (
-                <div
-                  key={i}
-                  className={`grid h-12 w-12 place-items-center rounded-xl text-xl font-bold ${
-                    s === "?" ? "border-2 border-dashed border-border text-muted-foreground" : "tile"
-                  }`}
-                >
+                <div key={i} className={`grid h-12 w-12 place-items-center rounded-xl text-xl font-bold ${s === "?" ? "border-2 border-dashed border-border text-muted-foreground" : "tile"}`}>
                   {s === "?" ? "?" : s}
                 </div>
               ))}
@@ -130,9 +94,7 @@ function CrosswordSolver() {
           {livePreview && (
             <div className="flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">Live match:</span>
-              <span className="font-display text-lg font-bold tracking-wider text-primary">
-                {normalize(pattern)} → {livePreview}
-              </span>
+              <span className="font-display text-lg font-bold tracking-wider text-primary">{normalize(pattern)} → {livePreview}</span>
             </div>
           )}
 
@@ -140,23 +102,12 @@ function CrosswordSolver() {
             <label htmlFor="clue" className="mb-1.5 block text-sm font-semibold">
               Clue <span className="font-normal text-muted-foreground">(optional)</span>
             </label>
-            <input
-              id="clue"
-              value={clue}
-              onChange={(e) => setClue(e.target.value)}
-              placeholder="e.g. Hard crystalline mineral"
-              className="h-12 w-full rounded-2xl border border-border bg-background px-4 text-base outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-            />
+            <input id="clue" value={clue} onChange={(e) => setClue(e.target.value)} placeholder="e.g. Hard crystalline mineral"
+              className="h-12 w-full rounded-2xl border border-border bg-background px-4 text-base outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
             <p className="mt-1 text-xs text-muted-foreground">Paste the crossword clue to boost ranking.</p>
           </div>
 
-          <PrimaryActionButton
-            onClick={handleSearch}
-            loading={loading}
-            disabled={!pattern.trim()}
-            sticky
-            icon={<Sparkles className="h-5 w-5" />}
-          >
+          <PrimaryActionButton onClick={handleSearch} loading={loading} disabled={!pattern.trim()} sticky icon={<Sparkles className="h-5 w-5" />}>
             Solve Puzzle
           </PrimaryActionButton>
         </div>
@@ -165,12 +116,7 @@ function CrosswordSolver() {
           {loading && <LoadingResults count={4} />}
 
           {!loading && !submitted && (
-            <EmptyState
-              icon={<Puzzle className="h-6 w-6" />}
-              title="Enter a pattern to solve"
-              description="Type the letters you know and use ? for the missing ones. Try one:"
-              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
-            />
+            <EmptyState icon={<Puzzle className="h-6 w-6" />} title="Enter a pattern to solve" description="Type the letters you know and use ? for the missing ones. Try one:" examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))} />
           )}
 
           {!loading && submitted && results.length > 0 && (
@@ -178,20 +124,14 @@ function CrosswordSolver() {
               {results.map((r) => (
                 <motion.div key={r.word} layout className="relative">
                   <WordCard {...r} />
-                  <div className="absolute right-4 top-4 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
-                    {r.confidence}% match
-                  </div>
+                  <div className="absolute right-4 top-4 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-600">{r.confidence}% match</div>
                 </motion.div>
               ))}
             </div>
           )}
 
           {!loading && submitted && results.length === 0 && (
-            <EmptyState
-              title="No matches for that pattern"
-              description="Double-check the letter count and try again, or pick an example."
-              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
-            />
+            <EmptyState title="No matches for that pattern" description="Double-check the letter count and try again, or pick an example." examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))} />
           )}
         </div>
       </div>

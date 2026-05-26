@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Moon, Sun, Search, Sparkles, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,7 @@ const links = [
 ];
 
 export function Navbar() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(false);
   const [open, setOpen] = useState(false);
@@ -43,9 +43,7 @@ export function Navbar() {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong shadow-soft" : "bg-transparent"
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong shadow-soft" : "bg-transparent"}`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center gap-2">
@@ -63,19 +61,10 @@ export function Navbar() {
           {links.map((l) => {
             const active = pathname === l.to;
             return (
-              <Link
-                key={l.to}
-                to={l.to}
-                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
+              <Link key={l.to} to={l.to}
+                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${active ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}>
                 {active && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-accent"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
+                  <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-accent" transition={{ type: "spring", stiffness: 380, damping: 30 }} />
                 )}
                 {l.label}
               </Link>
@@ -84,30 +73,16 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            aria-label="Search"
-            className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
-          >
+          <button aria-label="Search" className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground">
             <Search className="h-4 w-4" />
           </button>
-          <button
-            aria-label="Toggle theme"
-            onClick={toggleTheme}
-            className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
-          >
+          <button aria-label="Toggle theme" onClick={toggleTheme} className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground">
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <Link
-            to="/scrabble-solver"
-            className="hidden rounded-full bg-gradient-to-r from-primary to-gold px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03] sm:inline-block"
-          >
+          <Link to="/scrabble-solver" className="hidden rounded-full bg-gradient-to-r from-primary to-gold px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03] sm:inline-block">
             Try Solver
           </Link>
-          <button
-            aria-label="Menu"
-            onClick={() => setOpen((v) => !v)}
-            className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent md:hidden"
-          >
+          <button aria-label="Menu" onClick={() => setOpen((v) => !v)} className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent md:hidden">
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
@@ -115,20 +90,10 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-border md:hidden"
-          >
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-t border-border md:hidden">
             <div className="flex flex-col gap-1 px-4 py-3">
               {links.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-accent"
-                >
+                <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-accent">
                   {l.label}
                 </Link>
               ))}

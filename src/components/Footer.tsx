@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Sparkles, Twitter, Github, Instagram } from "lucide-react";
 
 const cols = [

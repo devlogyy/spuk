@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Grid3x3, Trophy, Zap, Sparkles, SlidersHorizontal } from "lucide-react";
 import { SmartInput } from "@/components/SmartInput";
@@ -11,26 +11,12 @@ import { AdvancedFiltersAccordion } from "@/components/AdvancedFiltersAccordion"
 import { WordCard } from "@/components/WordCard";
 import { generateResults } from "@/lib/words";
 
-export const Route = createFileRoute("/scrabble-solver")({
-  head: () => ({
-    meta: [
-      { title: "Scrabble Solver — US & UK Dictionary | Lexora" },
-      { name: "description", content: "Free AI Scrabble Solver. Enter your tiles to find the highest scoring words with US (TWL) and UK (SOWPODS) dictionary support, blanks, and advanced filters." },
-      { property: "og:title", content: "Scrabble Solver — Lexora" },
-      { property: "og:description", content: "AI-powered Scrabble cheat with US & UK dictionaries, blanks, scoring and rarity ratings." },
-      { property: "og:url", content: "/scrabble-solver" },
-    ],
-    links: [{ rel: "canonical", href: "/scrabble-solver" }],
-  }),
-  component: ScrabbleSolver,
-});
-
 type Dict = "US" | "UK";
 type Sort = "score" | "length" | "rarity";
 
 const EXAMPLES = ["AERST?", "QUARTZN", "LISTENING"];
 
-function ScrabbleSolver() {
+export default function ScrabbleSolver() {
   const [letters, setLetters] = useState("");
   const [dict, setDict] = useState<Dict>("US");
   const [sort, setSort] = useState<Sort>("score");
@@ -47,10 +33,7 @@ function ScrabbleSolver() {
   const handleSearch = () => {
     if (!letters.trim()) return;
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(letters);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(letters); setLoading(false); }, 450);
   };
 
   const results = useMemo(() => {
@@ -70,14 +53,17 @@ function ScrabbleSolver() {
   const runExample = (ex: string) => {
     setLetters(ex);
     setLoading(true);
-    setTimeout(() => {
-      setSubmitted(ex);
-      setLoading(false);
-    }, 450);
+    setTimeout(() => { setSubmitted(ex); setLoading(false); }, 450);
   };
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Scrabble Solver — US & UK Dictionary | Lexora</title>
+        <meta name="description" content="Free AI Scrabble Solver. Enter your tiles to find the highest scoring words with US (TWL) and UK (SOWPODS) dictionary support, blanks, and advanced filters." />
+        <link rel="canonical" href="/scrabble-solver" />
+      </Helmet>
+
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Grid3x3 className="h-3.5 w-3.5 text-primary" /> Scrabble Solver
@@ -94,31 +80,13 @@ function ScrabbleSolver() {
         <HowItWorks />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6">
-          <SmartInput
-            label="Your tiles"
-            value={letters}
-            onChange={setLetters}
-            onSubmit={handleSearch}
-            placeholder="e.g. AERST?"
-            helper="Type up to 15 letters. Use ? for a blank tile."
-            examples={EXAMPLES}
-            max={15}
-            allow={/[^a-zA-Z?]/g}
-          />
+          <SmartInput label="Your tiles" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. AERST?" helper="Type up to 15 letters. Use ? for a blank tile." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?]/g} />
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="glass flex rounded-full p-1" role="tablist" aria-label="Dictionary">
               {(["US", "UK"] as const).map((d) => (
-                <button
-                  key={d}
-                  onClick={() => setDict(d)}
-                  aria-pressed={dict === d}
-                  className={`min-h-11 rounded-full px-4 py-1.5 text-xs font-semibold transition ${
-                    dict === d
-                      ? "bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-glow"
-                      : "text-muted-foreground"
-                  }`}
-                >
+                <button key={d} onClick={() => setDict(d)} aria-pressed={dict === d}
+                  className={`min-h-11 rounded-full px-4 py-1.5 text-xs font-semibold transition ${dict === d ? "bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-glow" : "text-muted-foreground"}`}>
                   {d} Dictionary
                 </button>
               ))}
@@ -126,29 +94,15 @@ function ScrabbleSolver() {
             <div className="flex flex-wrap items-center gap-2 text-xs">
               <span className="text-muted-foreground">Sort by</span>
               {(["score", "length", "rarity"] as const).map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSort(s)}
-                  aria-pressed={sort === s}
-                  className={`min-h-11 rounded-full border px-3 py-1 font-medium capitalize transition ${
-                    sort === s
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border text-muted-foreground hover:text-foreground"
-                  }`}
-                >
+                <button key={s} onClick={() => setSort(s)} aria-pressed={sort === s}
+                  className={`min-h-11 rounded-full border px-3 py-1 font-medium capitalize transition ${sort === s ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:text-foreground"}`}>
                   {s}
                 </button>
               ))}
             </div>
           </div>
 
-          <PrimaryActionButton
-            onClick={handleSearch}
-            loading={loading}
-            disabled={!letters.trim()}
-            sticky
-            icon={<Sparkles className="h-5 w-5" />}
-          >
+          <PrimaryActionButton onClick={handleSearch} loading={loading} disabled={!letters.trim()} sticky icon={<Sparkles className="h-5 w-5" />}>
             Find Best Words
           </PrimaryActionButton>
         </div>
@@ -163,15 +117,7 @@ function ScrabbleSolver() {
                 <span className="font-medium text-muted-foreground">Min length</span>
                 <span className="font-bold text-foreground">{minLen}</span>
               </div>
-              <input
-                type="range"
-                min={2}
-                max={10}
-                value={minLen}
-                onChange={(e) => setMinLen(Number(e.target.value))}
-                className="w-full accent-[var(--primary)]"
-                aria-label="Minimum word length"
-              />
+              <input type="range" min={2} max={10} value={minLen} onChange={(e) => setMinLen(Number(e.target.value))} className="w-full accent-[var(--primary)]" aria-label="Minimum word length" />
             </div>
           </div>
         </AdvancedFiltersAccordion>
@@ -185,9 +131,7 @@ function ScrabbleSolver() {
             ].map((s) => (
               <div key={s.label} className="rounded-2xl border border-border bg-card p-4 shadow-card">
                 <div className="flex items-center justify-between">
-                  <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                    {s.label}
-                  </div>
+                  <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">{s.label}</div>
                   <s.icon className="h-4 w-4 text-primary" />
                 </div>
                 <div className="mt-1 font-display text-2xl font-black">{s.value}</div>
@@ -200,37 +144,18 @@ function ScrabbleSolver() {
           {loading && <LoadingResults count={6} />}
 
           {!loading && !submitted && (
-            <EmptyState
-              icon={<Grid3x3 className="h-6 w-6" />}
-              title="Enter your tiles to get started"
-              description="Type the letters from your rack above, then tap Find Best Words. Or try one of these:"
-              examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))}
-            />
+            <EmptyState icon={<Grid3x3 className="h-6 w-6" />} title="Enter your tiles to get started" description="Type the letters from your rack above, then tap Find Best Words. Or try one of these:" examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))} />
           )}
 
           {!loading && submitted && results.length > 0 && (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {results.map((r) => (
-                <WordCard key={r.word} {...r} />
-              ))}
+              {results.map((r) => (<WordCard key={r.word} {...r} />))}
             </div>
           )}
 
           {!loading && submitted && results.length === 0 && (
-            <EmptyState
-              title="No words match those filters"
-              description="Try removing a filter or different letters."
-              action={
-                <button
-                  onClick={() => {
-                    setStarts(""); setEnds(""); setContains(""); setMinLen(2);
-                  }}
-                  className="min-h-11 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold hover:border-primary hover:text-primary"
-                >
-                  Reset filters
-                </button>
-              }
-            />
+            <EmptyState title="No words match those filters" description="Try removing a filter or different letters."
+              action={<button onClick={() => { setStarts(""); setEnds(""); setContains(""); setMinLen(2); }} className="min-h-11 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold hover:border-primary hover:text-primary">Reset filters</button>} />
           )}
         </div>
       </div>
@@ -242,12 +167,8 @@ function FilterInput({ label, value, onChange, placeholder }: { label: string; v
   return (
     <div>
       <label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</label>
-      <input
-        value={value}
-        onChange={(e) => onChange(e.target.value.replace(/[^a-zA-Z]/g, "").toUpperCase())}
-        placeholder={placeholder}
-        className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-      />
+      <input value={value} onChange={(e) => onChange(e.target.value.replace(/[^a-zA-Z]/g, "").toUpperCase())} placeholder={placeholder}
+        className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
     </div>
   );
 }
