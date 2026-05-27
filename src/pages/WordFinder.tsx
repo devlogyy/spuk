@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Search, Shuffle, Sparkles } from "lucide-react";
@@ -19,6 +20,7 @@ export default function WordFinder() {
   const [submitted, setSubmitted] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<SolverResult[]>([]);
+  const [params] = useSearchParams();
 
   useEffect(() => { warmDictionaries(); }, []);
 
