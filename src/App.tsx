@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen">
       <Navbar />
-      <main>
+      <main className="pb-24 md:pb-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/scrabble-solver" element={<ScrabbleSolver />} />

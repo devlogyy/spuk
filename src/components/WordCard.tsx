@@ -33,8 +33,8 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
       whileHover={{ y: -3 }}
       className="group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-glow"
     >
-      <div className={`absolute inset-0 -z-0 bg-gradient-to-br opacity-60 ${rarityStyles[rarity]}`} />
-      <div className="relative z-10 flex items-start justify-between gap-3">
+      <div aria-hidden className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-60 ${rarityStyles[rarity]}`} />
+      <div className="relative flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline gap-2">
             <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-foreground">{word}</h3>
@@ -47,10 +47,10 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
             <span className="rounded-full border border-border bg-background/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider capitalize">{rarity}</span>
           </div>
         </div>
-        <div className="flex flex-col items-end gap-2">
-          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary to-gold text-primary-foreground shadow-glow">
+        <div className="flex shrink-0 flex-col items-end gap-2">
+          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary to-gold text-primary-foreground shadow-glow sm:h-14 sm:w-14">
             <div className="text-center leading-none">
-              <div className="font-display text-xl font-black">{score}</div>
+              <div className="font-display text-lg font-black sm:text-xl">{score}</div>
               <div className="text-[8px] uppercase tracking-widest opacity-80">pts</div>
             </div>
           </div>

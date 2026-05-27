@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap, BookOpen,
   TrendingUp, Brain, Globe, Flame
 } from "lucide-react";
+import { useState } from "react";
 import { WordCard } from "@/components/WordCard";
-import { generateResults } from "@/lib/words";
+import { demoResults } from "@/lib/words";
 
 const features = [
   { icon: Grid3x3, title: "Scrabble Solver", desc: "Highest scoring plays with US & UK dictionaries.", to: "/scrabble-solver", color: "from-primary to-gold" },
-  { icon: Puzzle, title: "Crossword Solver", desc: "Pattern matching + AI clue interpretation.", to: "/crossword-solver", color: "from-gold to-primary" },
+  { icon: Puzzle, title: "Crossword Solver", desc: "Pattern matching across 260k+ words.", to: "/crossword-solver", color: "from-gold to-primary" },
   { icon: Search, title: "Word Finder", desc: "Anagrams, unscramble & smart combinations.", to: "/word-finder", color: "from-primary to-orange-400" },
-  { icon: Brain, title: "AI Move Engine", desc: "Predicts best move from board state.", to: "/scrabble-solver", color: "from-orange-500 to-gold" },
+  { icon: Brain, title: "AI Move Engine", desc: "Coming soon — predicts the best move.", to: "/scrabble-solver", color: "from-orange-500 to-gold" },
 ];
 
 const trending = ["quartz", "jinx", "fjord", "zephyr", "oxide", "waltz", "vexed", "blaze"];
@@ -24,18 +25,26 @@ const blogPosts = [
 ];
 
 export default function Home() {
-  const results = generateResults("QUARTZINGLE", 6);
+  const results = demoResults(6);
+  const navigate = useNavigate();
+  const [q, setQ] = useState("");
+
+  const goFind = (override?: string) => {
+    const v = (override ?? q).trim();
+    if (!v) return navigate("/word-finder");
+    navigate(`/word-finder?q=${encodeURIComponent(v)}`);
+  };
 
   return (
     <div className="relative">
       <Helmet>
-        <title>Lexora — AI Scrabble Solver, Crossword & Word Finder</title>
-        <meta name="description" content="Premium AI-powered word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US & UK dictionaries." />
+        <title>Lexora — Scrabble Solver, Crossword & Word Finder</title>
+        <meta name="description" content="Premium word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US (TWL) & UK (SOWPODS) dictionaries." />
         <link rel="canonical" href="/" />
       </Helmet>
 
       {/* Hero */}
-      <section className="relative overflow-hidden pb-16 pt-12 sm:pt-20">
+      <section className="relative overflow-hidden pb-16 pt-10 sm:pt-20">
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute left-1/2 top-20 -z-10 h-72 w-72 -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
 
@@ -48,33 +57,38 @@ export default function Home() {
           >
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium backdrop-blur">
               <Sparkles className="h-3 w-3 text-primary" />
-              <span>AI Word Intelligence · v1.0</span>
+              <span>Word Intelligence · v1.0</span>
             </div>
             <h1 className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Dominate every <span className="text-gradient">word game</span> you play.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Lexora is the premium AI platform for Scrabble, Crosswords, Anagrams and Word Finder. Smarter suggestions, US & UK dictionaries, real scoring — built for serious players.
+              Lexora is the premium platform for Scrabble, Crosswords, Anagrams and Word Finder. Real US (TWL) &amp; UK (SOWPODS) dictionaries, real scoring — built for serious players.
             </p>
 
             <div className="mx-auto mt-8 max-w-xl">
               <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
-              <div className="glass-strong flex items-center gap-2 rounded-2xl p-2 shadow-glow">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
-                  <Search className="h-5 w-5" />
+              <div className="glass-strong flex flex-col gap-2 rounded-3xl p-2 shadow-glow sm:flex-row sm:items-center sm:rounded-2xl">
+                <div className="flex items-center gap-2">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
+                    <Search className="h-5 w-5" />
+                  </div>
+                  <input
+                    id="hero-search"
+                    value={q}
+                    onChange={(e) => setQ(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && goFind()}
+                    placeholder="Type your letters, e.g. QUARTZN"
+                    autoCapitalize="characters"
+                    className="h-12 min-w-0 flex-1 bg-transparent px-2 text-base font-semibold tracking-wider outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-muted-foreground"
+                  />
                 </div>
-                <input
-                  id="hero-search"
-                  placeholder="Type your letters, e.g. QUARTZN"
-                  autoCapitalize="characters"
-                  className="h-12 flex-1 bg-transparent px-2 text-base font-semibold tracking-wider outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-muted-foreground"
-                />
-                <Link
-                  to="/word-finder"
-                  className="inline-flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-gold px-5 text-sm font-bold text-primary-foreground shadow-glow"
+                <button
+                  onClick={() => goFind()}
+                  className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-gradient-to-r from-primary to-gold px-5 text-sm font-bold text-primary-foreground shadow-glow sm:w-auto"
                 >
-                  Find words now
-                </Link>
+                  Find words
+                </button>
               </div>
               <p className="mt-2 text-center text-xs text-muted-foreground">
                 Use <kbd className="rounded bg-muted px-1.5 py-0.5">?</kbd> for blank tiles. We'll find every legal word.
@@ -82,25 +96,25 @@ export default function Home() {
               <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs">
                 <span className="text-muted-foreground">Try:</span>
                 {["QUARTZN", "LISTENING", "AERST?"].map((ex) => (
-                  <Link key={ex} to="/word-finder" className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary">
+                  <button key={ex} onClick={() => goFind(ex)} className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary">
                     {ex}
-                  </Link>
+                  </button>
                 ))}
               </div>
               <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
                 <TrendingUp className="h-3 w-3" /> Trending:
                 {trending.slice(0, 5).map((w) => (
-                  <Link key={w} to="/word-finder" className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-medium text-foreground transition hover:border-primary hover:text-primary">
+                  <button key={w} onClick={() => goFind(w)} className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 font-medium text-foreground transition hover:border-primary hover:text-primary">
                     {w}
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-center gap-6 text-xs text-muted-foreground">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5"><Globe className="h-3.5 w-3.5 text-primary" /> US + UK dictionaries</div>
-              <div className="hidden items-center gap-1.5 sm:flex"><Zap className="h-3.5 w-3.5 text-gold" /> Realtime scoring</div>
-              <div className="flex items-center gap-1.5"><Brain className="h-3.5 w-3.5 text-primary" /> AI assisted</div>
+              <div className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-gold" /> Realtime scoring</div>
+              <div className="hidden items-center gap-1.5 sm:flex"><Brain className="h-3.5 w-3.5 text-primary" /> AI coming soon</div>
             </div>
           </motion.div>
         </div>
@@ -149,7 +163,7 @@ export default function Home() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">Live results preview</div>
-            <h2 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Top plays from your rack</h2>
+            <h2 className="mt-1 font-display text-2xl font-bold sm:text-4xl">Top plays from your rack</h2>
             <p className="mt-1 text-sm text-muted-foreground">Sorted by score · US & UK validated</p>
           </div>
           <Link to="/scrabble-solver" className="hidden rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary sm:inline-block">Open solver →</Link>
@@ -159,21 +173,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Word of the day — rebuilt mobile-safe */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-3">
-          <div className="lg:col-span-2 relative overflow-hidden rounded-3xl border border-border p-8 text-primary-foreground" style={{ background: "linear-gradient(135deg, var(--charcoal), oklch(0.32 0.08 40))" }}>
-            <div className="absolute -right-10 -top-10 h-60 w-60 rounded-full opacity-40 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
+          <div className="lg:col-span-2 relative isolate overflow-hidden rounded-3xl border border-border p-6 text-primary-foreground sm:p-8" style={{ background: "linear-gradient(135deg, var(--charcoal), oklch(0.32 0.08 40))" }}>
+            <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-3xl sm:h-60 sm:w-60" style={{ background: "var(--gradient-mesh)" }} />
             <div className="relative">
-              <div className="text-xs font-semibold uppercase tracking-widest text-gold">Word of the day</div>
-              <div className="mt-4 flex items-end gap-4">
-                <h3 className="font-display text-5xl font-black uppercase tracking-tight sm:text-7xl text-gradient">Quartz</h3>
-                <div className="mb-2 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground shadow-glow">
-                  <div className="text-center leading-none"><div className="text-xl font-black">24</div><div className="text-[8px] uppercase tracking-widest opacity-80">pts</div></div>
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-gold sm:text-xs">Word of the day</div>
+              <div className="mt-3 flex flex-wrap items-end gap-3 sm:gap-4">
+                <h3 className="min-w-0 font-display text-4xl font-black uppercase tracking-tight text-gold sm:text-6xl lg:text-7xl">
+                  Quartz
+                </h3>
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground shadow-glow sm:h-12 sm:w-12">
+                  <div className="text-center leading-none">
+                    <div className="text-base font-black sm:text-xl">24</div>
+                    <div className="text-[7px] uppercase tracking-widest opacity-80 sm:text-[8px]">pts</div>
+                  </div>
                 </div>
               </div>
               <p className="mt-4 max-w-md text-sm text-white/70">A hard crystalline mineral consisting of silica — and one of the highest-scoring 6-letter plays you can lay down.</p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {"QUARTZ".split("").map((l, i) => (<div key={i} className="tile grid h-12 w-12 place-items-center text-xl">{l}</div>))}
+              <div className="mt-6 flex flex-wrap gap-1.5 sm:gap-2">
+                {"QUARTZ".split("").map((l, i) => (<div key={i} className="tile grid h-9 w-9 place-items-center text-base sm:h-12 sm:w-12 sm:text-xl">{l}</div>))}
               </div>
             </div>
           </div>
@@ -190,19 +210,19 @@ export default function Home() {
             </div>
             <div className="mt-5 flex items-center justify-between text-xs">
               <div className="flex items-center gap-1 text-muted-foreground"><Trophy className="h-3.5 w-3.5 text-gold" /> 12,840 playing</div>
-              <button className="rounded-full bg-gradient-to-r from-primary to-gold px-3 py-1.5 font-semibold text-primary-foreground">Play</button>
+              <Link to="/word-finder?q=AEINRST" className="rounded-full bg-gradient-to-r from-primary to-gold px-3 py-1.5 font-semibold text-primary-foreground">Play</Link>
             </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
+        <div className="mb-8 flex items-end justify-between gap-3">
+          <div className="min-w-0">
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">From the blog</div>
-            <h2 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Strategies, tips & guides</h2>
+            <h2 className="mt-1 font-display text-2xl font-bold sm:text-4xl">Strategies, tips & guides</h2>
           </div>
-          <Link to="/blog" className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary">All posts →</Link>
+          <Link to="/blog" className="shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary">All posts →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {blogPosts.map((p, i) => (
@@ -222,10 +242,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto mt-24 max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-border p-10 text-center shadow-glow" style={{ background: "var(--gradient-hero)" }}>
-          <div className="absolute -bottom-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full opacity-50 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
-          <h2 className="relative font-display text-3xl font-black sm:text-4xl">Start scoring smarter today</h2>
+      <section className="mx-auto mt-24 max-w-5xl px-4 pb-8 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border p-8 text-center shadow-glow sm:p-10" style={{ background: "var(--gradient-hero)" }}>
+          <div aria-hidden className="pointer-events-none absolute -bottom-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full opacity-50 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
+          <h2 className="relative font-display text-2xl font-black sm:text-4xl">Start scoring smarter today</h2>
           <p className="relative mx-auto mt-2 max-w-md text-sm text-muted-foreground">No signup needed. Open the solver, enter your tiles, win the game.</p>
           <div className="relative mt-6 flex flex-wrap justify-center gap-2">
             <Link to="/scrabble-solver" className="rounded-full bg-gradient-to-r from-primary to-gold px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">Open Scrabble Solver</Link>
