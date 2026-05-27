@@ -1,4 +1,6 @@
-// Letter point values (Scrabble standard)
+// Scrabble tile values + scoring + rarity helpers.
+// The actual solver lives in src/lib/dictionary.ts.
+
 export const TILE_VALUES: Record<string, number> = {
   A: 1, B: 3, C: 3, D: 2, E: 1, F: 4, G: 2, H: 4, I: 1, J: 8,
   K: 5, L: 1, M: 3, N: 1, O: 1, P: 3, Q: 10, R: 1, S: 1, T: 1,
@@ -16,36 +18,21 @@ export function rarityOf(score: number): "common" | "uncommon" | "rare" | "epic"
   return "common";
 }
 
-// Demo word bank for UI preview
+// Static showcase words for the homepage hero preview (no dictionary load).
 export const DEMO_WORDS = [
   { word: "QUARTZ", definition: "A hard mineral consisting of silica." },
   { word: "JINX", definition: "A person or thing that brings bad luck." },
   { word: "ZEPHYR", definition: "A soft gentle breeze." },
-  { word: "MAZE", definition: "A network of paths and hedges designed as a puzzle." },
+  { word: "MAZE", definition: "A network of paths designed as a puzzle." },
   { word: "PIXEL", definition: "Smallest unit of a digital image." },
   { word: "BLAZE", definition: "A very large or fiercely burning fire." },
-  { word: "JOKER", definition: "A playing card with a figure of a jester." },
-  { word: "VEXED", definition: "Annoyed, frustrated, or worried." },
-  { word: "FJORD", definition: "A long, narrow, deep inlet of the sea." },
-  { word: "GLYPH", definition: "A hieroglyphic character or symbol." },
-  { word: "OXIDE", definition: "A binary compound of oxygen with another element." },
-  { word: "WALTZ", definition: "A ballroom dance in triple time." },
 ];
 
-export function generateResults(query: string, limit = 12) {
-  const q = query.trim().toUpperCase();
-  const pool = q
-    ? DEMO_WORDS.filter((w) => {
-        const chars = q.split("");
-        const wordChars = w.word.split("");
-        return wordChars.every((c) => chars.includes(c) || chars.includes("?") || chars.includes("*"));
-      })
-    : DEMO_WORDS;
-  const results = (pool.length ? pool : DEMO_WORDS).slice(0, limit).map((w) => ({
+export function demoResults(limit = 6) {
+  return DEMO_WORDS.slice(0, limit).map((w) => ({
     ...w,
     score: scoreWord(w.word),
     rarity: rarityOf(scoreWord(w.word)),
-    validIn: { us: true, uk: w.word.length !== 5 || true },
+    validIn: { us: true, uk: true },
   }));
-  return results.sort((a, b) => b.score - a.score);
 }
