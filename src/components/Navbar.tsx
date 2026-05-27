@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Moon, Sun, Search, Sparkles, Menu, X } from "lucide-react";
+import { Moon, Sun, Sparkles, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -45,15 +45,15 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong shadow-soft" : "bg-transparent"}`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" className="group flex items-center gap-2">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex shrink-0 items-center gap-2">
           <div className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold shadow-glow">
             <span className="font-display text-lg font-black text-primary-foreground">L</span>
             <Sparkles className="absolute -right-1 -top-1 h-3 w-3 text-gold" />
           </div>
           <div className="leading-tight">
-            <div className="font-display text-lg font-bold tracking-tight">Lexora</div>
-            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Word Intelligence</div>
+            <div className="font-display text-base font-bold tracking-tight sm:text-lg">Lexora</div>
+            <div className="hidden text-[10px] uppercase tracking-widest text-muted-foreground sm:block">Word Intelligence</div>
           </div>
         </Link>
 
@@ -72,17 +72,14 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
-          <button aria-label="Search" className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground">
-            <Search className="h-4 w-4" />
-          </button>
-          <button aria-label="Toggle theme" onClick={toggleTheme} className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground">
+        <div className="flex shrink-0 items-center gap-1.5">
+          <button aria-label="Toggle theme" onClick={toggleTheme} className="grid h-10 w-10 place-items-center rounded-2xl text-muted-foreground transition hover:bg-accent hover:text-foreground">
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <Link to="/scrabble-solver" className="hidden rounded-full bg-gradient-to-r from-primary to-gold px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03] sm:inline-block">
+          <Link to="/scrabble-solver" className="hidden rounded-full bg-gradient-to-r from-primary to-gold px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03] md:inline-block">
             Try Solver
           </Link>
-          <button aria-label="Menu" onClick={() => setOpen((v) => !v)} className="grid h-9 w-9 place-items-center rounded-full text-muted-foreground transition hover:bg-accent md:hidden">
+          <button aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((v) => !v)} className="grid h-10 w-10 place-items-center rounded-2xl text-muted-foreground transition hover:bg-accent md:hidden">
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
@@ -93,7 +90,7 @@ export function Navbar() {
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-t border-border md:hidden">
             <div className="flex flex-col gap-1 px-4 py-3">
               {links.map((l) => (
-                <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-accent">
+                <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className={`rounded-xl px-4 py-3 text-sm font-medium hover:bg-accent ${pathname === l.to ? "bg-accent text-foreground" : "text-muted-foreground"}`}>
                   {l.label}
                 </Link>
               ))}
