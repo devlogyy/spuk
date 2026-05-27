@@ -42,6 +42,15 @@ export default function WordFinder() {
   };
 
   useEffect(() => {
+    const q = params.get("q");
+    if (q && !submitted) {
+      setLetters(q);
+      runSolve(q, length);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
+  useEffect(() => {
     if (submitted) runSolve(submitted, length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [length]);
