@@ -55,7 +55,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-3xl text-center"
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium backdrop-blur">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-soft">
               <Sparkles className="h-3 w-3 text-primary" />
               <span>Word Intelligence · v1.0</span>
             </div>
@@ -122,19 +122,19 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((f, i) => (
-            <motion.div key={f.title} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}>
-              <Link to={f.to} className="group block h-full rounded-3xl border border-border bg-card p-6 shadow-card transition-transform duration-200 hover:-translate-y-1">
-                <div className={`mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground shadow-glow`}>
+          {features.map((f) => (
+            <div key={f.title} className="h-full">
+              <Link to={f.to} className="group flex h-full min-h-[154px] flex-col rounded-3xl border border-border bg-card p-6 shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1">
+                <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground shadow-soft`}>
                   <f.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-display text-lg font-bold">{f.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
-                <div className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                <div className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-primary">
                   Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
