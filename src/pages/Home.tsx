@@ -123,15 +123,15 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
-            <motion.div key={f.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}>
-              <Link to={f.to} className="group block h-full rounded-3xl border border-border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:shadow-glow">
+            <motion.div key={f.title} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}>
+              <Link to={f.to} className="group block h-full rounded-3xl border border-border bg-card p-6 shadow-card transition-transform duration-200 hover:-translate-y-1">
                 <div className={`mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground shadow-glow`}>
                   <f.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-display text-lg font-bold">{f.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
                 <div className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
-                  Open tool <ArrowRight className="h-3 w-3 transition group-hover:translate-x-0.5" />
+                  Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </div>
               </Link>
             </motion.div>
