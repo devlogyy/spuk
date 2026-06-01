@@ -161,9 +161,17 @@ export default function ScrabbleSolver() {
           )}
 
           {!loading && submitted && sortedResults.length > 0 && (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {sortedResults.map((r) => (<WordCard key={r.word} {...r} />))}
-            </div>
+            <>
+              <AdSlot zoneKey="scrabble-results-top" />
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {sortedResults.map((r, i) => (
+                  <>
+                    <WordCard key={r.word} {...r} />
+                    {i === 5 && <AdSlot key="ad-inline" zoneKey="scrabble-results-inline" className="sm:col-span-2 lg:col-span-3" />}
+                  </>
+                ))}
+              </div>
+            </>
           )}
 
           {!loading && submitted && sortedResults.length === 0 && (
