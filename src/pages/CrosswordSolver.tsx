@@ -8,6 +8,7 @@ import { EmptyState } from "@/components/EmptyState";
 import { LoadingResults } from "@/components/LoadingResults";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
+import { AdSlot } from "@/components/AdSlot";
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const EXAMPLES = ["C?T??", "?RA??E", "Q??RTZ", "P?X?L"];
@@ -123,9 +124,13 @@ export default function CrosswordSolver() {
           )}
 
           {!loading && submitted && results.length > 0 && (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {results.map((r) => (<WordCard key={r.word} {...r} />))}
-            </div>
+            <>
+              <AdSlot zoneKey="crossword-results-top" />
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {results.map((r) => (<WordCard key={r.word} {...r} />))}
+              </div>
+              <AdSlot zoneKey="crossword-results-inline" />
+            </>
           )}
 
           {!loading && submitted && results.length === 0 && (
