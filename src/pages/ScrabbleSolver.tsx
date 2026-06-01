@@ -165,10 +165,10 @@ export default function ScrabbleSolver() {
               <AdSlot zoneKey="scrabble-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {sortedResults.map((r, i) => (
-                  <>
-                    <WordCard key={r.word} {...r} />
-                    {i === 5 && <AdSlot key="ad-inline" zoneKey="scrabble-results-inline" className="sm:col-span-2 lg:col-span-3" />}
-                  </>
+                  <Fragment key={r.word}>
+                    <WordCard {...r} />
+                    {i === 5 && <AdSlot zoneKey="scrabble-results-inline" className="sm:col-span-2 lg:col-span-3" />}
+                  </Fragment>
                 ))}
               </div>
             </>
