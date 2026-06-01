@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Twitter, Github, Instagram } from "lucide-react";
+import { AdSlot } from "@/components/AdSlot";
 
 const cols = [
   {
@@ -35,6 +36,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40 pb-24 pt-16 md:pb-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <AdSlot zoneKey="footer" />
         <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2">
