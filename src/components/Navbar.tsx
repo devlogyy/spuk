@@ -43,7 +43,7 @@ export function Navbar() {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong shadow-soft" : "bg-transparent"}`}
+      className={`sticky top-0 z-50 transition-colors duration-300 ${scrolled ? "border-b border-border bg-background shadow-soft md:glass-strong md:border-0" : "bg-transparent"}`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-6 lg:px-8">
         <Link to="/" className="group flex shrink-0 items-center gap-2">
