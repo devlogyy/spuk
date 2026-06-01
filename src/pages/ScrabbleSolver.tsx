@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Grid3x3, Trophy, Zap, Sparkles, SlidersHorizontal } from "lucide-react";
@@ -9,6 +9,7 @@ import { LoadingResults } from "@/components/LoadingResults";
 import { HowItWorks } from "@/components/HowItWorks";
 import { AdvancedFiltersAccordion } from "@/components/AdvancedFiltersAccordion";
 import { WordCard } from "@/components/WordCard";
+import { AdSlot } from "@/components/AdSlot";
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 type Sort = "score" | "length" | "rarity";
