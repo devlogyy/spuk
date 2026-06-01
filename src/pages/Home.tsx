@@ -128,7 +128,7 @@ export default function Home() {
                 to={f.to}
                 className={`group flex h-full min-h-[160px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 md:shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1`}
               >
-                <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground md:bg-gradient-to-br md:${f.color} md:shadow-soft`}>
+                <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground`}>
                   <f.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-display text-lg font-bold">{f.title}</h3>
