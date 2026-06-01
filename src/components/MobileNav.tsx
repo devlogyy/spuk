@@ -13,7 +13,7 @@ export function MobileNav() {
   const { pathname } = useLocation();
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 px-3 pb-3 md:hidden">
-      <div className="glass-strong mx-auto flex max-w-md items-center justify-around rounded-3xl px-2 pb-2 pt-3 shadow-soft">
+      <div className="mx-auto flex max-w-md items-center justify-around rounded-3xl border border-border bg-card px-2 pb-2 pt-3 shadow-soft">
         {items.map(({ to, label, icon: Icon, primary }) => {
           const active = pathname === to;
           if (primary) {
