@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useConsent } from "@/hooks/useConsent";
 
 interface Props {
   zoneKey: string;
@@ -17,7 +18,19 @@ function getSessionId(): string {
 
 const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
 
+function ensureAdsenseScript() {
+  if (!ADSENSE_CLIENT) return;
+  if (document.querySelector("script[data-adsense]")) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.crossOrigin = "anonymous";
+  s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
+  s.setAttribute("data-adsense", "1");
+  document.head.appendChild(s);
+}
+
 export function AdSlot({ zoneKey, className }: Props) {
+  const { consent } = useConsent();
   const [zone, setZone] = useState<{ id: string; enabled: boolean; ad_slot_id: string | null } | null>(null);
 
   useEffect(() => {
@@ -30,7 +43,7 @@ export function AdSlot({ zoneKey, className }: Props) {
   }, [zoneKey]);
 
   useEffect(() => {
-    if (!zone?.enabled) return;
+    if (!zone?.enabled || !consent.ads) return;
     const sid = getSessionId();
     supabase.from("ad_events").insert({
       zone_id: zone.id,
@@ -39,14 +52,16 @@ export function AdSlot({ zoneKey, className }: Props) {
       event_type: "impression",
     });
     if (ADSENSE_CLIENT && zone.ad_slot_id) {
+      ensureAdsenseScript();
       try {
         // @ts-expect-error adsbygoogle global
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch {}
     }
-  }, [zone, zoneKey]);
+  }, [zone, zoneKey, consent.ads]);
 
   if (!zone?.enabled) return null;
+  if (!consent.ads) return null;
 
   const trackClick = () => {
     const sid = getSessionId();
