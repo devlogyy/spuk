@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Twitter, Github, Instagram } from "lucide-react";
 import { AdSlot } from "@/components/AdSlot";
+import { useConsent } from "@/hooks/useConsent";
 
 const cols = [
   {
@@ -33,8 +34,10 @@ const cols = [
 ];
 
 export function Footer() {
+  const { reopen } = useConsent();
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40 pb-24 pt-16 md:pb-12">
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AdSlot zoneKey="footer" />
         <div className="grid gap-10 md:grid-cols-5">
@@ -75,8 +78,13 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Lexora. Crafted for word lovers.</p>
-          <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Sparkles className="h-3 w-3 text-gold" /> Powered by AI Word Intelligence
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <button onClick={reopen} className="transition hover:text-primary">
+              Cookie settings
+            </button>
+            <div className="flex items-center gap-1">
+              <Sparkles className="h-3 w-3 text-gold" /> Powered by AI Word Intelligence
+            </div>
           </div>
         </div>
       </div>
