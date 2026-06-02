@@ -11,6 +11,7 @@ import Auth from "@/pages/Auth";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/NotFound";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { CookieConsent } from "@/components/CookieConsent";
 
 function AnalyticsTracker() {
   useAnalytics();
