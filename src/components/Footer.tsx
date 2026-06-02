@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Twitter, Github, Instagram } from "lucide-react";
 import { AdSlot } from "@/components/AdSlot";
+import { useConsent } from "@/hooks/useConsent";
 
 const cols = [
   {
