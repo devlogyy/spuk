@@ -34,8 +34,10 @@ const cols = [
 ];
 
 export function Footer() {
+  const { reopen } = useConsent();
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40 pb-24 pt-16 md:pb-12">
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AdSlot zoneKey="footer" />
         <div className="grid gap-10 md:grid-cols-5">
