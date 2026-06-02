@@ -37,6 +37,7 @@ export default function App() {
       </main>
       <Footer />
       <MobileNav />
+      <CookieConsent />
     </div>
   );
 }
