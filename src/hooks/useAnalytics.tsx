@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useConsent } from "@/hooks/useConsent";
 
 function getSessionId(): string {
   let id = sessionStorage.getItem("lex_sid");
@@ -13,17 +14,19 @@ function getSessionId(): string {
 
 export function useAnalytics() {
   const { pathname } = useLocation();
+  const { consent } = useConsent();
   const sessionRowId = useRef<string | null>(null);
   const enteredAt = useRef<number>(Date.now());
   const maxScroll = useRef<number>(0);
 
   useEffect(() => {
+    if (!consent.analytics) return;
+
     const sid = getSessionId();
     enteredAt.current = Date.now();
     maxScroll.current = 0;
     sessionRowId.current = null;
 
-    // pageview
     supabase.from("page_views").insert({
       path: pathname,
       session_id: sid,
@@ -31,7 +34,6 @@ export function useAnalytics() {
       user_agent: navigator.userAgent,
     });
 
-    // session row
     supabase
       .from("page_sessions")
       .insert({ session_id: sid, path: pathname })
@@ -70,5 +72,5 @@ export function useAnalytics() {
       window.removeEventListener("pagehide", flush);
       flush();
     };
-  }, [pathname]);
+  }, [pathname, consent.analytics]);
 }
