@@ -1,90 +1,97 @@
-# AdSense + Smart Analytics Admin
 
-Goal: stand up the admin side now so when Google AdSense is approved, slots are ready and placement is driven by real engagement data.
+# Evergreen Blog Content System
 
-## What you'll get
+Goal: Replace the placeholder blog teasers with real, long-form, evergreen articles targeting high-intent Scrabble / crossword / word-game searchers — structured to satisfy Google's Helpful Content guidelines and meet the AdSense "valuable, original content" bar.
 
-1. **Admin dashboard** at `/admin`, protected by email/password + admin role
-2. **Custom analytics** stored in Lovable Cloud (pageviews, time-on-page, scroll depth, clicks)
-3. **Smart ad-slot system** — ad components that render based on which pages/zones get the most engagement
-4. **AdSense placeholder** wired up (script tag + `ads.txt`) — disabled until you have a publisher ID
+## 1. Target topics (evergreen, high search intent)
 
----
+Picked based on what word-game players consistently search year-round (not news/seasonal). Each pairs with a tool on the site so we get strong internal-link signals.
 
-## Phase 1 — Enable Lovable Cloud + Auth
+| # | Slug | Title | Primary keyword | Links to tool |
+|---|---|---|---|---|
+| 1 | `words-with-q-no-u` | Every Q-Without-U Word Allowed in Scrabble (and How to Use Them) | "words with q no u" | Scrabble Solver |
+| 2 | `2-letter-scrabble-words` | The Complete List of 2-Letter Scrabble Words (Memorize These First) | "2 letter scrabble words" | Scrabble Solver |
+| 3 | `high-scoring-scrabble-words` | 50 Highest-Scoring Scrabble Words That Actually Get Played | "high scoring scrabble words" | Scrabble Solver |
+| 4 | `how-to-solve-crossword-clues` | How to Solve Any Crossword Clue: A 7-Step Method | "how to solve crossword clues" | Crossword Solver |
+| 5 | `crossword-clue-patterns` | Crossword Pattern Matching: Decode `C_A__T` in Seconds | "crossword pattern solver" | Crossword Solver |
+| 6 | `words-from-letters` | How to Find Every Word From a Set of Letters | "words from letters" | Word Finder |
+| 7 | `scrabble-bingo-strategy` | Scrabble Bingo Strategy: How Pros Score 50-Point Bonuses | "scrabble bingo" | Scrabble Solver |
+| 8 | `build-vocabulary-word-games` | Build a 10,000-Word Vocabulary Using Word Games | "improve vocabulary word games" | Word Finder + Blog |
 
-- Enable Lovable Cloud
-- Email/password auth with sign-up / sign-in pages
-- `profiles` table (id → auth.users) — minimal: id, email, created_at
-- `user_roles` table + `app_role` enum (`admin`, `user`) + `has_role()` security-definer function
-- First admin promoted via SQL (one-time insert)
-- `/admin` route guard using `has_role(auth.uid(), 'admin')`
+All eight are evergreen (timeless rules, dictionaries, methods) — no dates, no "2026 trends".
 
-## Phase 2 — Analytics data model
+## 2. Information architecture
 
-Tables (all in `public`, RLS on, proper GRANTs):
+```
+/blog                    → Blog index (filterable by category)
+/blog/:slug              → Article page
+```
 
-- `page_views` — id, path, session_id, user_id (nullable), referrer, user_agent, country (nullable), created_at
-- `page_sessions` — id, session_id, path, entered_at, left_at, duration_ms, max_scroll_pct
-- `ad_zones` — id, key, page_path, position (e.g. `hero`, `inline-1`, `sidebar`, `footer`), enabled
-- `ad_events` — id, zone_id, session_id, event_type (`impression` | `click`), created_at
+Routes are relative — when the new domain ships, only the canonical base needs swapping (handled in one place via a `SITE_URL` constant). No content moves.
 
-RLS:
-- Anonymous insert allowed for `page_views`, `page_sessions`, `ad_events` (tracking from any visitor)
-- Select restricted to admin role only
-- `ad_zones`: anyone can read enabled zones; only admin can write
+Each article: ~1,200–1,800 words, with:
+- H1 (the title) + meta description
+- Table of contents (anchor links)
+- 3–6 H2 sections, H3 sub-sections
+- A worked example using the relevant on-site tool (with a CTA: "Try this in the Scrabble Solver →")
+- FAQ section (3–5 Q&As) → eligible for FAQ rich snippets
+- "Related reading" block at bottom linking to 3 other articles
+- Inline contextual links to 2–4 other articles within prose
+- Author, read time, published date
 
-## Phase 3 — Tracking layer
+## 3. SEO & schema
 
-- `useAnalytics()` hook mounted in `App.tsx`:
-  - On route change → insert `page_views` row, start a `page_sessions` row
-  - Track scroll depth (throttled), update `max_scroll_pct` on unload
-  - On unload / route change → write `left_at` + `duration_ms` via `sendBeacon`
-- Session ID: UUID in `sessionStorage`
-- No PII; user_id only when signed in
+- `<Helmet>` per post: unique title, meta description, canonical (relative path), `og:title`, `og:description`, `og:type=article`, `og:image` (the thumbnail).
+- JSON-LD: `Article` schema + `BreadcrumbList` + `FAQPage` (for posts with FAQ).
+- Single H1 per page, semantic `<article>`, `<section>`, `<nav>` for breadcrumbs.
+- Image `alt` text on every thumbnail.
+- Internal linking: index → posts, post → related posts, post → solver tool, footer → top posts.
+- Add `/blog` and each `/blog/:slug` to `public/sitemap.xml` (manually for now — 9 URLs).
+- `robots.txt` already allows crawling.
 
-## Phase 4 — Admin dashboard
+## 4. Thumbnails
 
-`/admin` with tabs:
+Generate 8 unique, on-brand hero images with the image generator (premium tier for the 3 most important; fast for the rest to save credits). Style: dark editorial background, glowing Scrabble tiles / crossword grid motif matching site palette. Stored as `.asset.json` pointers (CDN-hosted, keeps repo light).
 
-- **Overview**: total views, unique sessions, avg session duration, top pages (last 7/30 days)
-- **Engagement heatmap**: per-page avg time + avg scroll depth — this is what drives "smart" placement
-- **Ad zones**: list of zones, impressions, clicks, CTR, toggle enabled/disabled
-- **Users**: list of registered users + role management
+## 5. AdSense placement (already wired)
 
-Charts: lightweight (recharts, already common in shadcn projects).
+Within each article, drop existing `<AdSlot>` components at:
+- After the intro paragraph (`blog-inline` zone)
+- Mid-article (after ~50% scroll point in the markup)
+- End of article (before related-reading block)
 
-## Phase 5 — Smart ad slot system
+Ads only render once consent is granted and the zone is enabled in `/admin` — already implemented.
 
-- `<AdSlot zoneKey="..." />` component:
-  - Looks up the zone in `ad_zones`
-  - If enabled AND AdSense is configured → renders `<ins class="adsbygoogle">`
-  - Otherwise → renders nothing (or a dev-only placeholder)
-  - Fires `impression` event on mount, `click` event on click
-- "Smart" logic: a server-side view (`v_zone_recommendations`) ranks zones by avg time-on-page × scroll-depth-reached for the page they live on. The admin dashboard surfaces top recommended zones so you can enable the highest-engagement ones first.
-- Initial zones seeded: `home-hero`, `home-inline`, `scrabble-results-top`, `scrabble-results-inline`, `crossword-results-top`, `crossword-results-inline`, `wordfinder-results-top`, `blog-inline`, `footer`
+## 6. Content quality bar (for Google + AdSense approval)
 
-## Phase 6 — AdSense placeholder
+- Original prose — no scraped lists, no AI-obvious filler.
+- First-person where helpful ("I've played 2,000 tournament games…").
+- Concrete examples with real word lists, real point values, real grid patterns.
+- Disclose dictionary used (TWL vs SOWPODS) where relevant.
+- No thin content — every page > 1,200 words of substance.
+- Author bylines kept consistent with the existing placeholder authors.
 
-- Add `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous">` to `index.html`, commented/guarded behind a `VITE_ADSENSE_CLIENT` env var so nothing loads until you set it
-- Create `public/ads.txt` with a placeholder line
-- `AdSlot` reads `VITE_ADSENSE_CLIENT` and `data-ad-slot` from the zone row — flip on by setting the env var + filling slot IDs in the admin UI later
+## 7. Files to create / edit
 
----
+**Create:**
+- `src/content/blog/index.ts` — typed array of all 8 post metadata (slug, title, description, thumbnail import, author, readTime, category, tags, related slugs)
+- `src/content/blog/posts/` — one `.tsx` per article exporting its body as JSX (so we can use `<AdSlot>`, internal `<Link>`s, headings — no MDX dependency needed)
+- `src/pages/BlogPost.tsx` — dynamic article page (reads slug, renders post body, schema, breadcrumbs, ads, related posts)
+- `src/assets/blog/<slug>.jpg.asset.json` × 8 — generated thumbnails
 
-## Technical notes
+**Edit:**
+- `src/pages/Blog.tsx` — replace hardcoded `posts` array with the real index; wire category filter; link cards to `/blog/:slug`
+- `src/App.tsx` — add `<Route path="/blog/:slug" element={<BlogPost />} />`
+- `public/sitemap.xml` — add the 9 blog URLs
+- `src/components/Footer.tsx` — add "Popular guides" column linking 3 top posts (extra internal linking)
 
-- All new public tables include explicit `GRANT` statements and RLS policies
-- Roles live in `user_roles` (never on profiles) — uses the `has_role()` security definer pattern
-- Tracking writes use `sendBeacon` for reliability on unload
-- No external analytics SDK — all data stays in your Cloud DB
-- Bot filtering: simple user-agent check on insert via a SQL trigger
+## 8. Domain-swap readiness
 
-## Out of scope (for later)
+A single `SITE_URL` constant in `src/lib/seo.ts` feeds canonical + og:url for every page. When the new domain arrives, that one value changes and all 9+ blog pages update. No content URLs change — slugs stay the same forever, which preserves Google ranking.
 
-- Actually applying for AdSense / putting in real publisher ID
-- A/B testing of ad placements
-- Country-level GeoIP enrichment
-- Cookie consent banner (recommended before going live with ads in EU)
+## 9. Out of scope (for later)
 
-Approve to start with Phase 1.
+- CMS / database-backed posts (current JSX approach is faster + better for SEO since content is in initial HTML)
+- Comments system
+- Newsletter signup
+- More than 8 articles (we'll add more in batches after these index)
