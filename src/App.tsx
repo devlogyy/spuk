@@ -7,6 +7,7 @@ import ScrabbleSolver from "@/pages/ScrabbleSolver";
 import CrosswordSolver from "@/pages/CrosswordSolver";
 import WordFinder from "@/pages/WordFinder";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import Auth from "@/pages/Auth";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/NotFound";
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/crossword-solver" element={<CrosswordSolver />} />
           <Route path="/word-finder" element={<WordFinder />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
