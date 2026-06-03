@@ -23,12 +23,13 @@ const cols = [
     ],
   },
   {
-    title: "Resources",
+    title: "Popular guides",
     links: [
-      { to: "/blog", label: "Blog" },
-      { to: "/blog", label: "Scrabble Strategies" },
-      { to: "/blog", label: "Crossword Tips" },
-      { to: "/blog", label: "Vocabulary Building" },
+      { to: "/blog/2-letter-scrabble-words", label: "2-letter Scrabble words" },
+      { to: "/blog/words-with-q-no-u", label: "Q without U words" },
+      { to: "/blog/scrabble-bingo-strategy", label: "Scrabble bingo strategy" },
+      { to: "/blog/how-to-solve-crossword-clues", label: "How to solve crossword clues" },
+      { to: "/blog", label: "All articles" },
     ],
   },
 ];
