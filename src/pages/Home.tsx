@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
-  Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap, BookOpen,
+  Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap,
   TrendingUp, Brain, Globe, Flame
 } from "lucide-react";
 import { useState } from "react";
