@@ -19,11 +19,7 @@ const features = [
 
 const trending = ["quartz", "jinx", "fjord", "zephyr", "oxide", "waltz", "vexed", "blaze"];
 
-const blogPosts = [
-  { tag: "Strategy", title: "10 highest-scoring Scrabble words pros actually use", read: "6 min", date: "Jun 2026" },
-  { tag: "Tutorial", title: "Crossword patterns: master the C_A__T method", read: "8 min", date: "Jun 2026" },
-  { tag: "Vocabulary", title: "Build a 10,000-word vocabulary in 30 days", read: "12 min", date: "May 2026" },
-];
+const homeBlogPosts = posts.slice(0, 3);
 
 export default function Home() {
   const results = demoResults(6);
