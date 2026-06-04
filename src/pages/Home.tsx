@@ -120,21 +120,20 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
-            <div key={f.title} className="isolate h-full overflow-hidden rounded-3xl">
-              <Link
-                to={f.to}
-                className={`group flex h-full min-h-[160px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 md:shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1`}
-              >
-                <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground`}>
-                  <f.icon className="h-6 w-6" />
-                </div>
-                <h3 className="font-display text-lg font-bold">{f.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
-                <div className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-primary">
-                  Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </div>
-              </Link>
-            </div>
+            <Link
+              key={f.title}
+              to={f.to}
+              className="group flex h-full min-h-[160px] transform-gpu flex-col rounded-3xl border border-border bg-card bg-clip-padding p-6 will-change-transform md:shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1"
+            >
+              <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground`}>
+                <f.icon className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-lg font-bold">{f.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
+              <div className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-primary">
+                Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </div>
+            </Link>
           ))}
         </div>
       </section>
