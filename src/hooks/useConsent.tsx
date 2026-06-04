@@ -77,6 +77,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch {}
+    writeCookie(COOKIE_KEY, JSON.stringify(next));
     window.dispatchEvent(new CustomEvent("lex-consent-change", { detail: next }));
   }, []);
 
