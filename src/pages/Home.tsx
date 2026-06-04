@@ -2,12 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
-  Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap, BookOpen,
+  Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap,
   TrendingUp, Brain, Globe, Flame
 } from "lucide-react";
 import { useState } from "react";
 import { WordCard } from "@/components/WordCard";
 import { demoResults } from "@/lib/words";
+import { posts } from "@/content/blog";
 
 const features = [
   { icon: Grid3x3, title: "Scrabble Solver", desc: "Highest scoring plays with US & UK dictionaries.", to: "/scrabble-solver", color: "from-primary to-gold" },
@@ -18,11 +19,7 @@ const features = [
 
 const trending = ["quartz", "jinx", "fjord", "zephyr", "oxide", "waltz", "vexed", "blaze"];
 
-const blogPosts = [
-  { tag: "Strategy", title: "10 highest-scoring Scrabble words pros actually use", read: "6 min", date: "Jun 2026" },
-  { tag: "Tutorial", title: "Crossword patterns: master the C_A__T method", read: "8 min", date: "Jun 2026" },
-  { tag: "Vocabulary", title: "Build a 10,000-word vocabulary in 30 days", read: "12 min", date: "May 2026" },
-];
+const homeBlogPosts = posts.slice(0, 3);
 
 export default function Home() {
   const results = demoResults(6);
@@ -123,21 +120,20 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
-            <div key={f.title} className="isolate h-full overflow-hidden rounded-3xl">
-              <Link
-                to={f.to}
-                className={`group flex h-full min-h-[160px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 md:shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1`}
-              >
-                <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground`}>
-                  <f.icon className="h-6 w-6" />
-                </div>
-                <h3 className="font-display text-lg font-bold">{f.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
-                <div className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-primary">
-                  Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </div>
-              </Link>
-            </div>
+            <Link
+              key={f.title}
+              to={f.to}
+              className="group flex h-full min-h-[160px] transform-gpu flex-col rounded-3xl border border-border bg-card bg-clip-padding p-6 will-change-transform md:shadow-card md:transition-transform md:duration-200 md:hover:-translate-y-1"
+            >
+              <div className={`mb-4 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${f.color} text-primary-foreground`}>
+                <f.icon className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-lg font-bold">{f.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{f.desc}</p>
+              <div className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-primary">
+                Open tool <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -228,18 +224,37 @@ export default function Home() {
           <Link to="/blog" className="shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary">All posts →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {blogPosts.map((p, i) => (
-            <motion.article key={p.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow">
-              <div className="relative h-44 overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-                <div className="absolute inset-0 grid place-items-center"><BookOpen className="h-10 w-10 text-primary/60" /></div>
-                <div className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur">{p.tag}</div>
-              </div>
-              <div className="p-5">
-                <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h3>
-                <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
-                  <span>{p.date}</span><span>·</span><span>{p.read} read</span>
+          {homeBlogPosts.map((p, i) => (
+            <motion.article
+              key={p.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
+            >
+              <Link to={`/blog/${p.slug}`} className="block">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <img
+                    src={p.thumbnail}
+                    alt={p.thumbnailAlt}
+                    loading="lazy"
+                    width={1280}
+                    height={704}
+                    className="h-full w-full object-cover transition group-hover:scale-105"
+                  />
+                  <div className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur">
+                    {p.category}
+                  </div>
                 </div>
-              </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>
+                  <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
+                    <span>{p.author}</span><span>·</span><span>{p.date}</span><span>·</span><span>{p.readTime}</span>
+                  </div>
+                </div>
+              </Link>
             </motion.article>
           ))}
         </div>

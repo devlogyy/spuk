@@ -7,6 +7,8 @@ export type ConsentState = {
 };
 
 const STORAGE_KEY = "lex_consent_v1";
+const COOKIE_KEY = "lex_consent_v1";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 const DEFAULT: ConsentState = { analytics: false, ads: false, decided: false };
 
 type Ctx = {
@@ -20,20 +22,44 @@ type Ctx = {
 
 const ConsentContext = createContext<Ctx | null>(null);
 
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.split("; ").find((c) => c.startsWith(name + "="));
+  return match ? decodeURIComponent(match.split("=").slice(1).join("=")) : null;
+}
+
+function writeCookie(name: string, value: string) {
+  if (typeof document === "undefined") return;
+  document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${COOKIE_MAX_AGE}; path=/; samesite=lax`;
+}
+
 function load(): ConsentState {
   if (typeof window === "undefined") return DEFAULT;
+  // Try localStorage first
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT;
-    const parsed = JSON.parse(raw);
-    return {
-      analytics: !!parsed.analytics,
-      ads: !!parsed.ads,
-      decided: !!parsed.decided,
-    };
-  } catch {
-    return DEFAULT;
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return {
+        analytics: !!parsed.analytics,
+        ads: !!parsed.ads,
+        decided: !!parsed.decided,
+      };
+    }
+  } catch {}
+  // Fallback to cookie (e.g. localStorage blocked or cleared)
+  const cookie = readCookie(COOKIE_KEY);
+  if (cookie) {
+    try {
+      const parsed = JSON.parse(cookie);
+      return {
+        analytics: !!parsed.analytics,
+        ads: !!parsed.ads,
+        decided: !!parsed.decided,
+      };
+    } catch {}
   }
+  return DEFAULT;
 }
 
 export function ConsentProvider({ children }: { children: ReactNode }) {
@@ -51,6 +77,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch {}
+    writeCookie(COOKIE_KEY, JSON.stringify(next));
     window.dispatchEvent(new CustomEvent("lex-consent-change", { detail: next }));
   }, []);
 
