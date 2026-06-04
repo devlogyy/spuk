@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import { WordCard } from "@/components/WordCard";
 import { demoResults } from "@/lib/words";
+import { posts } from "@/content/blog";
 
 const features = [
   { icon: Grid3x3, title: "Scrabble Solver", desc: "Highest scoring plays with US & UK dictionaries.", to: "/scrabble-solver", color: "from-primary to-gold" },
