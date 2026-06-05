@@ -10,7 +10,17 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { AdvancedFiltersAccordion } from "@/components/AdvancedFiltersAccordion";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
+import { ToolFAQ } from "@/components/ToolFAQ";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
+
+const FAQS: FAQItem[] = [
+  { q: "Is the Lexora Scrabble Solver free to use?", a: "Yes. The Scrabble Solver is completely free, supports both the US (TWL) and UK (SOWPODS) dictionaries, and has no sign-up." },
+  { q: "How do I use a blank tile?", a: "Type ? for each blank tile in your rack. For example, AERST? returns every word that can be formed using those six letters plus one wildcard." },
+  { q: "Is QI a valid Scrabble word?", a: "Yes. QI is valid in both TWL and SOWPODS dictionaries and is one of the most-played Q-without-U words at the competitive level." },
+  { q: "Why are some words scored differently?", a: "Tile values follow the official Scrabble distribution: A/E/I/L/N/O/R/S/T/U are 1 point, while J/X = 8 and Q/Z = 10. Premium board squares are not factored in — the solver shows raw tile score." },
+  { q: "Does the solver work for Words With Friends?", a: "Most words will be valid, but Words With Friends uses a slightly different dictionary and tile values. Use the US dictionary for the closest match." },
+];
 
 type Sort = "score" | "length" | "rarity";
 
@@ -75,7 +85,19 @@ export default function ScrabbleSolver() {
       <Helmet>
         <title>Scrabble Solver — US & UK Dictionary | Lexora</title>
         <meta name="description" content="Free AI Scrabble Solver. Enter your tiles to find the highest scoring words with US (TWL) and UK (SOWPODS) dictionary support, blanks, and advanced filters." />
-        <link rel="canonical" href="/scrabble-solver" />
+        <link rel="canonical" href={absoluteUrl("/scrabble-solver")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Scrabble Solver — US & UK Dictionary | Lexora" />
+        <meta property="og:description" content="Find the highest scoring Scrabble plays from your tiles. Supports blanks, advanced filters and both US (TWL) and UK (SOWPODS) dictionaries." />
+        <meta property="og:url" content={absoluteUrl("/scrabble-solver")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(softwareApplicationSchema({
+          name: "Lexora Scrabble Solver",
+          description: "Free AI Scrabble Solver with US (TWL) and UK (SOWPODS) dictionaries, blank-tile support and advanced filtering.",
+          url: absoluteUrl("/scrabble-solver"),
+          category: "GameApplication",
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
