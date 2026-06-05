@@ -149,6 +149,15 @@ export default function WordFinder() {
             <EmptyState title="No words for those letters" description="Try clearing the length filter or different letters." />
           )}
         </div>
+
+        <ToolFAQ
+          faqs={FAQS}
+          related={[
+            { to: "/blog/words-from-letters", label: "How to find every word from your letters", desc: "Systematic method for any letter set." },
+            { to: "/blog/2-letter-scrabble-words", label: "All 107 two-letter Scrabble words", desc: "Memorize these to score everywhere." },
+            { to: "/blog/scrabble-bingo-strategy", label: "Score 50-point Scrabble bingos", desc: "Stem theory and rack management." },
+          ]}
+        />
       </div>
     </div>
   );
