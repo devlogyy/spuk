@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,7 @@ export default function Auth() {
 
   return (
     <div className="container mx-auto max-w-md px-4 py-16">
+      <Helmet><meta name="robots" content="noindex,nofollow" /></Helmet>
       <h1 className="mb-6 text-3xl font-bold">{mode === "signin" ? "Sign in" : "Sign up"}</h1>
       <form onSubmit={submit} className="space-y-4">
         <div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -112,6 +113,7 @@ VALUES ('${user.id}', 'admin');`}
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet><meta name="robots" content="noindex,nofollow" /></Helmet>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold">Admin</h1>
         <Button variant="outline" onClick={signOut}>Sign out</Button>
