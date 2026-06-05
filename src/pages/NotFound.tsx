@@ -6,6 +6,7 @@ export default function NotFound() {
     <div className="flex min-h-[70vh] items-center justify-center bg-background px-4">
       <Helmet>
         <title>404 — Page Not Found | Lexora</title>
+        <meta name="robots" content="noindex,follow" />
       </Helmet>
       <div className="max-w-md text-center">
         <h1 className="font-display text-8xl font-black text-gradient">404</h1>

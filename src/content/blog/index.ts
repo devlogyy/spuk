@@ -38,12 +38,19 @@ export interface Post {
   author: string;
   readTime: string;
   date: string;
+  /** ISO date used in Article JSON-LD (datePublished). */
+  datePublished: string;
+  /** ISO date used in Article JSON-LD (dateModified). Falls back to datePublished. */
+  dateModified?: string;
   thumbnail: string;
   thumbnailAlt: string;
   related: string[];
   faqs: FAQ[];
   Body: ComponentType;
 }
+
+const PUBLISHED = "2026-06-01";
+const MODIFIED = "2026-06-05";
 
 export const posts: Post[] = [
   {
@@ -55,6 +62,8 @@ export const posts: Post[] = [
     author: "Mia Chen",
     readTime: "7 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: qNoU,
     thumbnailAlt: "Glowing Scrabble tiles spelling QI and QAT on a dark background",
     related: ["high-scoring-scrabble-words", "2-letter-scrabble-words", "scrabble-bingo-strategy"],
@@ -83,6 +92,8 @@ export const posts: Post[] = [
     author: "Daniel Park",
     readTime: "9 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: twoLetter,
     thumbnailAlt: "Wooden Scrabble tiles arranged in two-letter pairs",
     related: ["high-scoring-scrabble-words", "words-with-q-no-u", "scrabble-bingo-strategy"],
@@ -111,6 +122,8 @@ export const posts: Post[] = [
     author: "Mia Chen",
     readTime: "10 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: highScoring,
     thumbnailAlt: "Glowing Z Scrabble tile with gold sparks on a triple-word-score square",
     related: ["scrabble-bingo-strategy", "words-with-q-no-u", "2-letter-scrabble-words"],
@@ -139,6 +152,8 @@ export const posts: Post[] = [
     author: "Sofia Almeida",
     readTime: "8 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: howToSolve,
     thumbnailAlt: "Magnifying glass over a partially solved crossword puzzle in warm lamp light",
     related: ["crossword-clue-patterns", "words-from-letters", "build-vocabulary-word-games"],
@@ -167,6 +182,8 @@ export const posts: Post[] = [
     author: "Daniel Park",
     readTime: "7 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: patterns,
     thumbnailAlt: "Neon pattern showing the letters C, A and T on a dark grid",
     related: ["how-to-solve-crossword-clues", "words-from-letters", "build-vocabulary-word-games"],
@@ -195,6 +212,8 @@ export const posts: Post[] = [
     author: "Sofia Almeida",
     readTime: "8 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: fromLetters,
     thumbnailAlt: "Scattered wooden letter tiles being rearranged into words",
     related: ["2-letter-scrabble-words", "scrabble-bingo-strategy", "crossword-clue-patterns"],
@@ -223,6 +242,8 @@ export const posts: Post[] = [
     author: "Mia Chen",
     readTime: "11 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: bingo,
     thumbnailAlt: "Seven Scrabble tiles on a rack glowing with bingo bonus light",
     related: ["high-scoring-scrabble-words", "2-letter-scrabble-words", "words-with-q-no-u"],
@@ -251,6 +272,8 @@ export const posts: Post[] = [
     author: "Sofia Almeida",
     readTime: "9 min",
     date: "Evergreen",
+    datePublished: PUBLISHED,
+    dateModified: MODIFIED,
     thumbnail: vocab,
     thumbnailAlt: "Open dictionary with golden words rising from the pages",
     related: ["how-to-solve-crossword-clues", "words-from-letters", "scrabble-bingo-strategy"],

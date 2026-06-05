@@ -22,11 +22,16 @@ export default function BlogPost() {
     headline: post.title,
     description: post.description,
     image: absoluteUrl(post.thumbnail),
+    datePublished: post.datePublished,
+    dateModified: post.dateModified ?? post.datePublished,
+    inLanguage: "en",
+    keywords: [post.category, ...post.title.toLowerCase().split(/\s+/)].slice(0, 10).join(", "),
     author: { "@type": "Person", name: post.author },
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
       url: SITE_URL,
+      logo: { "@type": "ImageObject", url: absoluteUrl("/favicon.ico") },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     articleSection: post.category,
@@ -61,12 +66,20 @@ export default function BlogPost() {
         <title>{`${post.title} | ${SITE_NAME}`}</title>
         <meta name="description" content={post.description} />
         <link rel="canonical" href={url} />
+        <link rel="preload" as="image" href={post.thumbnail} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={absoluteUrl(post.thumbnail)} />
+        <meta property="article:published_time" content={post.datePublished} />
+        <meta property="article:modified_time" content={post.dateModified ?? post.datePublished} />
+        <meta property="article:author" content={post.author} />
+        <meta property="article:section" content={post.category} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        <meta name="twitter:image" content={absoluteUrl(post.thumbnail)} />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}

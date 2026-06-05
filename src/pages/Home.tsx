@@ -37,7 +37,12 @@ export default function Home() {
       <Helmet>
         <title>Lexora — Scrabble Solver, Crossword & Word Finder</title>
         <meta name="description" content="Premium word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US (TWL) & UK (SOWPODS) dictionaries." />
-        <link rel="canonical" href="/" />
+        <link rel="canonical" href="https://spuk.lovable.app/" />
+        <meta property="og:title" content="Lexora — Scrabble Solver, Crossword & Word Finder" />
+        <meta property="og:description" content="Premium word game platform. Scrabble solver, crossword solver, anagram generator and word finder." />
+        <meta property="og:url" content="https://spuk.lovable.app/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       {/* Hero */}
