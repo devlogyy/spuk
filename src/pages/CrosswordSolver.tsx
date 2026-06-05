@@ -9,7 +9,17 @@ import { LoadingResults } from "@/components/LoadingResults";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
+import { ToolFAQ } from "@/components/ToolFAQ";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
+
+const FAQS: FAQItem[] = [
+  { q: "How does the Lexora Crossword Solver work?", a: "Enter the letters you already have and use ? for unknown squares. The solver matches your pattern against the full US (TWL) or UK (SOWPODS) dictionary in real time." },
+  { q: "What does C?T?? mean?", a: "It's a pattern: C in position 1, any letter in position 2, T in position 3, then any two letters. Matches include CATCH, CITED, CUTUP and more." },
+  { q: "Can I solve cryptic crossword clues?", a: "The pattern matcher works on letters you have. For cryptic wordplay (anagrams, hidden words, charades), pair it with our guide to solving any crossword clue." },
+  { q: "Why are some answers missing?", a: "If a clue uses a proper noun, abbreviation or phrase, it may not be in the standard dictionary. Switch between US and UK dictionaries to broaden the candidate list." },
+  { q: "Is using a crossword solver cheating?", a: "It's a study and learning aid. Tournament rules forbid external aids during play, but pattern matchers are standard tools for crossword constructors, editors and casual solvers." },
+];
 
 const EXAMPLES = ["C?T??", "?RA??E", "Q??RTZ", "P?X?L"];
 const normalize = (s: string) => s.toUpperCase().replace(/[_\s]/g, "?");
@@ -58,7 +68,19 @@ export default function CrosswordSolver() {
       <Helmet>
         <title>Crossword Solver — Pattern Matching | Lexora</title>
         <meta name="description" content="Solve any crossword with pattern matching across US & UK dictionaries. Enter a pattern like C?T?? and get every legal answer." />
-        <link rel="canonical" href="/crossword-solver" />
+        <link rel="canonical" href={absoluteUrl("/crossword-solver")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Crossword Solver — Pattern Matching | Lexora" />
+        <meta property="og:description" content="Crack any crossword clue with real-time pattern matching across the full US (TWL) and UK (SOWPODS) dictionaries." />
+        <meta property="og:url" content={absoluteUrl("/crossword-solver")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(softwareApplicationSchema({
+          name: "Lexora Crossword Solver",
+          description: "Free crossword pattern matcher with US (TWL) and UK (SOWPODS) dictionary support.",
+          url: absoluteUrl("/crossword-solver"),
+          category: "GameApplication",
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
