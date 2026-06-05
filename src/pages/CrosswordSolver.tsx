@@ -159,6 +159,15 @@ export default function CrosswordSolver() {
             <EmptyState title="No matches for that pattern" description="Double-check the letter count and try again, or pick an example." examples={EXAMPLES.map((ex) => ({ label: ex, onClick: () => runExample(ex) }))} />
           )}
         </div>
+
+        <ToolFAQ
+          faqs={FAQS}
+          related={[
+            { to: "/blog/how-to-solve-crossword-clues", label: "How to solve any crossword clue", desc: "A 7-step method used by editors." },
+            { to: "/blog/crossword-clue-patterns", label: "Decode C_A__T in seconds", desc: "Pattern-matching technique for elite solvers." },
+            { to: "/blog/build-vocabulary-word-games", label: "Build a 10,000-word vocabulary", desc: "Spaced repetition with word games." },
+          ]}
+        />
       </div>
     </div>
   );

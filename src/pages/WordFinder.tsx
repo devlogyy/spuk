@@ -10,7 +10,17 @@ import { LoadingResults } from "@/components/LoadingResults";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
+import { ToolFAQ } from "@/components/ToolFAQ";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
 import { solveAnagram, warmDictionaries, type SolverResult } from "@/lib/dictionary";
+
+const FAQS: FAQItem[] = [
+  { q: "How do I unscramble letters?", a: "Type the letters you have in any order, then tap Find Words. The Word Finder returns every valid dictionary word that can be made from your letters." },
+  { q: "What's the difference between Word Finder and Scrabble Solver?", a: "Word Finder shows every legal word from your letters in any order. Scrabble Solver does the same but ranks results by tile score and supports both US and UK Scrabble dictionaries." },
+  { q: "Can I find words of a specific length?", a: "Yes. Use the length filter (2 through 7) to show only words of that exact length, which is perfect for Wordle, crosswords, and word puzzles." },
+  { q: "Do you support blank tiles?", a: "Yes — use ? for each blank or wildcard letter. The finder treats each ? as any letter A–Z." },
+  { q: "Is the Word Finder accurate?", a: "Results are validated against the standard TWL word list used in competitive Scrabble. Some game-specific dictionaries (Words With Friends, Wordle) differ slightly." },
+];
 
 const LENGTHS = [2, 3, 4, 5, 6, 7];
 const EXAMPLES = ["LISTENING", "QUARTZN", "PYTHON"];
@@ -66,7 +76,19 @@ export default function WordFinder() {
       <Helmet>
         <title>Word Finder & Anagram Solver | Lexora</title>
         <meta name="description" content="Unscramble letters, find anagrams, and discover every possible word. Sort by score, length, popularity or alphabetical. Free and fast." />
-        <link rel="canonical" href="/word-finder" />
+        <link rel="canonical" href={absoluteUrl("/word-finder")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Word Finder & Anagram Solver | Lexora" />
+        <meta property="og:description" content="Unscramble letters and find every possible word in seconds. Free anagram solver for Scrabble, Wordle, crosswords and more." />
+        <meta property="og:url" content={absoluteUrl("/word-finder")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(softwareApplicationSchema({
+          name: "Lexora Word Finder",
+          description: "Free anagram solver and word finder. Unscramble letters into every valid dictionary word.",
+          url: absoluteUrl("/word-finder"),
+          category: "GameApplication",
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
