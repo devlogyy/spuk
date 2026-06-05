@@ -202,6 +202,15 @@ export default function ScrabbleSolver() {
               action={<button onClick={() => { setStarts(""); setEnds(""); setContains(""); setMinLen(2); }} className="min-h-11 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold hover:border-primary hover:text-primary">Reset filters</button>} />
           )}
         </div>
+
+        <ToolFAQ
+          faqs={FAQS}
+          related={[
+            { to: "/blog/high-scoring-scrabble-words", label: "50 highest-scoring Scrabble words", desc: "Real plays pros use, not theoretical maxes." },
+            { to: "/blog/2-letter-scrabble-words", label: "All 107 two-letter Scrabble words", desc: "The single highest-ROI study in Scrabble." },
+            { to: "/blog/scrabble-bingo-strategy", label: "Scrabble bingo strategy", desc: "How pros score the 50-point bonus 1.5×/game." },
+          ]}
+        />
       </div>
     </div>
   );
