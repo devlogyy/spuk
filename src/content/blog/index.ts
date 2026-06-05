@@ -38,12 +38,19 @@ export interface Post {
   author: string;
   readTime: string;
   date: string;
+  /** ISO date used in Article JSON-LD (datePublished). */
+  datePublished: string;
+  /** ISO date used in Article JSON-LD (dateModified). Falls back to datePublished. */
+  dateModified?: string;
   thumbnail: string;
   thumbnailAlt: string;
   related: string[];
   faqs: FAQ[];
   Body: ComponentType;
 }
+
+const PUBLISHED = "2026-06-01";
+const MODIFIED = "2026-06-05";
 
 export const posts: Post[] = [
   {
