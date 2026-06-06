@@ -11,6 +11,11 @@ import BlogPost from "@/pages/BlogPost";
 import Auth from "@/pages/Auth";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/NotFound";
+import WordsHub from "@/pages/WordsHub";
+import WordsStartingWith from "@/pages/programmatic/WordsStartingWith";
+import WordsEndingIn from "@/pages/programmatic/WordsEndingIn";
+import NLetterWordsWith from "@/pages/programmatic/NLetterWordsWith";
+import Unscramble from "@/pages/programmatic/Unscramble";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { CookieConsent } from "@/components/CookieConsent";
 
@@ -32,6 +37,11 @@ export default function App() {
           <Route path="/word-finder" element={<WordFinder />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/words" element={<WordsHub />} />
+          <Route path="/words/starting-with/:letter" element={<WordsStartingWith />} />
+          <Route path="/words/ending-in/:letter" element={<WordsEndingIn />} />
+          <Route path="/words/:slug" element={<NLetterWordsWith />} />
+          <Route path="/unscramble/:letters" element={<Unscramble />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />

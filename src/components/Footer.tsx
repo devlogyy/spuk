@@ -14,12 +14,13 @@ const cols = [
     ],
   },
   {
-    title: "Words by length",
+    title: "Browse words",
     links: [
-      { to: "/word-finder", label: "2 letter words" },
-      { to: "/word-finder", label: "3 letter words" },
-      { to: "/word-finder", label: "4 letter words" },
-      { to: "/word-finder", label: "5 letter words" },
+      { to: "/words", label: "All words hub" },
+      { to: "/words/starting-with/q", label: "Words starting with Q" },
+      { to: "/words/ending-in/y", label: "Words ending in Y" },
+      { to: "/words/5-letter-words-with-a", label: "5-letter words with A" },
+      { to: "/unscramble/listening", label: "Unscramble LISTENING" },
     ],
   },
   {
