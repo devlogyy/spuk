@@ -65,7 +65,7 @@ export default function Home() {
               Dominate every <span className="text-gradient">word game</span> you play.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Lexora is the premium platform for Scrabble, Crosswords, Anagrams and Word Finder. Real US (TWL) &amp; UK (SOWPODS) dictionaries, real scoring — built for serious players.
+              Lexora is a free, AI-powered word intelligence platform that finds the highest-scoring Scrabble plays, solves crossword patterns, and unscrambles anagrams — all validated against the official US (TWL) and UK (SOWPODS) tournament dictionaries. Built for serious players.
             </p>
 
             <div className="mx-auto mt-8 max-w-xl">

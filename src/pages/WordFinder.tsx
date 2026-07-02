@@ -11,7 +11,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
 import { solveAnagram, warmDictionaries, type SolverResult } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -89,17 +89,28 @@ export default function WordFinder() {
           category: "GameApplication",
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
+        <script type="application/ld+json">{JSON.stringify(howToSchema({
+          name: "How to unscramble letters with Lexora Word Finder",
+          description: "Turn any set of letters into every valid dictionary word in seconds.",
+          totalTimeIso: "PT15S",
+          steps: [
+            { name: "Enter your letters", text: "Type the letters you have in any order. Use ? for a wildcard or blank tile." },
+            { name: "Filter by length (optional)", text: "Tap a length button (2 to 7) to show only words of that exact length — useful for Wordle and crosswords." },
+            { name: "Find words", text: "Tap Find Words. Every valid anagram from your letters appears, scored and sorted." },
+          ],
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Search className="h-3.5 w-3.5 text-primary" /> Word Finder
         </div>
-        <h1 className="mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
+        <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
           Unscramble anything. <span className="text-gradient">Instantly.</span>
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Type your letters, tap <strong>Find Words</strong>, and see every possible word — sorted, scored and ready to play.
+        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          A word finder unscrambles a set of letters into every valid dictionary word you can make from them. Lexora checks your letters against the TWL Scrabble word list and returns every anagram, ranked by score and length. Type your letters, tap <strong>Find Words</strong>, and see every possible word — sorted, scored and ready to play.
         </p>
       </motion.header>
 

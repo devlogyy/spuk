@@ -11,7 +11,7 @@ import { AdvancedFiltersAccordion } from "@/components/AdvancedFiltersAccordion"
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -98,17 +98,28 @@ export default function ScrabbleSolver() {
           category: "GameApplication",
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
+        <script type="application/ld+json">{JSON.stringify(howToSchema({
+          name: "How to use the Lexora Scrabble Solver",
+          description: "Find the highest-scoring Scrabble play from any rack of tiles in three steps.",
+          totalTimeIso: "PT30S",
+          steps: [
+            { name: "Enter your tiles", text: "Type the letters on your Scrabble rack into the input. Use ? for a blank tile." },
+            { name: "Pick a dictionary", text: "Choose US (TWL) for North American play or UK (SOWPODS) for international play." },
+            { name: "Find best words", text: "Tap Find Best Words. Every legal play appears sorted by tile score, with rarity and length filters." },
+          ],
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Grid3x3 className="h-3.5 w-3.5 text-primary" /> Scrabble Solver
         </div>
-        <h1 className="mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
+        <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
           Find the <span className="text-gradient">highest scoring</span> Scrabble plays
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Type your tiles. Tap <strong>Find Best Words</strong>. Get every legal play, sorted by score.
+        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          A Scrabble solver returns every legal word you can play from a rack of tiles, ranked by tile score. Lexora checks your letters against the official TWL (US) and SOWPODS (UK) tournament dictionaries and shows the best play in under a second. Type your tiles, tap <strong>Find Best Words</strong>, and get every legal play sorted by score.
         </p>
       </motion.header>
 
