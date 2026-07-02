@@ -1,4 +1,87 @@
+# Standard crawlers
 User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+# AI crawlers — explicitly allowed so Lexora is citable in AI answers.
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /admin
+Disallow: /auth
+
+User-agent: MistralAI-User
 Allow: /
 Disallow: /admin
 Disallow: /auth

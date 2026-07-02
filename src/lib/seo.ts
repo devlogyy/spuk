@@ -54,3 +54,57 @@ export const breadcrumbSchema = (
     item: absoluteUrl(c.path),
   })),
 });
+
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export const howToSchema = (params: {
+  name: string;
+  description: string;
+  totalTimeIso?: string; // e.g. "PT30S"
+  steps: HowToStep[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: params.name,
+  description: params.description,
+  ...(params.totalTimeIso ? { totalTime: params.totalTimeIso } : {}),
+  step: params.steps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+  })),
+});
+
+export const speakableSchema = (cssSelectors: string[]) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: cssSelectors,
+  },
+});
+
+export const definedTermSetSchema = (params: {
+  name: string;
+  description: string;
+  terms: { term: string; description?: string }[];
+  inDefinedTermSetUrl?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  name: params.name,
+  description: params.description,
+  hasDefinedTerm: params.terms.map((t) => ({
+    "@type": "DefinedTerm",
+    name: t.term,
+    ...(t.description ? { description: t.description } : {}),
+    ...(params.inDefinedTermSetUrl
+      ? { inDefinedTermSet: params.inDefinedTermSetUrl }
+      : {}),
+  })),
+});
+
