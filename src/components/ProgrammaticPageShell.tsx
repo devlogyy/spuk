@@ -84,6 +84,7 @@ export function ProgrammaticPageShell({
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema(breadcrumbs))}</script>
         <script type="application/ld+json">{JSON.stringify(faqPageSchema(faqs))}</script>
         <script type="application/ld+json">{JSON.stringify(itemList)}</script>
+        <script type="application/ld+json">{JSON.stringify(definedTermSet)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
