@@ -10,7 +10,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, type FAQItem } from "@/lib/seo";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -81,17 +81,28 @@ export default function CrosswordSolver() {
           category: "GameApplication",
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(faqPageSchema(FAQS))}</script>
+        <script type="application/ld+json">{JSON.stringify(howToSchema({
+          name: "How to solve a crossword clue with Lexora",
+          description: "Match a partial crossword answer against the full dictionary using wildcards.",
+          totalTimeIso: "PT20S",
+          steps: [
+            { name: "Enter the pattern", text: "Type the letters you already have and use ? for each unknown square. Example: C?T?? for a five-letter answer starting with C and containing T in position three." },
+            { name: "Pick a dictionary", text: "Choose US (TWL) or UK (SOWPODS) depending on the puzzle's origin." },
+            { name: "Solve puzzle", text: "Tap Solve Puzzle to see every dictionary word that matches your pattern." },
+          ],
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
       </Helmet>
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
           <Puzzle className="h-3.5 w-3.5 text-primary" /> Crossword Solver
         </div>
-        <h1 className="mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
+        <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
           Solve any clue with <span className="text-gradient">pattern matching</span>
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Type the letters you have, use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for blanks, then tap <strong>Solve Puzzle</strong>.
+        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          A crossword solver takes the letters you already have plus wildcards for the empty squares and returns every dictionary word that fits. Lexora pattern-matches against both the TWL and SOWPODS dictionaries in real time. Type your letters, use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for blanks, then tap <strong>Solve Puzzle</strong>.
         </p>
       </motion.header>
 

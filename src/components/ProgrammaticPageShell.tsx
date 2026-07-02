@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ChevronRight, BookOpen, Sparkles, Trophy } from "lucide-react";
-import { absoluteUrl, breadcrumbSchema, faqPageSchema, type FAQItem } from "@/lib/seo";
+import { absoluteUrl, breadcrumbSchema, faqPageSchema, definedTermSetSchema, type FAQItem } from "@/lib/seo";
 import type { WordEntry } from "@/lib/programmatic";
 import { groupByLength, topByScore } from "@/lib/programmatic";
 
@@ -58,6 +58,16 @@ export function ProgrammaticPageShell({
     })),
   };
 
+  const definedTermSet = definedTermSetSchema({
+    name: h1,
+    description: metaDescription,
+    inDefinedTermSetUrl: url,
+    terms: words.slice(0, 50).map((w) => ({
+      term: w.word,
+      description: `${w.word.length}-letter word${typeof w.score === "number" ? ` worth ${w.score} points in Scrabble` : ""}.`,
+    })),
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -74,6 +84,7 @@ export function ProgrammaticPageShell({
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema(breadcrumbs))}</script>
         <script type="application/ld+json">{JSON.stringify(faqPageSchema(faqs))}</script>
         <script type="application/ld+json">{JSON.stringify(itemList)}</script>
+        <script type="application/ld+json">{JSON.stringify(definedTermSet)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
