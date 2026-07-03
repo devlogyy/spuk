@@ -1,50 +1,68 @@
-# Phase C — AI Search Engine Optimization
+# Phase D — Topical Authority & Result-Page SEO
 
-Make Lexora legible to AI crawlers (ChatGPT, Perplexity, Claude, Google AI Overviews, Bing Copilot) so it gets cited in AI answers, not just ranked in blue links.
+Builds on Phases A–C. Four focused additions, all in frontend/presentation.
 
-## What changes
+## 1. Internal linking blocks ("Related tools")
 
-### 1. `/llms.txt` (new file: `public/llms.txt`)
-Markdown index at site root that AI crawlers read instead of parsing our JS shell. Structure:
-- H1: `# Lexora`
-- Blockquote summary
-- Sections: **Tools** (Scrabble Solver, Crossword Solver, Word Finder), **Word Lists** (hub + representative programmatic pages), **Blog** (all 8 posts), **Optional** (Home, About-style links)
-- Excludes `/admin`, `/auth`
+New component `src/components/RelatedTools.tsx` — a compact card grid linking Scrabble Solver, Crossword Solver, Word Finder, Anagram (Word Finder w/ preset), Words Hub, plus 2–3 contextual programmatic links (e.g. "Words ending in ING", "5-letter words with A"). Each card: icon, title, one-line description, semantic `<a>` with descriptive anchor text.
 
-### 2. Explicit AI crawler allow-list (`public/robots.txt`)
-Add named `User-agent` blocks for `GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`, `Claude-Web`, `Google-Extended`, `Applebot-Extended`, `CCBot`, `Bytespider`, `Amazonbot` — each with `Allow: /` and the same `Disallow: /admin`, `/auth` rules. Keeps the existing `User-agent: *` block.
+Mount on:
+- `src/pages/ScrabbleSolver.tsx`
+- `src/pages/CrosswordSolver.tsx`
+- `src/pages/WordFinder.tsx`
+- `src/pages/WordsHub.tsx`
+- `src/components/ProgrammaticPageShell.tsx` (all `/words/*` pages)
 
-### 3. Answer-first content rewrites (tool pages)
-Rewrite the opening paragraph under each tool's H1 so the first 1–2 sentences directly answer the primary intent question (e.g. "A Scrabble word finder returns every valid word you can play from a rack of letters. Lexora's solver…"). Affects: `Home.tsx`, `ScrabbleSolver.tsx`, `CrosswordSolver.tsx`, `WordFinder.tsx`. Keep existing visual layout.
+Each mount excludes the current page and picks 4–6 contextually relevant siblings. Anchor text varies per host page (avoid duplicate anchor patterns) to strengthen topical clustering without looking templated.
 
-### 4. `HowTo` + `Speakable` schema on tool pages
-Add two JSON-LD blocks per tool page:
-- `HowTo` — 3–4 numbered steps (enter letters → pick length → tap Find). Makes the page eligible for AI "how to use" citations.
-- `SpeakableSpecification` — CSS selectors for H1 + first paragraph, so voice assistants can read them aloud.
+## 2. Blog preview section — Article schema + premium card SEO
 
-Extend `src/lib/seo.ts` with `howToSchema()` and `speakableSchema()` helpers.
+Target: the blog list on `src/pages/Blog.tsx` and the "Latest from the blog" preview on `src/pages/Home.tsx`.
 
-### 5. `DefinedTermSet` schema on programmatic word pages
-Add a third JSON-LD block in `ProgrammaticPageShell.tsx` describing the word list as a `DefinedTermSet` (each word = `DefinedTerm`). This is what LLMs prefer over generic `ItemList` when they cite dictionary-style content. Cap at 50 terms per page to keep payload sane.
+Changes:
+- Add `articleSchema()` and `itemListSchema()` helpers to `src/lib/seo.ts`.
+- Emit one `ItemList` of `Article` items in `Blog.tsx` `<Helmet>` (headline, description, url, datePublished, author, image if available).
+- Rewrite blog card markup: `<article>` wrapper, single `<h2>` per card (was likely `<h3>`/`<div>`), `<time datetime>` for date, `<p>` excerpt trimmed to ~160 chars, descriptive `aria-label` on the read-more link ("Read: {title}"), `rel="bookmark"` on the title link.
+- On `Home.tsx` preview: same card treatment + `itemListSchema` of the featured 3.
+- No visual redesign — keep current premium card styling; only adjust HTML tags and text.
 
-## Files touched
+## 3. Results UI — SEO-ready markup + structured data
 
-**New:**
-- `public/llms.txt`
+Applies to result blocks in `ScrabbleSolver.tsx`, `CrosswordSolver.tsx`, `WordFinder.tsx`, and the four `src/pages/programmatic/*` pages via `ProgrammaticPageShell`.
 
-**Edited:**
-- `public/robots.txt` — add AI crawler blocks
-- `src/lib/seo.ts` — add `howToSchema`, `speakableSchema`, `definedTermSetSchema` helpers
-- `src/pages/Home.tsx` — answer-first intro
-- `src/pages/ScrabbleSolver.tsx` — answer-first intro + HowTo + Speakable JSON-LD
+Changes:
+- Wrap the result grid in `<section aria-labelledby="results-heading">` with a visible `<h2 id="results-heading">Results for "{query}" ({n} words)</h2>` (screen-reader-visible; can be `sr-only` if design forbids it, but preference is visible for SEO).
+- Emit `ItemList` JSON-LD of the top 20 results per query (word + score + length) inside `<Helmet>` when `submitted && results.length > 0`. Extract a shared `resultsItemListSchema()` helper in `seo.ts`.
+- Add `<meta name="robots" content="noindex,follow">` on solver/finder pages **only when a query is submitted** — search-result pages shouldn't be indexed, but their outbound links should still flow authority. Programmatic `/words/*` pages stay indexable (they're the canonical result targets).
+- Each `WordCard` becomes `<article>` with a single `<h3>` for the word and `data-*` attributes for score/length so crawlers can parse structure.
+
+## 4. Answer-first intro + HowTo/Speakable on search interface
+
+Target: `src/pages/Home.tsx` (the main search entry / hero).
+
+Changes:
+- Rewrite the hero intro to answer-first: one bold sentence directly defining what Lexora does + who it's for, then a two-sentence expansion. Class `speakable-h1` on the H1 and `speakable-intro` on the paragraph (matches the pattern set in Phase C).
+- Add `howToSchema()` block: "How to find any word with Lexora" — 3 steps (choose tool, enter letters/pattern, get ranked results).
+- Add `speakableSchema([".speakable-h1", ".speakable-intro"])` block.
+- Both JSON-LD blocks emitted via `<Helmet>` alongside the existing schemas.
+
+## Files
+
+**New**
+- `src/components/RelatedTools.tsx`
+
+**Edited**
+- `src/lib/seo.ts` — add `articleSchema`, `itemListSchema`, `resultsItemListSchema` helpers
+- `src/pages/Home.tsx` — answer-first hero, HowTo + Speakable JSON-LD, ItemList of featured posts, RelatedTools not needed (it *is* the hub)
+- `src/pages/Blog.tsx` — Article/ItemList schema, semantic card markup
+- `src/pages/ScrabbleSolver.tsx` — RelatedTools, results section semantics, conditional noindex, ItemList of results
 - `src/pages/CrosswordSolver.tsx` — same
 - `src/pages/WordFinder.tsx` — same
-- `src/components/ProgrammaticPageShell.tsx` — add DefinedTermSet JSON-LD
+- `src/pages/WordsHub.tsx` — RelatedTools
+- `src/components/ProgrammaticPageShell.tsx` — RelatedTools + results section semantics + ItemList (already has DefinedTermSet from Phase C; ItemList is additive)
+- `src/components/WordCard.tsx` — swap wrapper to `<article>`, promote word to `<h3>`
 
-## Out of scope (deferred, previously items 6–10)
-
-Citation formatting polish, `sameAs` entity links, per-post `lastReviewed`/`author` schema, SSR/prerender, public JSON API. Say the word if you want any of these next.
-
-## Expected impact
-
-Within 4–8 weeks: appearances in Perplexity/ChatGPT answers for "unscramble …", "words starting with …", "scrabble solver" queries; eligibility for Google AI Overviews on tool intents; voice assistant read-aloud support.
+## Out of scope (defer)
+- Per-post `author` / `lastReviewed` schema on individual blog posts (Phase E)
+- `sameAs` entity links, citation formatting
+- SSR/prerender, public JSON API
