@@ -31,6 +31,10 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -3 }}
+      data-word={word}
+      data-score={score}
+      data-length={word.length}
+      data-rarity={rarity}
       className="group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-glow"
     >
       <div aria-hidden className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-60 ${rarityStyles[rarity]}`} />
@@ -47,6 +51,7 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
             <span className="rounded-full border border-border bg-background/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider capitalize">{rarity}</span>
           </div>
         </div>
+
         <div className="flex shrink-0 flex-col items-end gap-2">
           <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary to-gold text-primary-foreground shadow-glow sm:h-14 sm:w-14">
             <div className="text-center leading-none">
