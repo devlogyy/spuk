@@ -168,13 +168,16 @@ export default function CrosswordSolver() {
           )}
 
           {!loading && submitted && results.length > 0 && (
-            <>
+            <section aria-labelledby="crossword-results-heading">
+              <h2 id="crossword-results-heading" className="mb-3 font-display text-xl font-bold sm:text-2xl">
+                Answers matching "{submitted.toUpperCase()}" — {results.length} words
+              </h2>
               <AdSlot zoneKey="crossword-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {results.map((r) => (<WordCard key={r.word} {...r} />))}
               </div>
               <AdSlot zoneKey="crossword-results-inline" />
-            </>
+            </section>
           )}
 
           {!loading && submitted && results.length === 0 && (
@@ -190,6 +193,13 @@ export default function CrosswordSolver() {
             { to: "/blog/build-vocabulary-word-games", label: "Build a 10,000-word vocabulary", desc: "Spaced repetition with word games." },
           ]}
         />
+
+        <RelatedTools
+          heading="Pair the Crossword Solver with…"
+          keys={["scrabble", "finder", "anagram", "hub"]}
+          excludePath="/crossword-solver"
+        />
+
       </div>
     </div>
   );

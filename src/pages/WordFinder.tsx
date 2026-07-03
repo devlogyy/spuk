@@ -159,12 +159,15 @@ export default function WordFinder() {
           )}
 
           {!loading && submitted && results.length > 0 && (
-            <>
+            <section aria-labelledby="finder-results-heading">
+              <h2 id="finder-results-heading" className="mb-3 font-display text-xl font-bold sm:text-2xl">
+                Words from "{submitted.toUpperCase()}" — {results.length} results
+              </h2>
               <AdSlot zoneKey="wordfinder-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {results.map((r) => (<WordCard key={r.word} {...r} />))}
               </div>
-            </>
+            </section>
           )}
 
           {!loading && submitted && results.length === 0 && (
@@ -180,6 +183,13 @@ export default function WordFinder() {
             { to: "/blog/scrabble-bingo-strategy", label: "Score 50-point Scrabble bingos", desc: "Stem theory and rack management." },
           ]}
         />
+
+        <RelatedTools
+          heading="Related word tools to explore"
+          keys={["scrabble", "crossword", "hub", "endingIng"]}
+          excludePath="/word-finder"
+        />
+
       </div>
     </div>
   );
