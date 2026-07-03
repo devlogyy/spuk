@@ -237,6 +237,13 @@ export default function ScrabbleSolver() {
             { to: "/blog/scrabble-bingo-strategy", label: "Scrabble bingo strategy", desc: "How pros score the 50-point bonus 1.5×/game." },
           ]}
         />
+
+        <RelatedTools
+          heading="More word tools to pair with the Scrabble Solver"
+          keys={["crossword", "finder", "anagram", "hub"]}
+          excludePath="/scrabble-solver"
+        />
+
       </div>
     </div>
   );

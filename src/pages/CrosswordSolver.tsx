@@ -10,7 +10,9 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
+import { RelatedTools } from "@/components/RelatedTools";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, resultsItemListSchema, type FAQItem } from "@/lib/seo";
+
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
