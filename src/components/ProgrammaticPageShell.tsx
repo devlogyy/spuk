@@ -4,6 +4,8 @@ import { ChevronRight, BookOpen, Sparkles, Trophy } from "lucide-react";
 import { absoluteUrl, breadcrumbSchema, faqPageSchema, definedTermSetSchema, type FAQItem } from "@/lib/seo";
 import type { WordEntry } from "@/lib/programmatic";
 import { groupByLength, topByScore } from "@/lib/programmatic";
+import { RelatedTools } from "@/components/RelatedTools";
+
 
 interface RelatedLink {
   to: string;
@@ -222,7 +224,14 @@ export function ProgrammaticPageShell({
             </div>
           </section>
         )}
+
+        <RelatedTools
+          heading="Related word tools"
+          keys={["scrabble", "crossword", "finder", "hub"]}
+          excludePath={canonicalPath}
+        />
       </div>
+
     </div>
   );
 }
