@@ -102,7 +102,16 @@ export default function WordFinder() {
           ],
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        {submitted && results.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(resultsItemListSchema({
+            query: submitted,
+            pageUrl: absoluteUrl("/word-finder"),
+            results: results.slice(0, 20).map((r) => ({ word: r.word, score: r.score, length: r.word.length })),
+          }))}</script>
+        )}
+        {submitted && <meta name="robots" content="noindex,follow" />}
       </Helmet>
+
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
