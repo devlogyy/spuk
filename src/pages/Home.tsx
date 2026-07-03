@@ -45,7 +45,37 @@ export default function Home() {
         <meta property="og:url" content="https://spuk.lovable.app/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(howToSchema({
+          name: "How to find any word with Lexora",
+          description: "Turn letters, patterns or clues into ranked, dictionary-valid word answers.",
+          totalTimeIso: "PT20S",
+          steps: [
+            { name: "Pick a tool", text: "Choose Scrabble Solver, Crossword Solver or Word Finder from the hero." },
+            { name: "Enter letters or a pattern", text: "Type your tiles, use ? for blanks, or enter a crossword pattern like C?T??." },
+            { name: "Get ranked answers", text: "Every valid word appears sorted by score, length or rarity — validated against TWL and SOWPODS." },
+          ],
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        <script type="application/ld+json">{JSON.stringify(itemListSchema({
+          name: "Featured articles from the Lexora blog",
+          items: homeBlogPosts.map((p) => ({
+            url: absoluteUrl(`/blog/${p.slug}`),
+            name: p.title,
+            description: p.description,
+          })),
+        }))}</script>
+        {homeBlogPosts.map((p) => (
+          <script key={p.slug} type="application/ld+json">{JSON.stringify(articleSchema({
+            headline: p.title,
+            description: p.description,
+            url: absoluteUrl(`/blog/${p.slug}`),
+            author: p.author,
+            datePublished: p.datePublished,
+            dateModified: p.dateModified,
+          }))}</script>
+        ))}
       </Helmet>
+
 
       {/* Hero */}
       <section className="relative overflow-hidden pb-16 pt-10 sm:pt-20">
@@ -63,12 +93,13 @@ export default function Home() {
               <Sparkles className="h-3 w-3 text-primary" />
               <span>Word Intelligence · v1.0</span>
             </div>
-            <h1 className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="speakable-h1 font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Dominate every <span className="text-gradient">word game</span> you play.
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+            <p className="speakable-intro mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
               Lexora is a free, AI-powered word intelligence platform that finds the highest-scoring Scrabble plays, solves crossword patterns, and unscrambles anagrams — all validated against the official US (TWL) and UK (SOWPODS) tournament dictionaries. Built for serious players.
             </p>
+
 
             <div className="mx-auto mt-8 max-w-xl">
               <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
