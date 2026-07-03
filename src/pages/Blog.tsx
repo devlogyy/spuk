@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { BookOpen, Clock, User } from "lucide-react";
 import { posts, type Category } from "@/content/blog";
-import { SITE_NAME, absoluteUrl } from "@/lib/seo";
+import { SITE_NAME, absoluteUrl, articleSchema, itemListSchema } from "@/lib/seo";
 
 const categories: ("All" | Category)[] = [
   "All",
@@ -39,7 +39,26 @@ export default function Blog() {
         <meta property="og:description" content="Evergreen guides for Scrabble, crossword and word-game players." />
         <meta property="og:url" content={absoluteUrl("/blog")} />
         <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(itemListSchema({
+          name: `${SITE_NAME} — Word Game Blog`,
+          items: filtered.map((p) => ({
+            url: absoluteUrl(`/blog/${p.slug}`),
+            name: p.title,
+            description: p.description,
+          })),
+        }))}</script>
+        {filtered.map((p) => (
+          <script key={p.slug} type="application/ld+json">{JSON.stringify(articleSchema({
+            headline: p.title,
+            description: p.description,
+            url: absoluteUrl(`/blog/${p.slug}`),
+            author: p.author,
+            datePublished: p.datePublished,
+            dateModified: p.dateModified,
+          }))}</script>
+        ))}
       </Helmet>
+
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
@@ -90,12 +109,15 @@ export default function Blog() {
               <p className="mt-3 text-muted-foreground">{featured.description}</p>
               <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1"><User className="h-3.5 w-3.5" /> {featured.author}</span>
-                <span>·</span><span>{featured.date}</span><span>·</span>
+                <span>·</span>
+                <time dateTime={featured.datePublished}>{featured.date}</time>
+                <span>·</span>
                 <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {featured.readTime}</span>
               </div>
-              <span className="mt-6 inline-block rounded-full bg-gradient-to-r from-primary to-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">
+              <span aria-label={`Read: ${featured.title}`} className="mt-6 inline-block rounded-full bg-gradient-to-r from-primary to-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">
                 Read article
               </span>
+
             </div>
           </article>
         </Link>
@@ -111,7 +133,7 @@ export default function Blog() {
             transition={{ delay: i * 0.05 }}
             className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
           >
-            <Link to={`/blog/${p.slug}`} className="block">
+            <Link to={`/blog/${p.slug}`} rel="bookmark" aria-label={`Read: ${p.title}`} className="block">
               <div className="relative aspect-[16/9] overflow-hidden">
                 <img
                   src={p.thumbnail}
@@ -126,13 +148,15 @@ export default function Blog() {
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h3>
+                <h2 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h2>
                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>
                 <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>{p.author}</span><span>{p.readTime} · {p.date}</span>
+                  <span>{p.author}</span>
+                  <span>{p.readTime} · <time dateTime={p.datePublished}>{p.date}</time></span>
                 </div>
               </div>
             </Link>
+
           </motion.article>
         ))}
       </div>

@@ -10,7 +10,9 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
+import { RelatedTools } from "@/components/RelatedTools";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, resultsItemListSchema, type FAQItem } from "@/lib/seo";
+
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -92,7 +94,16 @@ export default function CrosswordSolver() {
           ],
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        {submitted && results.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(resultsItemListSchema({
+            query: submitted,
+            pageUrl: absoluteUrl("/crossword-solver"),
+            results: results.slice(0, 20).map((r) => ({ word: r.word, score: r.score, length: r.word.length })),
+          }))}</script>
+        )}
+        {submitted && <meta name="robots" content="noindex,follow" />}
       </Helmet>
+
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
@@ -157,13 +168,16 @@ export default function CrosswordSolver() {
           )}
 
           {!loading && submitted && results.length > 0 && (
-            <>
+            <section aria-labelledby="crossword-results-heading">
+              <h2 id="crossword-results-heading" className="mb-3 font-display text-xl font-bold sm:text-2xl">
+                Answers matching "{submitted.toUpperCase()}" — {results.length} words
+              </h2>
               <AdSlot zoneKey="crossword-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {results.map((r) => (<WordCard key={r.word} {...r} />))}
               </div>
               <AdSlot zoneKey="crossword-results-inline" />
-            </>
+            </section>
           )}
 
           {!loading && submitted && results.length === 0 && (
@@ -179,6 +193,13 @@ export default function CrosswordSolver() {
             { to: "/blog/build-vocabulary-word-games", label: "Build a 10,000-word vocabulary", desc: "Spaced repetition with word games." },
           ]}
         />
+
+        <RelatedTools
+          heading="Pair the Crossword Solver with…"
+          keys={["scrabble", "finder", "anagram", "hub"]}
+          excludePath="/crossword-solver"
+        />
+
       </div>
     </div>
   );

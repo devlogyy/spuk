@@ -108,3 +108,79 @@ export const definedTermSetSchema = (params: {
   })),
 });
 
+export interface ArticleSchemaInput {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+  author?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+export const articleSchema = (a: ArticleSchemaInput) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: a.headline,
+  description: a.description,
+  mainEntityOfPage: { "@type": "WebPage", "@id": a.url },
+  url: a.url,
+  ...(a.image ? { image: a.image } : {}),
+  ...(a.author ? { author: { "@type": "Person", name: a.author } } : {}),
+  ...(a.datePublished ? { datePublished: a.datePublished } : {}),
+  ...(a.dateModified || a.datePublished
+    ? { dateModified: a.dateModified ?? a.datePublished }
+    : {}),
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+});
+
+export const itemListSchema = (params: {
+  name: string;
+  items: { url: string; name: string; description?: string; image?: string }[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: params.name,
+  numberOfItems: params.items.length,
+  itemListElement: params.items.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: it.url,
+    name: it.name,
+    ...(it.description ? { description: it.description } : {}),
+    ...(it.image ? { image: it.image } : {}),
+  })),
+});
+
+export const resultsItemListSchema = (params: {
+  query: string;
+  pageUrl: string;
+  results: { word: string; score?: number; length?: number }[];
+  max?: number;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `Word results for "${params.query}"`,
+  numberOfItems: Math.min(params.results.length, params.max ?? 20),
+  itemListOrder: "https://schema.org/ItemListOrderDescending",
+  url: params.pageUrl,
+  itemListElement: params.results.slice(0, params.max ?? 20).map((r, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: r.word.toUpperCase(),
+    ...(typeof r.score === "number" || typeof r.length === "number"
+      ? {
+          item: {
+            "@type": "DefinedTerm",
+            name: r.word.toUpperCase(),
+            description: `${r.length ?? r.word.length}-letter word${typeof r.score === "number" ? ` worth ${r.score} points in Scrabble` : ""}.`,
+          },
+        }
+      : {}),
+  })),
+});
+

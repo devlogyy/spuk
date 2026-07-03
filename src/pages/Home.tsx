@@ -9,6 +9,8 @@ import { useState } from "react";
 import { WordCard } from "@/components/WordCard";
 import { demoResults } from "@/lib/words";
 import { posts } from "@/content/blog";
+import { absoluteUrl, howToSchema, speakableSchema, itemListSchema, articleSchema } from "@/lib/seo";
+
 
 const features = [
   { icon: Grid3x3, title: "Scrabble Solver", desc: "Highest scoring plays with US & UK dictionaries.", to: "/scrabble-solver", color: "from-primary to-gold" },
@@ -43,7 +45,37 @@ export default function Home() {
         <meta property="og:url" content="https://spuk.lovable.app/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(howToSchema({
+          name: "How to find any word with Lexora",
+          description: "Turn letters, patterns or clues into ranked, dictionary-valid word answers.",
+          totalTimeIso: "PT20S",
+          steps: [
+            { name: "Pick a tool", text: "Choose Scrabble Solver, Crossword Solver or Word Finder from the hero." },
+            { name: "Enter letters or a pattern", text: "Type your tiles, use ? for blanks, or enter a crossword pattern like C?T??." },
+            { name: "Get ranked answers", text: "Every valid word appears sorted by score, length or rarity — validated against TWL and SOWPODS." },
+          ],
+        }))}</script>
+        <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        <script type="application/ld+json">{JSON.stringify(itemListSchema({
+          name: "Featured articles from the Lexora blog",
+          items: homeBlogPosts.map((p) => ({
+            url: absoluteUrl(`/blog/${p.slug}`),
+            name: p.title,
+            description: p.description,
+          })),
+        }))}</script>
+        {homeBlogPosts.map((p) => (
+          <script key={p.slug} type="application/ld+json">{JSON.stringify(articleSchema({
+            headline: p.title,
+            description: p.description,
+            url: absoluteUrl(`/blog/${p.slug}`),
+            author: p.author,
+            datePublished: p.datePublished,
+            dateModified: p.dateModified,
+          }))}</script>
+        ))}
       </Helmet>
+
 
       {/* Hero */}
       <section className="relative overflow-hidden pb-16 pt-10 sm:pt-20">
@@ -61,12 +93,13 @@ export default function Home() {
               <Sparkles className="h-3 w-3 text-primary" />
               <span>Word Intelligence · v1.0</span>
             </div>
-            <h1 className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="speakable-h1 font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Dominate every <span className="text-gradient">word game</span> you play.
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+            <p className="speakable-intro mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
               Lexora is a free, AI-powered word intelligence platform that finds the highest-scoring Scrabble plays, solves crossword patterns, and unscrambles anagrams — all validated against the official US (TWL) and UK (SOWPODS) tournament dictionaries. Built for serious players.
             </p>
+
 
             <div className="mx-auto mt-8 max-w-xl">
               <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
@@ -163,11 +196,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section aria-labelledby="live-results-heading" className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-primary">Live results preview</div>
-            <h2 className="mt-1 font-display text-2xl font-bold sm:text-4xl">Top plays from your rack</h2>
+            <h2 id="live-results-heading" className="mt-1 font-display text-2xl font-bold sm:text-4xl">Top plays from your rack</h2>
             <p className="mt-1 text-sm text-muted-foreground">Sorted by score · US & UK validated</p>
           </div>
           <Link to="/scrabble-solver" className="hidden rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary sm:inline-block">Open solver →</Link>
@@ -176,6 +209,7 @@ export default function Home() {
           {results.map((r) => (<WordCard key={r.word} {...r} />))}
         </div>
       </section>
+
 
       {/* Word of the day — rebuilt mobile-safe */}
       <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -238,7 +272,7 @@ export default function Home() {
               transition={{ delay: i * 0.08 }}
               className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
             >
-              <Link to={`/blog/${p.slug}`} className="block">
+              <Link to={`/blog/${p.slug}`} rel="bookmark" aria-label={`Read: ${p.title}`} className="block">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <img
                     src={p.thumbnail}
@@ -256,10 +290,13 @@ export default function Home() {
                   <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-primary">{p.title}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>
                   <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
-                    <span>{p.author}</span><span>·</span><span>{p.date}</span><span>·</span><span>{p.readTime}</span>
+                    <span>{p.author}</span><span>·</span>
+                    <time dateTime={p.datePublished}>{p.date}</time>
+                    <span>·</span><span>{p.readTime}</span>
                   </div>
                 </div>
               </Link>
+
             </motion.article>
           ))}
         </div>

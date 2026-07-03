@@ -11,7 +11,9 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
+import { RelatedTools } from "@/components/RelatedTools";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, resultsItemListSchema, type FAQItem } from "@/lib/seo";
+
 import { solveAnagram, warmDictionaries, type SolverResult } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -100,7 +102,16 @@ export default function WordFinder() {
           ],
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        {submitted && results.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(resultsItemListSchema({
+            query: submitted,
+            pageUrl: absoluteUrl("/word-finder"),
+            results: results.slice(0, 20).map((r) => ({ word: r.word, score: r.score, length: r.word.length })),
+          }))}</script>
+        )}
+        {submitted && <meta name="robots" content="noindex,follow" />}
       </Helmet>
+
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
@@ -148,12 +159,15 @@ export default function WordFinder() {
           )}
 
           {!loading && submitted && results.length > 0 && (
-            <>
+            <section aria-labelledby="finder-results-heading">
+              <h2 id="finder-results-heading" className="mb-3 font-display text-xl font-bold sm:text-2xl">
+                Words from "{submitted.toUpperCase()}" — {results.length} results
+              </h2>
               <AdSlot zoneKey="wordfinder-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {results.map((r) => (<WordCard key={r.word} {...r} />))}
               </div>
-            </>
+            </section>
           )}
 
           {!loading && submitted && results.length === 0 && (
@@ -169,6 +183,13 @@ export default function WordFinder() {
             { to: "/blog/scrabble-bingo-strategy", label: "Score 50-point Scrabble bingos", desc: "Stem theory and rack management." },
           ]}
         />
+
+        <RelatedTools
+          heading="Related word tools to explore"
+          keys={["scrabble", "crossword", "hub", "endingIng"]}
+          excludePath="/word-finder"
+        />
+
       </div>
     </div>
   );

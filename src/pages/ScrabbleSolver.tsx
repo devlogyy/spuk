@@ -11,7 +11,9 @@ import { AdvancedFiltersAccordion } from "@/components/AdvancedFiltersAccordion"
 import { WordCard } from "@/components/WordCard";
 import { AdSlot } from "@/components/AdSlot";
 import { ToolFAQ } from "@/components/ToolFAQ";
-import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, type FAQItem } from "@/lib/seo";
+import { RelatedTools } from "@/components/RelatedTools";
+import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, resultsItemListSchema, type FAQItem } from "@/lib/seo";
+
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
@@ -109,7 +111,16 @@ export default function ScrabbleSolver() {
           ],
         }))}</script>
         <script type="application/ld+json">{JSON.stringify(speakableSchema([".speakable-h1", ".speakable-intro"]))}</script>
+        {submitted && sortedResults.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(resultsItemListSchema({
+            query: submitted,
+            pageUrl: absoluteUrl("/scrabble-solver"),
+            results: sortedResults.slice(0, 20).map((r) => ({ word: r.word, score: r.score, length: r.word.length })),
+          }))}</script>
+        )}
+        {submitted && <meta name="robots" content="noindex,follow" />}
       </Helmet>
+
 
       <motion.header initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold">
@@ -195,7 +206,10 @@ export default function ScrabbleSolver() {
           )}
 
           {!loading && submitted && sortedResults.length > 0 && (
-            <>
+            <section aria-labelledby="scrabble-results-heading">
+              <h2 id="scrabble-results-heading" className="mb-3 font-display text-xl font-bold sm:text-2xl">
+                Results for "{submitted.toUpperCase()}" — {sortedResults.length} words
+              </h2>
               <AdSlot zoneKey="scrabble-results-top" />
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {sortedResults.map((r, i) => (
@@ -205,8 +219,9 @@ export default function ScrabbleSolver() {
                   </Fragment>
                 ))}
               </div>
-            </>
+            </section>
           )}
+
 
           {!loading && submitted && sortedResults.length === 0 && (
             <EmptyState title="No words match those filters" description="Try removing a filter or different letters."
@@ -222,6 +237,13 @@ export default function ScrabbleSolver() {
             { to: "/blog/scrabble-bingo-strategy", label: "Scrabble bingo strategy", desc: "How pros score the 50-point bonus 1.5×/game." },
           ]}
         />
+
+        <RelatedTools
+          heading="More word tools to pair with the Scrabble Solver"
+          keys={["crossword", "finder", "anagram", "hub"]}
+          excludePath="/scrabble-solver"
+        />
+
       </div>
     </div>
   );
