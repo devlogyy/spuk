@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "lexora-mcp",
+      "version": "0.1.0",
+      "title": "Lexora — Word Tools"
+    },
+    "tools": [
+      {
+        "name": "scrabble_solve",
+        "title": "Scrabble solver",
+        "description": "Find valid Scrabble/Words With Friends plays from a rack of letters. Use '?' or '*' for blank tiles. Returns words ranked by score.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "rack": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Letters available (2-15 chars). Use '?' or '*' for blanks."
+            },
+            "dictionary": {
+              "default": "US",
+              "description": "US = TWL06, UK = SOWPODS.",
+              "type": "string",
+              "enum": [
+                "US",
+                "UK"
+              ]
+            },
+            "min_length": {
+              "default": 2,
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 15
+            },
+            "max_results": {
+              "default": 25,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "rack"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "crossword_match",
+        "title": "Crossword pattern match",
+        "description": "Find dictionary words matching a fixed-length pattern. Use '?' (or '_' / '.') for unknown letters, e.g. 'C?T' matches CAT, COT, CUT.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 15,
+              "description": "Pattern with '?' for unknowns."
+            },
+            "dictionary": {
+              "default": "US",
+              "type": "string",
+              "enum": [
+                "US",
+                "UK"
+              ]
+            },
+            "max_results": {
+              "default": 50,
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200
+            }
+          },
+          "required": [
+            "pattern"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "word_info",
+        "title": "Word info",
+        "description": "Look up whether a word is valid in the TWL06 (US) and SOWPODS (UK) Scrabble dictionaries and get its Scrabble tile score.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "word": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            }
+          },
+          "required": [
+            "word"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
