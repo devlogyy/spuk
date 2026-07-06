@@ -97,6 +97,10 @@ const staticEntries: SitemapEntry[] = [
   { path: "/word-finder", changefreq: "weekly", priority: "0.9", lastmod: today },
   { path: "/blog", changefreq: "weekly", priority: "0.8", lastmod: today },
   { path: "/words", changefreq: "weekly", priority: "0.9", lastmod: today },
+  { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: today },
+  { path: "/contact", changefreq: "monthly", priority: "0.4", lastmod: today },
+  { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: today },
+  { path: "/terms", changefreq: "yearly", priority: "0.3", lastmod: today },
 ];
 
 const blogEntries: SitemapEntry[] = BLOG_SLUGS.map((slug) => ({
