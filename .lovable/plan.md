@@ -1,68 +1,84 @@
-# Phase D — Topical Authority & Result-Page SEO
+## Goal
+Get Lexora AdSense-ready and stronger for organic growth. Focused on what an AdSense reviewer actually blocks on, plus the content-depth gaps that also hurt organic rankings.
 
-Builds on Phases A–C. Four focused additions, all in frontend/presentation.
+## Scope — Phase E (this plan)
 
-## 1. Internal linking blocks ("Related tools")
+Three tracks, all frontend/content. No backend changes, no visual redesign.
 
-New component `src/components/RelatedTools.tsx` — a compact card grid linking Scrabble Solver, Crossword Solver, Word Finder, Anagram (Word Finder w/ preset), Words Hub, plus 2–3 contextual programmatic links (e.g. "Words ending in ING", "5-letter words with A"). Each card: icon, title, one-line description, semantic `<a>` with descriptive anchor text.
+---
 
-Mount on:
-- `src/pages/ScrabbleSolver.tsx`
-- `src/pages/CrosswordSolver.tsx`
-- `src/pages/WordFinder.tsx`
-- `src/pages/WordsHub.tsx`
-- `src/components/ProgrammaticPageShell.tsx` (all `/words/*` pages)
+### Track 1 — Legal & trust pages (AdSense hard-blockers)
 
-Each mount excludes the current page and picks 4–6 contextually relevant siblings. Anchor text varies per host page (avoid duplicate anchor patterns) to strengthen topical clustering without looking templated.
+Create four real, linkable pages and wire them into the footer.
 
-## 2. Blog preview section — Article schema + premium card SEO
+**New routes & files:**
+- `/privacy` → `src/pages/Privacy.tsx` — explicitly names Google AdSense, third-party cookies, DoubleClick DART, and links the consent manager. Mentions analytics, user-provided data (auth email), and how to opt out.
+- `/terms` → `src/pages/Terms.tsx` — acceptable use, no warranty, IP ownership, dictionary attribution (TWL/SOWPODS are third-party), governing law placeholder.
+- `/about` → `src/pages/About.tsx` — who runs Lexora, why it exists, editorial approach, dictionary sources, contact CTA.
+- `/contact` → `src/pages/Contact.tsx` — mailto link + simple form (client-side only, submits to a `mailto:` for now — no backend needed).
 
-Target: the blog list on `src/pages/Blog.tsx` and the "Latest from the blog" preview on `src/pages/Home.tsx`.
+**Edits:**
+- `src/App.tsx` — register the 4 routes.
+- `src/components/Footer.tsx` — add a "Legal" and "Company" column linking all four.
+- Each page uses `<Helmet>` with proper title/description/canonical + BreadcrumbList JSON-LD.
 
-Changes:
-- Add `articleSchema()` and `itemListSchema()` helpers to `src/lib/seo.ts`.
-- Emit one `ItemList` of `Article` items in `Blog.tsx` `<Helmet>` (headline, description, url, datePublished, author, image if available).
-- Rewrite blog card markup: `<article>` wrapper, single `<h2>` per card (was likely `<h3>`/`<div>`), `<time datetime>` for date, `<p>` excerpt trimmed to ~160 chars, descriptive `aria-label` on the read-more link ("Read: {title}"), `rel="bookmark"` on the title link.
-- On `Home.tsx` preview: same card treatment + `itemListSchema` of the featured 3.
-- No visual redesign — keep current premium card styling; only adjust HTML tags and text.
+**Placeholders you'll need to fill in:** business name, contact email, country of operation. I'll mark them clearly with `{{OWNER_NAME}}` / `{{CONTACT_EMAIL}}` / `{{COUNTRY}}` so it's obvious what to swap.
 
-## 3. Results UI — SEO-ready markup + structured data
+---
 
-Applies to result blocks in `ScrabbleSolver.tsx`, `CrosswordSolver.tsx`, `WordFinder.tsx`, and the four `src/pages/programmatic/*` pages via `ProgrammaticPageShell`.
+### Track 2 — Enrich programmatic `/words/*` pages (kills the "thin content" risk)
 
-Changes:
-- Wrap the result grid in `<section aria-labelledby="results-heading">` with a visible `<h2 id="results-heading">Results for "{query}" ({n} words)</h2>` (screen-reader-visible; can be `sr-only` if design forbids it, but preference is visible for SEO).
-- Emit `ItemList` JSON-LD of the top 20 results per query (word + score + length) inside `<Helmet>` when `submitted && results.length > 0`. Extract a shared `resultsItemListSchema()` helper in `seo.ts`.
-- Add `<meta name="robots" content="noindex,follow">` on solver/finder pages **only when a query is submitted** — search-result pages shouldn't be indexed, but their outbound links should still flow authority. Programmatic `/words/*` pages stay indexable (they're the canonical result targets).
-- Each `WordCard` becomes `<article>` with a single `<h3>` for the word and `data-*` attributes for score/length so crawlers can parse structure.
+Target: `src/components/ProgrammaticPageShell.tsx` + the 4 programmatic templates in `src/pages/programmatic/`.
 
-## 4. Answer-first intro + HowTo/Speakable on search interface
+Each page currently leads with the result grid. Add above the results:
+- **Answer-first intro** (80–140 words, unique per template type) — what these words are, when they're useful (Scrabble/Words With Friends/crosswords), scoring context.
+- **"How to use this list"** — 3-bullet mini-guide.
+- **Quick-stat strip** — total words, avg score, highest-scoring word (already computable from results).
 
-Target: `src/pages/Home.tsx` (the main search entry / hero).
+Add below the results:
+- **"Strategy tip"** block — 40–60 words, varies by template (ending vs starting vs unscramble vs n-letter).
+- Existing `RelatedTools` stays.
 
-Changes:
-- Rewrite the hero intro to answer-first: one bold sentence directly defining what Lexora does + who it's for, then a two-sentence expansion. Class `speakable-h1` on the H1 and `speakable-intro` on the paragraph (matches the pattern set in Phase C).
-- Add `howToSchema()` block: "How to find any word with Lexora" — 3 steps (choose tool, enter letters/pattern, get ranked results).
-- Add `speakableSchema([".speakable-h1", ".speakable-intro"])` block.
-- Both JSON-LD blocks emitted via `<Helmet>` alongside the existing schemas.
+Templates get distinct copy so the 4 families don't look duplicated. Copy lives in `src/content/programmatic-copy.ts` (new file) so it's editable in one place.
 
-## Files
+---
+
+### Track 3 — Content depth signals
+
+**Blog:**
+- Add author byline + `datePublished` / `dateModified` to each existing post via the post frontmatter in `src/content/blog/posts/*.tsx` (fields already partly there — normalize + expose in `articleSchema`).
+- Add a "Sources" footer to each post (2–3 authoritative links — Merriam-Webster, Collins, Hasbro rules PDF) — real editorial signal + AdSense reviewers like it.
+
+**Home:**
+- Add a small "Why trust Lexora" strip above the footer (3 icons: US+UK dictionaries, transparent scoring, no signup required). Pure presentation.
+
+**Not in this plan** (defer):
+- Writing 10 new blog posts (separate track, ask when you're ready)
+- Buying the domain / connecting it (you do that in Project Settings)
+- Google Search Console / Analytics setup (post-domain)
+- Backlink outreach
+
+---
+
+## Files touched
 
 **New**
-- `src/components/RelatedTools.tsx`
+- `src/pages/Privacy.tsx`, `src/pages/Terms.tsx`, `src/pages/About.tsx`, `src/pages/Contact.tsx`
+- `src/content/programmatic-copy.ts`
 
 **Edited**
-- `src/lib/seo.ts` — add `articleSchema`, `itemListSchema`, `resultsItemListSchema` helpers
-- `src/pages/Home.tsx` — answer-first hero, HowTo + Speakable JSON-LD, ItemList of featured posts, RelatedTools not needed (it *is* the hub)
-- `src/pages/Blog.tsx` — Article/ItemList schema, semantic card markup
-- `src/pages/ScrabbleSolver.tsx` — RelatedTools, results section semantics, conditional noindex, ItemList of results
-- `src/pages/CrosswordSolver.tsx` — same
-- `src/pages/WordFinder.tsx` — same
-- `src/pages/WordsHub.tsx` — RelatedTools
-- `src/components/ProgrammaticPageShell.tsx` — RelatedTools + results section semantics + ItemList (already has DefinedTermSet from Phase C; ItemList is additive)
-- `src/components/WordCard.tsx` — swap wrapper to `<article>`, promote word to `<h3>`
+- `src/App.tsx` (routes)
+- `src/components/Footer.tsx` (legal + company columns)
+- `src/components/ProgrammaticPageShell.tsx` (intro + strategy blocks)
+- `src/pages/programmatic/*.tsx` (pass template-type key to shell)
+- `src/pages/Home.tsx` (trust strip)
+- `src/content/blog/posts/*.tsx` (author + dates normalization)
+- `src/lib/seo.ts` (extend `articleSchema` to accept author/dates cleanly if not already)
+- `public/sitemap.xml` via `scripts/generate-sitemap.ts` (add /about, /contact, /privacy, /terms)
 
-## Out of scope (defer)
-- Per-post `author` / `lastReviewed` schema on individual blog posts (Phase E)
-- `sameAs` entity links, citation formatting
-- SSR/prerender, public JSON API
+## What I need from you before building
+1. **Owner/business name** to put on legal pages (personal name or company).
+2. **Contact email** (real or a Gmail placeholder — can change later).
+3. **Country / jurisdiction** for Terms + Privacy (which country's law governs).
+
+I can build with `{{PLACEHOLDER}}` tags if you'd rather fill them in yourself later — just say "use placeholders."
