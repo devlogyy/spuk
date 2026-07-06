@@ -302,6 +302,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section aria-label="Why trust Lexora" className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-card sm:grid-cols-3 sm:p-8">
+          {[
+            { title: "US + UK dictionaries", body: "Every word checked against TWL06 and SOWPODS, with a visible source badge." },
+            { title: "Transparent scoring", body: "Standard Scrabble tile values, shown next to every word — no hidden ranking tricks." },
+            { title: "No signup required", body: "All solvers, finders and word lists are free and usable without an account." },
+          ].map((f, i) => (
+            <div key={i}>
+              <div className="font-display text-lg font-bold">{f.title}</div>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="mx-auto mt-24 max-w-5xl px-4 pb-8 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border p-8 text-center shadow-glow sm:p-10" style={{ background: "var(--gradient-hero)" }}>
           <div aria-hidden className="pointer-events-none absolute -bottom-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full opacity-50 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />

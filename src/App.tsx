@@ -16,6 +16,10 @@ import WordsStartingWith from "@/pages/programmatic/WordsStartingWith";
 import WordsEndingIn from "@/pages/programmatic/WordsEndingIn";
 import NLetterWordsWith from "@/pages/programmatic/NLetterWordsWith";
 import Unscramble from "@/pages/programmatic/Unscramble";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { CookieConsent } from "@/components/CookieConsent";
 
@@ -42,6 +46,10 @@ export default function App() {
           <Route path="/words/ending-in/:letter" element={<WordsEndingIn />} />
           <Route path="/words/:slug" element={<NLetterWordsWith />} />
           <Route path="/unscramble/:letters" element={<Unscramble />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
