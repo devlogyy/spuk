@@ -122,6 +122,23 @@ export function ProgrammaticPageShell({
           </div>
         </header>
 
+        {(() => {
+          const tk = detectTemplate(canonicalPath);
+          if (!tk) return null;
+          const c = templateCopy[tk];
+          return (
+            <section aria-label="How to use this list" className="mb-10 rounded-3xl border border-border bg-card p-6 sm:p-8">
+              <h2 className="font-display text-xl font-bold">{c.howToTitle}</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/90">
+                {c.howToBullets.map((b, i) => (
+                  <li key={i} className="flex gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" /><span>{b}</span></li>
+                ))}
+              </ul>
+            </section>
+          );
+        })()}
+
+
         {loading ? (
           <div className="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
             Loading dictionary…
@@ -225,6 +242,21 @@ export function ProgrammaticPageShell({
             </div>
           </section>
         )}
+
+        {(() => {
+          const tk = detectTemplate(canonicalPath);
+          if (!tk) return null;
+          const c = templateCopy[tk];
+          return (
+            <section aria-label="Strategy tip" className="mt-10 rounded-3xl border border-border bg-gradient-to-br from-card to-secondary/40 p-6 sm:p-8">
+              <div className="mb-2 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-gold" />
+                <h2 className="font-display text-xl font-bold">{c.strategyTitle}</h2>
+              </div>
+              <p className="text-sm leading-relaxed text-foreground/90">{c.strategyBody}</p>
+            </section>
+          );
+        })()}
 
         <RelatedTools
           heading="Related word tools"
