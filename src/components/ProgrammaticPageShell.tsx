@@ -5,6 +5,7 @@ import { absoluteUrl, breadcrumbSchema, faqPageSchema, definedTermSetSchema, typ
 import type { WordEntry } from "@/lib/programmatic";
 import { groupByLength, topByScore } from "@/lib/programmatic";
 import { RelatedTools } from "@/components/RelatedTools";
+import { detectTemplate, templateCopy } from "@/content/programmatic-copy";
 
 
 interface RelatedLink {
