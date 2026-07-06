@@ -33,6 +33,16 @@ const cols = [
       { to: "/blog", label: "All articles" },
     ],
   },
+  {
+    title: "Company",
+    links: [
+      { to: "/about", label: "About Lexora" },
+      { to: "/contact", label: "Contact" },
+      { to: "/blog", label: "Blog" },
+      { to: "/privacy", label: "Privacy policy" },
+      { to: "/terms", label: "Terms of service" },
+    ],
+  },
 ];
 
 export function Footer() {
