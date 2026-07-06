@@ -52,7 +52,7 @@ export function Footer() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AdSlot zoneKey="footer" />
-        <div className="grid gap-10 md:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-6">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold shadow-glow">
