@@ -21,6 +21,11 @@ const FAQS: FAQItem[] = [
   { q: "Can I solve cryptic crossword clues?", a: "The pattern matcher works on letters you have. For cryptic wordplay (anagrams, hidden words, charades), pair it with our guide to solving any crossword clue." },
   { q: "Why are some answers missing?", a: "If a clue uses a proper noun, abbreviation or phrase, it may not be in the standard dictionary. Switch between US and UK dictionaries to broaden the candidate list." },
   { q: "Is using a crossword solver cheating?", a: "It's a study and learning aid. Tournament rules forbid external aids during play, but pattern matchers are standard tools for crossword constructors, editors and casual solvers." },
+  { q: "How long can my pattern be?", a: "Any length from 2 up to 15 letters — the same maximum as a standard American crossword grid answer. Longer phrases work too if you treat each word separately." },
+  { q: "Does it help with themed puzzles like NYT or the Guardian?", a: "Yes. The solver is pattern-agnostic — it doesn't care about the puzzle brand. Any letters you've filled in from crossing entries can drive a pattern search." },
+  { q: "What if my clue has a hyphen or space?", a: "Solve each word segment on its own. Enter one word's pattern, note the candidates, then use the second word's crossings to confirm the answer." },
+  { q: "Can I use both letters and wildcards together?", a: "Yes. Mix known letters with ? freely — for example ?RA??E returns every 6-letter word with R in position 2 and A in position 3, like BRAISE, CRAWLS or GRAZED." },
+  { q: "Does the Crossword Solver work offline?", a: "The dictionary loads once and runs entirely in your browser, so repeat searches are instant and offline-friendly after the first page load." },
 ];
 
 const EXAMPLES = ["C?T??", "?RA??E", "Q??RTZ", "P?X?L"];

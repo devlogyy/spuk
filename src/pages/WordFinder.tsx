@@ -22,6 +22,11 @@ const FAQS: FAQItem[] = [
   { q: "Can I find words of a specific length?", a: "Yes. Use the length filter (2 through 7) to show only words of that exact length, which is perfect for Wordle, crosswords, and word puzzles." },
   { q: "Do you support blank tiles?", a: "Yes — use ? for each blank or wildcard letter. The finder treats each ? as any letter A–Z." },
   { q: "Is the Word Finder accurate?", a: "Results are validated against the standard TWL word list used in competitive Scrabble. Some game-specific dictionaries (Words With Friends, Wordle) differ slightly." },
+  { q: "Can Word Finder solve Wordle?", a: "Yes. Enter the letters you're testing and set the length filter to 5. You'll see every valid 5-letter word that can be made — narrow further using your green and yellow hints." },
+  { q: "How is Word Finder different from an anagram solver?", a: "A strict anagram solver only returns words that use every letter. Word Finder returns those plus every shorter sub-word — much more useful for Scrabble racks and puzzle apps." },
+  { q: "Does it show word definitions?", a: "Each result links through to the Scrabble Solver, where you can see the score, letter breakdown, and validity in both US and UK tournament dictionaries." },
+  { q: "Can I use it for Boggle or Scrabble Go?", a: "Yes. Boggle players can enter the letters visible in a chain, and Scrabble Go players can paste their full rack — the same word list underpins both games." },
+  { q: "How fast is the search?", a: "The dictionary runs entirely in your browser after the first load, so results appear in under a second — no network round-trip and no waiting on a server." },
 ];
 
 const LENGTHS = [2, 3, 4, 5, 6, 7];

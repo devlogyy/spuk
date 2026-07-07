@@ -22,6 +22,11 @@ const FAQS: FAQItem[] = [
   { q: "Is QI a valid Scrabble word?", a: "Yes. QI is valid in both TWL and SOWPODS dictionaries and is one of the most-played Q-without-U words at the competitive level." },
   { q: "Why are some words scored differently?", a: "Tile values follow the official Scrabble distribution: A/E/I/L/N/O/R/S/T/U are 1 point, while J/X = 8 and Q/Z = 10. Premium board squares are not factored in — the solver shows raw tile score." },
   { q: "Does the solver work for Words With Friends?", a: "Most words will be valid, but Words With Friends uses a slightly different dictionary and tile values. Use the US dictionary for the closest match." },
+  { q: "What dictionary does the Scrabble Solver use?", a: "The US mode uses TWL06 (Tournament Word List for North America). The UK mode uses SOWPODS, the international list used everywhere outside North America. Toggle between them at any time." },
+  { q: "Can I filter by starts-with, ends-with or contains?", a: "Yes. Open the advanced filters to lock a starting letter, an ending letter, a required substring, or a minimum length — perfect for building plays around an existing board word." },
+  { q: "How do I find bingo (7-letter) plays?", a: "Enter your full 7-tile rack and set the minimum length to 7. Every 7-letter result on the board earns the +50 Scrabble bingo bonus in real play." },
+  { q: "Does the solver work on mobile?", a: "Yes. Lexora is a responsive web app — it loads instantly on phones and tablets without any install, and works on the same URL as desktop." },
+  { q: "Are proper nouns and abbreviations included?", a: "No. Only words valid under standard Scrabble rules appear. Names, acronyms, and hyphenated forms are excluded to match tournament play." },
 ];
 
 type Sort = "score" | "length" | "rarity";
