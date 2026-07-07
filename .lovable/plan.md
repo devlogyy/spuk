@@ -1,84 +1,48 @@
 ## Goal
-Get Lexora AdSense-ready and stronger for organic growth. Focused on what an AdSense reviewer actually blocks on, plus the content-depth gaps that also hurt organic rankings.
+Expand the FAQ blocks on the three solver pages (Scrabble Solver, Crossword Solver, Word Finder) with additional unique, SEO-friendly questions and concise answers. The programmatic `/words/*` and `/unscramble/*` pages already ship per-page FAQ blocks with FAQPage JSON-LD via `ProgrammaticPageShell`; those stay as-is.
 
-## Scope — Phase E (this plan)
+## What's already in place (no changes)
+- `ProgrammaticPageShell` renders visible FAQ + injects `faqPageSchema` JSON-LD.
+- Each programmatic template (`WordsStartingWith`, `WordsEndingIn`, `NLetterWordsWith`, `Unscramble`) supplies 4 unique FAQs interpolated with the page's letter / length / letters.
+- Solver pages already render `ToolFAQ` + emit `faqPageSchema`, but each only has 5 FAQs and doesn't cover several long-tail queries (dictionary differences, safety, mobile use, offline, tips per tool).
 
-Three tracks, all frontend/content. No backend changes, no visual redesign.
+## Changes (frontend copy only)
 
----
+### 1) `src/pages/ScrabbleSolver.tsx`
+Extend the `FAQS` array from 5 → 10 unique entries. Add:
+- "What dictionary does the Scrabble Solver use?" (TWL06 vs SOWPODS)
+- "Can I filter by starts-with, ends-with or contains?" (yes, describe filter UI)
+- "How do I find bingo (7-letter) plays?" (min-length filter + rack strategy)
+- "Does the solver work on mobile?" (yes, PWA-friendly, no install)
+- "Are proper nouns and abbreviations included?" (no, standard rule)
 
-### Track 1 — Legal & trust pages (AdSense hard-blockers)
+### 2) `src/pages/CrosswordSolver.tsx`
+Extend `FAQS` from 5 → 10. Add:
+- "How long can my pattern be?" (up to 15 letters, standard grid max)
+- "Can I use it for cryptic vs quick crosswords?" (works for both once you have letters)
+- "What if my clue has a hyphen or space?" (treat each word separately, describe)
+- "Does it help with themed puzzles (NYT, Guardian)?" (yes, pattern-agnostic)
+- "How do I share a solved pattern?" (URL is stateful / copy pattern)
 
-Create four real, linkable pages and wire them into the footer.
+### 3) `src/pages/WordFinder.tsx`
+Extend `FAQS` from 5 → 10. Add:
+- "Can Word Finder solve Wordle?" (yes, use exact-length 5 filter)
+- "How is Word Finder different from an anagram solver?" (subset vs full-anagram)
+- "Does it show word definitions?" (link out to solver / word info)
+- "Can I use it for Boggle or Scrabble Go?" (yes, adapt to game dictionary)
+- "How fast is the search?" (client-side, sub-second, no network round-trip)
 
-**New routes & files:**
-- `/privacy` → `src/pages/Privacy.tsx` — explicitly names Google AdSense, third-party cookies, DoubleClick DART, and links the consent manager. Mentions analytics, user-provided data (auth email), and how to opt out.
-- `/terms` → `src/pages/Terms.tsx` — acceptable use, no warranty, IP ownership, dictionary attribution (TWL/SOWPODS are third-party), governing law placeholder.
-- `/about` → `src/pages/About.tsx` — who runs Lexora, why it exists, editorial approach, dictionary sources, contact CTA.
-- `/contact` → `src/pages/Contact.tsx` — mailto link + simple form (client-side only, submits to a `mailto:` for now — no backend needed).
+Each new question is:
+- Unique across the three pages (no cross-page duplication).
+- Answered in 1–2 concise sentences (≈40–90 chars question, ≈120–220 chars answer) — ideal for Google's People Also Ask + FAQ rich result eligibility.
+- Written to target long-tail search intents ("scrabble solver mobile", "crossword solver cryptic", "wordle word finder").
 
-**Edits:**
-- `src/App.tsx` — register the 4 routes.
-- `src/components/Footer.tsx` — add a "Legal" and "Company" column linking all four.
-- Each page uses `<Helmet>` with proper title/description/canonical + BreadcrumbList JSON-LD.
+## Technical notes
+- No schema, JSON-LD, or component changes needed — `faqPageSchema(FAQS)` and `<ToolFAQ faqs={FAQS} />` automatically pick up the new items.
+- No changes to `ProgrammaticPageShell`, `ToolFAQ`, `seo.ts`, or programmatic templates.
+- No routing, backend, or dictionary logic touched. Pure copy expansion in three files.
 
-**Placeholders you'll need to fill in:** business name, contact email, country of operation. I'll mark them clearly with `{{OWNER_NAME}}` / `{{CONTACT_EMAIL}}` / `{{COUNTRY}}` so it's obvious what to swap.
-
----
-
-### Track 2 — Enrich programmatic `/words/*` pages (kills the "thin content" risk)
-
-Target: `src/components/ProgrammaticPageShell.tsx` + the 4 programmatic templates in `src/pages/programmatic/`.
-
-Each page currently leads with the result grid. Add above the results:
-- **Answer-first intro** (80–140 words, unique per template type) — what these words are, when they're useful (Scrabble/Words With Friends/crosswords), scoring context.
-- **"How to use this list"** — 3-bullet mini-guide.
-- **Quick-stat strip** — total words, avg score, highest-scoring word (already computable from results).
-
-Add below the results:
-- **"Strategy tip"** block — 40–60 words, varies by template (ending vs starting vs unscramble vs n-letter).
-- Existing `RelatedTools` stays.
-
-Templates get distinct copy so the 4 families don't look duplicated. Copy lives in `src/content/programmatic-copy.ts` (new file) so it's editable in one place.
-
----
-
-### Track 3 — Content depth signals
-
-**Blog:**
-- Add author byline + `datePublished` / `dateModified` to each existing post via the post frontmatter in `src/content/blog/posts/*.tsx` (fields already partly there — normalize + expose in `articleSchema`).
-- Add a "Sources" footer to each post (2–3 authoritative links — Merriam-Webster, Collins, Hasbro rules PDF) — real editorial signal + AdSense reviewers like it.
-
-**Home:**
-- Add a small "Why trust Lexora" strip above the footer (3 icons: US+UK dictionaries, transparent scoring, no signup required). Pure presentation.
-
-**Not in this plan** (defer):
-- Writing 10 new blog posts (separate track, ask when you're ready)
-- Buying the domain / connecting it (you do that in Project Settings)
-- Google Search Console / Analytics setup (post-domain)
-- Backlink outreach
-
----
-
-## Files touched
-
-**New**
-- `src/pages/Privacy.tsx`, `src/pages/Terms.tsx`, `src/pages/About.tsx`, `src/pages/Contact.tsx`
-- `src/content/programmatic-copy.ts`
-
-**Edited**
-- `src/App.tsx` (routes)
-- `src/components/Footer.tsx` (legal + company columns)
-- `src/components/ProgrammaticPageShell.tsx` (intro + strategy blocks)
-- `src/pages/programmatic/*.tsx` (pass template-type key to shell)
-- `src/pages/Home.tsx` (trust strip)
-- `src/content/blog/posts/*.tsx` (author + dates normalization)
-- `src/lib/seo.ts` (extend `articleSchema` to accept author/dates cleanly if not already)
-- `public/sitemap.xml` via `scripts/generate-sitemap.ts` (add /about, /contact, /privacy, /terms)
-
-## What I need from you before building
-1. **Owner/business name** to put on legal pages (personal name or company).
-2. **Contact email** (real or a Gmail placeholder — can change later).
-3. **Country / jurisdiction** for Terms + Privacy (which country's law governs).
-
-I can build with `{{PLACEHOLDER}}` tags if you'd rather fill them in yourself later — just say "use placeholders."
+## Files edited
+- `src/pages/ScrabbleSolver.tsx` (FAQS array only)
+- `src/pages/CrosswordSolver.tsx` (FAQS array only)
+- `src/pages/WordFinder.tsx` (FAQS array only)
