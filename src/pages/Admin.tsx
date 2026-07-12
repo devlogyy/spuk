@@ -1,215 +1,194 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { toast } from "sonner";
-
-interface Zone {
-  id: string;
-  key: string;
-  page_path: string;
-  position: string;
-  enabled: boolean;
-  ad_slot_id: string | null;
-}
-
-interface Recommendation {
-  key: string;
-  page_path: string;
-  position: string;
-  enabled: boolean;
-  avg_duration_ms: number;
-  avg_scroll_pct: number;
-  views: number;
-  engagement_score: number;
-}
+import { LayoutDashboard, TrendingUp, FileText, Search, DollarSign, Sliders, Loader2 } from "lucide-react";
+import {
+  avgDurationMs,
+  avgScrollPct,
+  bucketCount,
+  computePathMetrics,
+  computeRange,
+  dayKey,
+  enumerateDays,
+  fetchAdEvents,
+  fetchSessions,
+  fetchViews,
+  normalizeReferrer,
+  parseUA,
+  pct,
+  topN,
+  uniqueSessions,
+  type RangeKey,
+} from "@/lib/admin-analytics";
+import { RangePicker } from "@/components/admin/RangePicker";
+import { OverviewTab } from "@/components/admin/tabs/OverviewTab";
+import { TrafficTab } from "@/components/admin/tabs/TrafficTab";
+import { ContentTab } from "@/components/admin/tabs/ContentTab";
+import { SeoTab } from "@/components/admin/tabs/SeoTab";
+import { AdsTab } from "@/components/admin/tabs/AdsTab";
+import { ZonesTab } from "@/components/admin/tabs/ZonesTab";
+import type { RangeBundle } from "@/components/admin/tabs/types";
 
 export default function Admin() {
   const { user, isAdmin, loading, signOut } = useAuth();
-  const [stats, setStats] = useState({ views: 0, sessions: 0, avgDuration: 0 });
-  const [topPages, setTopPages] = useState<{ path: string; views: number }[]>([]);
-  const [zones, setZones] = useState<Zone[]>([]);
-  const [recs, setRecs] = useState<Recommendation[]>([]);
-  const [adEvents, setAdEvents] = useState<Record<string, { impressions: number; clicks: number }>>({});
+  const [range, setRange] = useState<RangeKey>("30d");
+  const [bundle, setBundle] = useState<RangeBundle | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const bounds = useMemo(() => computeRange(range), [range]);
 
   useEffect(() => {
     if (!isAdmin) return;
-    void loadAll();
-  }, [isAdmin]);
+    let cancelled = false;
+    (async () => {
+      setBusy(true);
+      try {
+        const [views, sessions, adEvents, priorViews, priorSessions, priorAds] = await Promise.all([
+          fetchViews(bounds.from, bounds.to),
+          fetchSessions(bounds.from, bounds.to),
+          fetchAdEvents(bounds.from, bounds.to),
+          fetchViews(bounds.priorFrom, bounds.priorTo),
+          fetchSessions(bounds.priorFrom, bounds.priorTo),
+          fetchAdEvents(bounds.priorFrom, bounds.priorTo),
+        ]);
+        if (cancelled) return;
 
-  async function loadAll() {
-    const since = new Date(Date.now() - 30 * 86400000).toISOString();
+        const days = enumerateDays(bounds.from, bounds.to);
+        const viewsByDay = bucketCount(views, days, (r) => dayKey(r.created_at));
+        const sessionsByDay: Record<string, Set<string>> = Object.fromEntries(days.map((d) => [d, new Set()]));
+        for (const v of views) {
+          const d = dayKey(v.created_at);
+          sessionsByDay[d]?.add(v.session_id);
+        }
+        const series = days.map((d) => ({ day: d, views: viewsByDay[d] ?? 0, sessions: sessionsByDay[d]?.size ?? 0 }));
 
-    const [{ count: vc }, { data: ss }, { data: pv }, { data: zs }, { data: rs }, { data: ae }] = await Promise.all([
-      supabase.from("page_views").select("*", { count: "exact", head: true }).gte("created_at", since),
-      supabase.from("page_sessions").select("session_id, duration_ms").gte("entered_at", since),
-      supabase.from("page_views").select("path").gte("created_at", since),
-      supabase.from("ad_zones").select("*").order("key"),
-      supabase.from("v_zone_recommendations").select("*").order("engagement_score", { ascending: false }),
-      supabase.from("ad_events").select("zone_key, event_type").gte("created_at", since),
-    ]);
+        const adImpressions = adEvents.filter((e) => e.event_type === "impression").length;
+        const adClicks = adEvents.filter((e) => e.event_type === "click").length;
+        const priorImpr = priorAds.filter((e) => e.event_type === "impression").length;
+        const priorClicks = priorAds.filter((e) => e.event_type === "click").length;
+        const priorCtr = priorImpr ? (priorClicks / priorImpr) * 100 : 0;
+        const adCtr = adImpressions ? (adClicks / adImpressions) * 100 : 0;
 
-    const uniq = new Set((ss ?? []).map((r: any) => r.session_id));
-    const durs = (ss ?? []).map((r: any) => r.duration_ms).filter(Boolean);
-    const avg = durs.length ? Math.round(durs.reduce((a, b) => a + b, 0) / durs.length) : 0;
-    setStats({ views: vc ?? 0, sessions: uniq.size, avgDuration: avg });
+        const impressionsByDay = days.map((d) => {
+          const e = adEvents.filter((x) => dayKey(x.created_at) === d);
+          return {
+            day: d,
+            impressions: e.filter((x) => x.event_type === "impression").length,
+            clicks: e.filter((x) => x.event_type === "click").length,
+          };
+        });
+        const zoneKeys = Array.from(new Set(adEvents.map((e) => e.zone_key)));
+        const byZone = zoneKeys.map((z) => {
+          const e = adEvents.filter((x) => x.zone_key === z);
+          const impr = e.filter((x) => x.event_type === "impression").length;
+          const clk = e.filter((x) => x.event_type === "click").length;
+          return { zone: z, impressions: impr, clicks: clk, ctr: impr ? (clk / impr) * 100 : 0 };
+        }).sort((a, b) => b.impressions - a.impressions);
 
-    const counts: Record<string, number> = {};
-    (pv ?? []).forEach((r: any) => (counts[r.path] = (counts[r.path] || 0) + 1));
-    setTopPages(
-      Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([path, views]) => ({ path, views })),
+        const b: RangeBundle = {
+          kpis: {
+            views: views.length,
+            viewsDelta: pct(views.length, priorViews.length),
+            sessions: uniqueSessions(views),
+            sessionsDelta: pct(uniqueSessions(views), uniqueSessions(priorViews)),
+            avgDurationMs: avgDurationMs(sessions),
+            durationDelta: pct(avgDurationMs(sessions), avgDurationMs(priorSessions)),
+            avgScrollPct: avgScrollPct(sessions),
+            scrollDelta: pct(avgScrollPct(sessions), avgScrollPct(priorSessions)),
+            adImpressions,
+            adClicks,
+            adCtr,
+            ctrDelta: pct(adCtr, priorCtr),
+          },
+          series,
+          topPages: topN(views, (v) => v.path, 20),
+          topReferrers: topN(views, (v) => normalizeReferrer(v.referrer), 20),
+          topCountries: topN(views, (v) => v.country ?? "Unknown", 20),
+          topDevices: topN(views, (v) => parseUA(v.user_agent), 10),
+          pathMetrics: computePathMetrics(views, sessions),
+          ads: { impressionsByDay, byZone },
+        };
+        setBundle(b);
+      } finally {
+        if (!cancelled) setBusy(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [isAdmin, bounds]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16 flex items-center gap-2 text-muted-foreground">
+        <Loader2 className="h-4 w-4 animate-spin" /> Loading…
+      </div>
     );
-
-    setZones((zs as Zone[]) ?? []);
-    setRecs((rs as Recommendation[]) ?? []);
-
-    const agg: Record<string, { impressions: number; clicks: number }> = {};
-    (ae ?? []).forEach((r: any) => {
-      if (!agg[r.zone_key]) agg[r.zone_key] = { impressions: 0, clicks: 0 };
-      if (r.event_type === "impression") agg[r.zone_key].impressions++;
-      else if (r.event_type === "click") agg[r.zone_key].clicks++;
-    });
-    setAdEvents(agg);
   }
-
-  async function toggleZone(z: Zone) {
-    const { error } = await supabase.from("ad_zones").update({ enabled: !z.enabled }).eq("id", z.id);
-    if (error) toast.error(error.message);
-    else {
-      toast.success(`${z.key} ${!z.enabled ? "enabled" : "disabled"}`);
-      void loadAll();
-    }
-  }
-
-  async function updateSlotId(z: Zone, slotId: string) {
-    const { error } = await supabase.from("ad_zones").update({ ad_slot_id: slotId || null }).eq("id", z.id);
-    if (error) toast.error(error.message);
-    else toast.success("Saved");
-  }
-
-  if (loading) return <div className="container py-16">Loading…</div>;
   if (!user) return <Navigate to="/auth" replace />;
-  if (!isAdmin)
+  if (!isAdmin) {
     return (
       <div className="container mx-auto max-w-md px-4 py-16">
         <h1 className="text-2xl font-bold mb-2">Not authorized</h1>
         <p className="text-muted-foreground mb-4">
           Your account doesn't have admin access. Ask an existing admin to promote you, or run this SQL once with your user id:
         </p>
-        <pre className="rounded bg-muted p-3 text-xs overflow-auto">
-{`INSERT INTO public.user_roles (user_id, role)
-VALUES ('${user.id}', 'admin');`}
-        </pre>
+        <pre className="rounded bg-muted p-3 text-xs overflow-auto">{`INSERT INTO public.user_roles (user_id, role)
+VALUES ('${user.id}', 'admin');`}</pre>
         <Button variant="outline" className="mt-4" onClick={signOut}>Sign out</Button>
       </div>
     );
+  }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Helmet><meta name="robots" content="noindex,nofollow" /></Helmet>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">Admin</h1>
-        <Button variant="outline" onClick={signOut}>Sign out</Button>
-      </div>
+    <div className="container mx-auto px-4 py-6 md:py-8 max-w-7xl">
+      <Helmet>
+        <title>Admin dashboard · Lexora</title>
+        <meta name="robots" content="noindex,nofollow" />
+      </Helmet>
 
-      <Tabs defaultValue="overview">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="engagement">Engagement</TabsTrigger>
-          <TabsTrigger value="zones">Ad Zones</TabsTrigger>
+      <header className="flex flex-wrap items-center justify-between gap-3 mb-5">
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
+          <p className="text-xs md:text-sm text-muted-foreground">
+            Traffic, content and ad performance for the last {range === "7d" ? "7 days" : range === "30d" ? "30 days" : "90 days"}.
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          {busy && <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />}
+          <RangePicker value={range} onChange={setRange} />
+          <Button variant="outline" size="sm" onClick={signOut}>Sign out</Button>
+        </div>
+      </header>
+
+      <Tabs defaultValue="overview" className="space-y-4">
+        <TabsList className="flex flex-wrap h-auto">
+          <TabsTrigger value="overview" className="gap-1.5"><LayoutDashboard className="h-3.5 w-3.5" />Overview</TabsTrigger>
+          <TabsTrigger value="traffic" className="gap-1.5"><TrendingUp className="h-3.5 w-3.5" />Traffic</TabsTrigger>
+          <TabsTrigger value="content" className="gap-1.5"><FileText className="h-3.5 w-3.5" />Content</TabsTrigger>
+          <TabsTrigger value="seo" className="gap-1.5"><Search className="h-3.5 w-3.5" />SEO</TabsTrigger>
+          <TabsTrigger value="ads" className="gap-1.5"><DollarSign className="h-3.5 w-3.5" />Ads</TabsTrigger>
+          <TabsTrigger value="zones" className="gap-1.5"><Sliders className="h-3.5 w-3.5" />Zones</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="overview" className="space-y-4 mt-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card><CardHeader><CardTitle>Page views (30d)</CardTitle></CardHeader><CardContent className="text-3xl font-bold">{stats.views}</CardContent></Card>
-            <Card><CardHeader><CardTitle>Unique sessions</CardTitle></CardHeader><CardContent className="text-3xl font-bold">{stats.sessions}</CardContent></Card>
-            <Card><CardHeader><CardTitle>Avg duration</CardTitle></CardHeader><CardContent className="text-3xl font-bold">{(stats.avgDuration / 1000).toFixed(1)}s</CardContent></Card>
+        {!bundle ? (
+          <div className="py-16 text-center text-sm text-muted-foreground">
+            <Loader2 className="h-5 w-5 animate-spin mx-auto mb-2" />
+            Crunching analytics…
           </div>
-          <Card>
-            <CardHeader><CardTitle>Top pages</CardTitle></CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader><TableRow><TableHead>Path</TableHead><TableHead className="text-right">Views</TableHead></TableRow></TableHeader>
-                <TableBody>
-                  {topPages.map((p) => (
-                    <TableRow key={p.path}><TableCell>{p.path}</TableCell><TableCell className="text-right">{p.views}</TableCell></TableRow>
-                  ))}
-                  {!topPages.length && <TableRow><TableCell colSpan={2} className="text-muted-foreground">No data yet</TableCell></TableRow>}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="engagement" className="mt-4">
-          <Card>
-            <CardHeader><CardTitle>Engagement-ranked zones</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                Zones are ranked by avg time × avg scroll depth on the page they live on. Enable top zones first for best ad performance.
-              </p>
-              <Table>
-                <TableHeader><TableRow><TableHead>Zone</TableHead><TableHead>Page</TableHead><TableHead className="text-right">Views</TableHead><TableHead className="text-right">Avg time</TableHead><TableHead className="text-right">Avg scroll</TableHead><TableHead className="text-right">Score</TableHead></TableRow></TableHeader>
-                <TableBody>
-                  {recs.map((r) => (
-                    <TableRow key={r.key}>
-                      <TableCell className="font-mono text-xs">{r.key}</TableCell>
-                      <TableCell>{r.page_path}</TableCell>
-                      <TableCell className="text-right">{r.views}</TableCell>
-                      <TableCell className="text-right">{(r.avg_duration_ms / 1000).toFixed(1)}s</TableCell>
-                      <TableCell className="text-right">{r.avg_scroll_pct}%</TableCell>
-                      <TableCell className="text-right">{r.engagement_score.toLocaleString()}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="zones" className="mt-4">
-          <Card>
-            <CardHeader><CardTitle>Ad zones</CardTitle></CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader><TableRow><TableHead>Key</TableHead><TableHead>Page</TableHead><TableHead>AdSense slot ID</TableHead><TableHead className="text-right">Impr.</TableHead><TableHead className="text-right">Clicks</TableHead><TableHead className="text-right">CTR</TableHead><TableHead className="text-right">Enabled</TableHead></TableRow></TableHeader>
-                <TableBody>
-                  {zones.map((z) => {
-                    const ev = adEvents[z.key] || { impressions: 0, clicks: 0 };
-                    const ctr = ev.impressions ? ((ev.clicks / ev.impressions) * 100).toFixed(2) : "0.00";
-                    return (
-                      <TableRow key={z.id}>
-                        <TableCell className="font-mono text-xs">{z.key}</TableCell>
-                        <TableCell>{z.page_path}</TableCell>
-                        <TableCell>
-                          <Input
-                            defaultValue={z.ad_slot_id ?? ""}
-                            placeholder="e.g. 1234567890"
-                            onBlur={(e) => e.target.value !== (z.ad_slot_id ?? "") && updateSlotId(z, e.target.value)}
-                            className="h-8 w-40"
-                          />
-                        </TableCell>
-                        <TableCell className="text-right">{ev.impressions}</TableCell>
-                        <TableCell className="text-right">{ev.clicks}</TableCell>
-                        <TableCell className="text-right">{ctr}%</TableCell>
-                        <TableCell className="text-right">
-                          <Switch checked={z.enabled} onCheckedChange={() => toggleZone(z)} />
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
+        ) : (
+          <>
+            <TabsContent value="overview"><OverviewTab data={bundle} /></TabsContent>
+            <TabsContent value="traffic"><TrafficTab data={bundle} /></TabsContent>
+            <TabsContent value="content"><ContentTab data={bundle} /></TabsContent>
+            <TabsContent value="seo"><SeoTab /></TabsContent>
+            <TabsContent value="ads"><AdsTab data={bundle} /></TabsContent>
+            <TabsContent value="zones"><ZonesTab data={bundle} /></TabsContent>
+          </>
+        )}
       </Tabs>
     </div>
   );
