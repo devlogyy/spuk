@@ -108,7 +108,11 @@ export function SeoTab({ range }: { range: RangeKey }) {
   ] as const;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
+      <SearchConsolePanel range={range} />
+
+      <Separator />
+
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-sm font-semibold">SEO health</h2>
