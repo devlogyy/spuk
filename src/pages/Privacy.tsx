@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { absoluteUrl, breadcrumbSchema, SITE_NAME } from "@/lib/seo";
 
 const OWNER = "Lexora";
-const CONTACT_EMAIL = "hello@spuk.lovable.app";
+const CONTACT_EMAIL = "hello@lexorawords.com";
 const COUNTRY = "your country of residence";
 const LAST_UPDATED = "July 2026";
 

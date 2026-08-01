@@ -17,7 +17,7 @@ function siteBaseUrl(): string {
   return (
     env.PUBLIC_SITE_URL ||
     env.SITE_URL ||
-    "https://spuk.lovable.app"
+    "https://lexorawords.com"
   ).replace(/\/$/, "");
 }
 
