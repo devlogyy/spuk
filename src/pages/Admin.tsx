@@ -184,7 +184,7 @@ VALUES ('${user.id}', 'admin');`}</pre>
             <TabsContent value="overview"><OverviewTab data={bundle} /></TabsContent>
             <TabsContent value="traffic"><TrafficTab data={bundle} /></TabsContent>
             <TabsContent value="content"><ContentTab data={bundle} /></TabsContent>
-            <TabsContent value="seo"><SeoTab /></TabsContent>
+            <TabsContent value="seo"><SeoTab range={range} /></TabsContent>
             <TabsContent value="ads"><AdsTab data={bundle} /></TabsContent>
             <TabsContent value="zones"><ZonesTab data={bundle} /></TabsContent>
           </>
