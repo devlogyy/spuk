@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, XCircle, AlertCircle, RefreshCw } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { SearchConsolePanel } from "@/components/admin/searchconsole/SearchConsolePanel";
+import type { RangeKey } from "@/lib/admin-analytics";
 
 interface FileCheck {
   name: string;
@@ -49,7 +52,7 @@ async function checkRobots(): Promise<{ ok: boolean; sitemap: boolean; disallowR
   }
 }
 
-export function SeoTab() {
+export function SeoTab({ range }: { range: RangeKey }) {
   const [files, setFiles] = useState<FileCheck[]>([]);
   const [sitemap, setSitemap] = useState<{ urls: number; ok: boolean } | null>(null);
   const [robots, setRobots] = useState<{ ok: boolean; sitemap: boolean; disallowRoot: boolean } | null>(null);
