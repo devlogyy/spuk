@@ -1,30 +1,42 @@
 ## Goal
-Switch every site reference from the old `spuk.lovable.app` domain to the new custom domain `lexorawords.com`, regenerate the sitemap, and give the user the exact URL to submit to Google Search Console.
+Connect Google Search Console to your admin dashboard so SEO performance, top queries/pages, and indexing/sitemap status appear inside `/admin` — no need to log into Search Console separately. AdSense stays on the current estimated-revenue view until you're approved.
 
-## What I found
-The sitemap exists (`public/sitemap.xml`) but every `<loc>` currently uses `https://spuk.lovable.app`. The same old domain is hardcoded in SEO constants, `index.html`, `robots.txt`, `llms.txt`, page metadata, contact emails, and MCP fallbacks.
+## How the connection works
+Lovable has a built-in Google Search Console connector. You sign in with Google once through a connect card in chat; credentials stay server-side and are refreshed automatically. Your app never holds a Google token.
 
-## Files to update
-1. `src/lib/seo.ts` — change `SITE_URL` to `https://lexorawords.com`.
-2. `scripts/generate-sitemap.ts` — change `BASE_URL` to `https://lexorawords.com`.
-3. `public/robots.txt` — change `Sitemap:` directive to `https://lexorawords.com/sitemap.xml`.
-4. `index.html` — update `og:url`, Organization JSON-LD `url`, WebSite JSON-LD `url`, and SearchAction `target`.
-5. `public/llms.txt` — replace all internal links with `https://lexorawords.com` equivalents.
-6. `src/pages/Home.tsx` — update canonical `<link>` and `og:url` meta tag.
-7. `src/pages/Privacy.tsx` and `src/pages/Contact.tsx` — update placeholder contact email from `hello@spuk.lovable.app` to `hello@lexorawords.com`.
-8. `src/lib/mcp/dict.ts` — update fallback URL.
-9. `supabase/functions/mcp/index.ts` — update fallback URL.
-10. Regenerate `public/sitemap.xml` by running the existing `predev`/`prebuild` generator so every `<loc>` uses `https://lexorawords.com`.
+## What gets built
 
-## Verification
-- Confirm `public/sitemap.xml` opens at `/sitemap.xml` and every `<loc>` begins with `https://lexorawords.com`.
-- Confirm `robots.txt` references the new sitemap URL.
-- Run the existing `seo:check` script to ensure no canonical/structured-data regressions are introduced.
+### 1. Connect Search Console
+Link the Google Search Console connector to this project so the backend can call the API on your behalf.
 
-## Deliverable to the user
-The exact sitemap URL to paste into Google Search Console:
-`https://lexorawords.com/sitemap.xml`
+### 2. Backend function (`supabase/functions/search-console`)
+An admin-only edge function (verifies the caller's session and `admin` role) with these actions:
+- `list-sites` — verified properties your Google account owns
+- `performance` — clicks, impressions, CTR, average position by day for the selected range
+- `queries` / `pages` — top search queries and top landing pages
+- `sitemaps` — submitted sitemaps with last-read time, warnings, errors, indexed status
+- `inspect-url` — URL Inspection for any page (this is what will tell us exactly why `sitemap.xml` hasn't been picked up yet)
 
-## Notes
-- No page routes or content will change; only the domain string is being swapped.
-- After the build, I will also remind you to request indexing in Search Console once the live site is serving from the custom domain.
+### 3. Rebuilt SEO tab in the admin dashboard
+The existing SEO tab keeps its on-site file checks and gains:
+- **Property picker** — choose which verified property to view (saved per admin)
+- **KPI row** — clicks, impressions, CTR, avg. position with period-over-period deltas, using your existing `KpiCard`
+- **Performance chart** — daily clicks/impressions plus a position line, honoring the existing 7/30/90-day range picker
+- **Top queries table** and **Top pages table** — sortable, with clicks/impressions/CTR/position
+- **Indexing & sitemap card** — sitemap submission status, last crawl, errors, and a "Submit sitemap" button
+- **URL inspector** — paste any URL, see Google's indexing verdict, coverage state, canonical, and last crawl date
+
+### 4. Setup wizard
+A guided panel that appears when Search Console isn't wired up yet: check connection → pick property → confirm sitemap submitted → run a first inspection on the homepage. Each step shows pass/fail and the fix.
+
+### 5. Ads tab (unchanged for now)
+Keeps the RPM estimator and zone CTR data. When you're approved for AdSense, we can add real earnings via a Google Cloud OAuth client — I'll flag this as the next step, not part of this build.
+
+## Technical notes
+- Calls route through the Lovable connector gateway from the edge function; no Google credentials in frontend code.
+- Property resolution follows the required flow: list verified properties at runtime, match your domain, and prompt you to choose if more than one matches.
+- Search Console data is cached briefly in the frontend query cache; no new database tables are needed.
+- Errors from Google (permission, unverified property, no data yet) surface as readable messages instead of blank charts.
+
+## Note on your sitemap
+Search Console typically takes a few days to process a newly submitted sitemap, and it only reads it from the live published site. Once this is built, the URL inspector will tell us definitively whether Google fetched it, hit an error, or is still queued.
