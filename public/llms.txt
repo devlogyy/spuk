@@ -12,17 +12,17 @@ Primary use cases:
 
 ## Tools
 
-- [Scrabble Solver](https://spuk.lovable.app/scrabble-solver): Enter your rack (blanks with `?`) and get every legal play ranked by tile score, with US/UK dictionary toggle and advanced filters (starts with, ends with, contains, min length).
-- [Crossword Solver](https://spuk.lovable.app/crossword-solver): Pattern matcher for partial answers. Use `?` for unknown letters (e.g. `C?T??` returns CATCH, CITED, CUTUP).
-- [Word Finder / Anagram Solver](https://spuk.lovable.app/word-finder): Unscramble any letters into every valid dictionary word, filterable by exact length. Supports blank tiles.
-- [Words Hub](https://spuk.lovable.app/words): Index of every browsable word list on the site.
+- [Scrabble Solver](https://lexorawords.com/scrabble-solver): Enter your rack (blanks with `?`) and get every legal play ranked by tile score, with US/UK dictionary toggle and advanced filters (starts with, ends with, contains, min length).
+- [Crossword Solver](https://lexorawords.com/crossword-solver): Pattern matcher for partial answers. Use `?` for unknown letters (e.g. `C?T??` returns CATCH, CITED, CUTUP).
+- [Word Finder / Anagram Solver](https://lexorawords.com/word-finder): Unscramble any letters into every valid dictionary word, filterable by exact length. Supports blank tiles.
+- [Words Hub](https://lexorawords.com/words): Index of every browsable word list on the site.
 
 ## Word Lists (programmatic)
 
-- [Words starting with Q](https://spuk.lovable.app/words/starting-with/q): Every TWL-valid word beginning with the letter Q, grouped by length and scored.
-- [Words ending in Y](https://spuk.lovable.app/words/ending-in/y): Every TWL-valid word ending in the letter Y.
-- [5 letter words with A](https://spuk.lovable.app/words/5-letter-words-with-a): 5-letter words containing the letter A — useful for Wordle.
-- [Unscramble LISTENING](https://spuk.lovable.app/unscramble/listening): Every word that can be made from the letters L, I, S, T, E, N, I, N, G.
+- [Words starting with Q](https://lexorawords.com/words/starting-with/q): Every TWL-valid word beginning with the letter Q, grouped by length and scored.
+- [Words ending in Y](https://lexorawords.com/words/ending-in/y): Every TWL-valid word ending in the letter Y.
+- [5 letter words with A](https://lexorawords.com/words/5-letter-words-with-a): 5-letter words containing the letter A — useful for Wordle.
+- [Unscramble LISTENING](https://lexorawords.com/unscramble/listening): Every word that can be made from the letters L, I, S, T, E, N, I, N, G.
 
 Pattern of URLs (substitute any lowercase letter or letters):
 - `/words/starting-with/{letter}`
@@ -32,14 +32,14 @@ Pattern of URLs (substitute any lowercase letter or letters):
 
 ## Blog
 
-- [Every Q-Without-U Word Allowed in Scrabble](https://spuk.lovable.app/blog/words-with-q-no-u): Complete list of Scrabble-legal Q words that don't need U, with scoring setups.
-- [Complete List of 2-Letter Scrabble Words](https://spuk.lovable.app/blog/2-letter-scrabble-words): All 107 valid two-letter Scrabble words, organized for memorization.
-- [50 Highest-Scoring Scrabble Words](https://spuk.lovable.app/blog/high-scoring-scrabble-words): Real high-scoring plays used in tournaments, with rack setups.
-- [How to Solve Any Crossword Clue](https://spuk.lovable.app/blog/how-to-solve-crossword-clues): 7-step method used by editors and competitive solvers.
-- [Crossword Pattern Matching](https://spuk.lovable.app/blog/crossword-clue-patterns): How elite solvers decode ambiguous letter patterns like `C_A__T`.
-- [How to Find Every Word From Letters](https://spuk.lovable.app/blog/words-from-letters): Systematic method for anagram solving.
-- [Scrabble Bingo Strategy](https://spuk.lovable.app/blog/scrabble-bingo-strategy): Rack management, stem theory and probability behind 50-point bonuses.
-- [Build a 10,000-Word Vocabulary](https://spuk.lovable.app/blog/build-vocabulary-word-games): Spaced repetition method using word games.
+- [Every Q-Without-U Word Allowed in Scrabble](https://lexorawords.com/blog/words-with-q-no-u): Complete list of Scrabble-legal Q words that don't need U, with scoring setups.
+- [Complete List of 2-Letter Scrabble Words](https://lexorawords.com/blog/2-letter-scrabble-words): All 107 valid two-letter Scrabble words, organized for memorization.
+- [50 Highest-Scoring Scrabble Words](https://lexorawords.com/blog/high-scoring-scrabble-words): Real high-scoring plays used in tournaments, with rack setups.
+- [How to Solve Any Crossword Clue](https://lexorawords.com/blog/how-to-solve-crossword-clues): 7-step method used by editors and competitive solvers.
+- [Crossword Pattern Matching](https://lexorawords.com/blog/crossword-clue-patterns): How elite solvers decode ambiguous letter patterns like `C_A__T`.
+- [How to Find Every Word From Letters](https://lexorawords.com/blog/words-from-letters): Systematic method for anagram solving.
+- [Scrabble Bingo Strategy](https://lexorawords.com/blog/scrabble-bingo-strategy): Rack management, stem theory and probability behind 50-point bonuses.
+- [Build a 10,000-Word Vocabulary](https://lexorawords.com/blog/build-vocabulary-word-games): Spaced repetition method using word games.
 
 ## Dictionaries
 
@@ -51,6 +51,6 @@ Tile values follow the standard Scrabble distribution: A/E/I/L/N/O/R/S/T/U = 1; 
 
 ## Optional
 
-- [Home](https://spuk.lovable.app/): Overview of Lexora with quick-launch to every tool.
-- [Blog index](https://spuk.lovable.app/blog): All strategy, vocabulary and tutorial posts.
-- [Sitemap](https://spuk.lovable.app/sitemap.xml): Machine-readable index of every indexable URL.
+- [Home](https://lexorawords.com/): Overview of Lexora with quick-launch to every tool.
+- [Blog index](https://lexorawords.com/blog): All strategy, vocabulary and tutorial posts.
+- [Sitemap](https://lexorawords.com/sitemap.xml): Machine-readable index of every indexable URL.

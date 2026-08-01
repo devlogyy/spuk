@@ -18,7 +18,7 @@ var cache = {};
 var loading = {};
 function siteBaseUrl() {
   const env = globalThis.process?.env ?? {};
-  return (env.PUBLIC_SITE_URL || env.SITE_URL || "https://spuk.lovable.app").replace(/\/$/, "");
+  return (env.PUBLIC_SITE_URL || env.SITE_URL || "https://lexorawords.com").replace(/\/$/, "");
 }
 async function loadDictionary(dict) {
   if (cache[dict]) return cache[dict];

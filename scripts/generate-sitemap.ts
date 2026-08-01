@@ -3,7 +3,7 @@
 import { writeFileSync, readFileSync } from "fs";
 import { resolve } from "path";
 
-const BASE_URL = "https://spuk.lovable.app";
+const BASE_URL = "https://lexorawords.com";
 
 interface SitemapEntry {
   path: string;

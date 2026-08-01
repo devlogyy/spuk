@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Mail, Send } from "lucide-react";
 import { absoluteUrl, breadcrumbSchema, SITE_NAME } from "@/lib/seo";
 
-const CONTACT_EMAIL = "hello@spuk.lovable.app";
+const CONTACT_EMAIL = "hello@lexorawords.com";
 
 export default function Contact() {
   const url = absoluteUrl("/contact");

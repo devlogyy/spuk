@@ -86,4 +86,4 @@ Allow: /
 Disallow: /admin
 Disallow: /auth
 
-Sitemap: https://spuk.lovable.app/sitemap.xml
+Sitemap: https://lexorawords.com/sitemap.xml
