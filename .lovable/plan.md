@@ -1,42 +1,41 @@
-## Goal
-Connect Google Search Console to your admin dashboard so SEO performance, top queries/pages, and indexing/sitemap status appear inside `/admin` — no need to log into Search Console separately. AdSense stays on the current estimated-revenue view until you're approved.
+## What I found
 
-## How the connection works
-Lovable has a built-in Google Search Console connector. You sign in with Google once through a connect card in chat; credentials stay server-side and are refreshed automatically. Your app never holds a Google token.
+"HTTPS not evaluated" is **not** a security problem. Your site is fully HTTPS:
 
-## What gets built
+- `http://lexorawords.com/` → 308 redirect to HTTPS (correct)
+- HSTS header is present (`max-age=63072000`)
 
-### 1. Connect Search Console
-Link the Google Search Console connector to this project so the backend can call the API on your behalf.
+The message means Google simply has **no evaluated pages yet** in that report — it needs indexed pages with real data before it grades HTTPS.
 
-### 2. Backend function (`supabase/functions/search-console`)
-An admin-only edge function (verifies the caller's session and `admin` role) with these actions:
-- `list-sites` — verified properties your Google account owns
-- `performance` — clicks, impressions, CTR, average position by day for the selected range
-- `queries` / `pages` — top search queries and top landing pages
-- `sitemaps` — submitted sitemaps with last-read time, warnings, errors, indexed status
-- `inspect-url` — URL Inspection for any page (this is what will tell us exactly why `sitemap.xml` hasn't been picked up yet)
+But the reads did surface a real reason indexing is stalled:
 
-### 3. Rebuilt SEO tab in the admin dashboard
-The existing SEO tab keeps its on-site file checks and gains:
-- **Property picker** — choose which verified property to view (saved per admin)
-- **KPI row** — clicks, impressions, CTR, avg. position with period-over-period deltas, using your existing `KpiCard`
-- **Performance chart** — daily clicks/impressions plus a position line, honoring the existing 7/30/90-day range picker
-- **Top queries table** and **Top pages table** — sortable, with clicks/impressions/CTR/position
-- **Indexing & sitemap card** — sitemap submission status, last crawl, errors, and a "Submit sitemap" button
-- **URL inspector** — paste any URL, see Google's indexing verdict, coverage state, canonical, and last crawl date
+```text
+https://lexorawords.com/        → 308 → https://www.lexorawords.com/   (live)
+sitemap.xml / canonicals / JSON-LD → https://lexorawords.com/...       (in code)
+```
 
-### 4. Setup wizard
-A guided panel that appears when Search Console isn't wired up yet: check connection → pick property → confirm sitemap submitted → run a first inspection on the homepage. Each step shows pass/fail and the fix.
+Every one of the 550 sitemap URLs points at the apex, which now redirects to `www`. Google sees 550 redirects instead of 550 pages, marks them "Page with redirect", and indexes slowly — so Page Experience has nothing to evaluate.
 
-### 5. Ads tab (unchanged for now)
-Keeps the RPM estimator and zone CTR data. When you're approved for AdSense, we can add real earnings via a Google Cloud OAuth client — I'll flag this as the next step, not part of this build.
+## The fix: pick one canonical host and use it everywhere
+
+Recommended: adopt **`https://www.lexorawords.com`**, since that's what your hosting already redirects to (no DNS/hosting change needed).
+
+1. Update `SITE_URL` in `src/lib/seo.ts` to `https://www.lexorawords.com`.
+2. Update the sitemap generator base URL in `scripts/generate-sitemap.ts` and regenerate `public/sitemap.xml` (all 550 URLs).
+3. Update hardcoded `lexorawords.com` references in `index.html` (og:url, Organization/WebSite JSON-LD, SearchAction target) and `public/robots.txt` (Sitemap: line) and `public/llms.txt`.
+4. Verify canonical tags on all routes now match the URL that actually serves 200.
+
+Alternative if you'd rather keep the short apex URL: flip the redirect in your domain settings so `www` → apex, and leave the code as-is. Tell me and I'll plan that instead.
+
+## Search Console follow-up (after the change)
+
+- Make sure the GSC property is a **Domain property** (`sc-domain:lexorawords.com`) so it covers both hosts; a URL-prefix property for the apex alone won't report www data.
+- Resubmit `https://www.lexorawords.com/sitemap.xml` from the Sitemap card in your admin SEO tab.
+- Use the URL Inspector on the homepage and request indexing.
+- HTTPS status will populate on its own once pages are indexed — typically days to a few weeks. No further code work is needed for it.
 
 ## Technical notes
-- Calls route through the Lovable connector gateway from the edge function; no Google credentials in frontend code.
-- Property resolution follows the required flow: list verified properties at runtime, match your domain, and prompt you to choose if more than one matches.
-- Search Console data is cached briefly in the frontend query cache; no new database tables are needed.
-- Errors from Google (permission, unverified property, no data yet) surface as readable messages instead of blank charts.
 
-## Note on your sitemap
-Search Console typically takes a few days to process a newly submitted sitemap, and it only reads it from the live published site. Once this is built, the URL inspector will tell us definitively whether Google fetched it, hit an error, or is still queued.
+- No hosting/redirect edits are made by this plan; only source constants and generated static files change.
+- `vercel.json` only has the SPA rewrite — no redirect rules to touch there.
+- After the edits, `scripts/seo-check.ts` runs in prebuild and will validate the new canonical host.
