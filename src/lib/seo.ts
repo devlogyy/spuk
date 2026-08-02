@@ -1,5 +1,5 @@
 // One place to swap when the new domain ships.
-export const SITE_URL = "https://lexorawords.com";
+export const SITE_URL = "https://www.lexorawords.com";
 export const SITE_NAME = "Lexora";
 export const SITE_TAGLINE = "AI Scrabble Solver, Crossword & Word Finder";
 export const SITE_DESCRIPTION =

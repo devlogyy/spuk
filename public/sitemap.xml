@@ -1,3302 +1,2752 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lexorawords.com/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/scrabble-solver</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/scrabble-solver</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/crossword-solver</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/crossword-solver</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/word-finder</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/word-finder</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/about</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/contact</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/privacy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/terms</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/words-with-q-no-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/words-with-q-no-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/2-letter-scrabble-words</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/2-letter-scrabble-words</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/high-scoring-scrabble-words</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/high-scoring-scrabble-words</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/how-to-solve-crossword-clues</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/how-to-solve-crossword-clues</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/crossword-clue-patterns</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/crossword-clue-patterns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/words-from-letters</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/words-from-letters</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/scrabble-bingo-strategy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/scrabble-bingo-strategy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/blog/build-vocabulary-word-games</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/blog/build-vocabulary-word-games</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/starting-with/z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/starting-with/z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/ending-in/z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/ending-in/z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/3-letter-words-with-z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/3-letter-words-with-z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/4-letter-words-with-z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/4-letter-words-with-z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/5-letter-words-with-z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/5-letter-words-with-z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/6-letter-words-with-z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/6-letter-words-with-z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-a</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-a</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-b</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-c</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-c</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-d</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-d</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-e</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-e</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-f</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-f</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-g</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-g</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-h</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-h</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-i</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-i</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-j</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-j</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-k</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-k</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-l</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-l</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-m</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-m</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-n</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-n</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-o</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-o</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-p</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-p</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-q</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-q</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-r</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-r</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-s</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-s</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-t</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-t</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-u</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-u</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-v</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-v</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-w</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-w</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-x</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-x</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-y</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-y</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/words/7-letter-words-with-z</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/words/7-letter-words-with-z</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stare</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/crate</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/crate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/arose</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/arose</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/raise</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/raise</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/slate</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/slate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/trace</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/trace</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/adieu</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/adieu</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/audio</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/audio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/later</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/later</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/heart</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/heart</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/earth</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/earth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/table</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/table</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/plate</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/plate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/share</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/share</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/spare</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/spare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/alone</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/alone</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/along</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/along</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/story</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/story</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/horse</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/horse</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/house</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/house</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/happy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/happy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/money</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/money</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/music</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/music</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/peace</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/peace</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/power</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/power</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/point</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/point</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/price</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/price</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/right</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/right</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/round</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/round</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/scene</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/scene</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/smile</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/smile</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/sound</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/sound</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/space</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/space</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/speak</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/speak</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stage</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stand</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stand</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/start</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/start</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/state</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/state</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stone</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stone</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/style</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/style</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/teach</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/teach</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/thank</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/thank</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/think</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/think</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/three</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/three</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/throw</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/throw</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/under</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/under</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/value</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/value</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/voice</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/voice</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/water</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/water</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/white</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/white</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/world</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/world</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/write</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/write</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/young</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/young</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/beach</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/beach</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/brain</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/brain</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/bread</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/bread</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/break</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/break</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/brown</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/brown</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/build</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/build</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/catch</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/catch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/chair</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/chair</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/chart</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/chart</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cheap</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cheap</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/check</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/check</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/child</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/child</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/clear</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/clear</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/climb</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/climb</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/close</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/close</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cloud</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cloud</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/color</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/color</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/coast</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/coast</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/could</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/could</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/count</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/count</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cover</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cover</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/craft</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/craft</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/crash</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/crash</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cream</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cream</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/crime</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/crime</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cross</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cross</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/crowd</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/crowd</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/crown</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/crown</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/daily</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/daily</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/dance</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/dance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/death</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/death</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/depth</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/depth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/doubt</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/doubt</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/dream</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/dream</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/drink</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/drink</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/drive</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/drive</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/early</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/early</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/empty</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/empty</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/enjoy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/enjoy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/enter</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/enter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/entry</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/entry</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/equal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/equal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/event</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/event</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/every</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/every</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/exact</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/exact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/exist</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/exist</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/extra</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/extra</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/faith</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/faith</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/false</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/false</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/fault</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/fault</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/field</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/field</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/fight</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/fight</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/final</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/final</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/first</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/first</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/floor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/floor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/focus</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/focus</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/force</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/force</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/frame</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/frame</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/fresh</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/fresh</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/front</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/front</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/fruit</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/fruit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/funny</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/funny</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/ghost</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/ghost</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/giant</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/giant</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/glass</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/glass</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/grade</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/grade</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/grand</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/grand</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/grant</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/grant</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/grass</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/grass</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/great</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/great</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/green</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/green</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/group</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/group</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/guard</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/guard</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/guess</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/guess</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/guest</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/guest</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/guide</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/heavy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/heavy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/honor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/honor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/human</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/human</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/ideal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/ideal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/image</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/image</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/index</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/index</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/input</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/input</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/issue</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/issue</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/joint</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/joint</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/judge</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/judge</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/known</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/known</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/label</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/label</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/large</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/large</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/laugh</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/laugh</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/layer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/layer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/learn</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/learn</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/least</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/least</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/leave</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/leave</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/legal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/legal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/level</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/level</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/light</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/light</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/limit</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/limit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/local</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/local</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/logic</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/logic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/loose</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/loose</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/lower</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/lower</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/lucky</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/lucky</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/magic</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/magic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/major</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/major</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/march</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/march</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/match</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/match</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/metal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/metal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/might</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/might</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/minor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/minor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/minus</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/minus</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/model</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/model</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/month</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/month</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/moral</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/moral</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/motor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/motor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mount</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mount</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mouse</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mouse</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mouth</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mouth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/movie</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/movie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/listen</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/listen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/silent</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/silent</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/master</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/master</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stream</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stream</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/planet</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/planet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/random</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/random</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/scream</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/scream</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/silver</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/silver</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/summer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/summer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/winter</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/winter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/garden</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/garden</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/forest</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/forest</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/branch</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/branch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/bridge</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/bridge</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/castle</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/castle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/circus</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/circus</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/cinema</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/cinema</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/danger</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/danger</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/dragon</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/dragon</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/dinner</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/dinner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/doctor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/doctor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/driver</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/driver</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/editor</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/editor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/engine</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/engine</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/family</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/family</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/father</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/father</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/figure</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/figure</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/finger</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/finger</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/flight</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/flight</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/flower</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/flower</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/friend</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/friend</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/future</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/future</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/ground</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/ground</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/growth</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/growth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/health</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/health</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/height</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/height</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/hidden</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/hidden</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/honest</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/honest</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/income</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/income</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/island</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/island</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/junior</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/junior</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/ladder</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/ladder</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/letter</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/letter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/liquid</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/liquid</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/little</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/little</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/lonely</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/lonely</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/longer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/longer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/manner</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/manner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/market</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/market</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/matter</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/matter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/memory</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/memory</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/method</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/method</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/middle</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/middle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/minute</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/minute</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mirror</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mirror</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/modern</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/modern</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/moment</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/moment</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mother</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mother</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/motion</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/motion</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/murder</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/murder</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/muscle</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/muscle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/museum</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/museum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mutual</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mutual</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/myself</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/myself</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/nation</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/nation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/native</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/native</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/nature</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/nature</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/nearby</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/nearby</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/needle</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/needle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/normal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/normal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/number</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/number</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/object</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/object</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/office</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/office</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/online</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/online</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/option</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/option</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/orange</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/orange</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/origin</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/origin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/output</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/output</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/oxygen</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/oxygen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/palace</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/palace</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/parent</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/parent</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/passed</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/passed</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/pencil</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/pencil</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/period</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/period</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/person</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/person</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/rainbow</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/rainbow</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/mystery</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/mystery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/kingdom</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/kingdom</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/library</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/library</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/machine</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/machine</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/measure</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/measure</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/morning</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/morning</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/network</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/network</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/october</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/october</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/passage</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/passage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/perfect</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/perfect</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/picture</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/picture</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/pioneer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/pioneer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/plastic</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/plastic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/popular</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/popular</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/present</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/present</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/problem</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/problem</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/produce</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/produce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/promise</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/promise</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/protect</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/protect</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/provide</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/provide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/quality</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/quality</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reality</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reality</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/receive</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/receive</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reduce</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reduce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/respect</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/respect</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/respond</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/respond</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/results</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/results</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/retired</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/retired</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reveal</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reveal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/review</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/review</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reward</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reward</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/rocket</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/rocket</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/science</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/science</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/scratch</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/scratch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/section</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/section</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/service</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/service</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/several</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/several</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/setting</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/setting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/shadow</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/shadow</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/similar</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/similar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/singer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/singer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/sketch</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/sketch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/slowly</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/slowly</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/smooth</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/smooth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/social</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/social</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/society</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/society</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/soldier</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/soldier</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/solving</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/solving</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/special</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/special</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stadium</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stadium</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/station</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/station</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stretch</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stretch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/student</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/student</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/studio</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/studio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/subject</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/subject</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/success</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/success</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/sunday</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/sunday</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/support</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/support</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/surface</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/surface</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/survey</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/survey</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/systems</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/systems</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/teacher</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/teacher</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/theory</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/theory</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/therapy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/therapy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/tonight</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/tonight</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/trouble</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/trouble</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/unknown</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/unknown</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/useful</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/useful</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/victory</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/victory</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/village</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/village</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/virtual</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/virtual</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/volume</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/volume</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/wedding</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/wedding</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/welcome</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/welcome</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/whisper</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/whisper</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/witness</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/witness</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/retains</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/retains</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stainer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stainer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/plates</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/plates</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/integral</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/integral</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/triangle</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/triangle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/altering</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/altering</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/relating</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/relating</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/alerting</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/alerting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/tearing</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/tearing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reading</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reading</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/stranger</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/stranger</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/training</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/training</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/painters</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/painters</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/creates</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/creates</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/catered</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/catered</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lexorawords.com/unscramble/reacted</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://www.lexorawords.com/unscramble/reacted</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

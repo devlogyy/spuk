@@ -17,7 +17,7 @@ function siteBaseUrl(): string {
   return (
     env.PUBLIC_SITE_URL ||
     env.SITE_URL ||
-    "https://lexorawords.com"
+    "https://www.lexorawords.com"
   ).replace(/\/$/, "");
 }
 

@@ -86,4 +86,4 @@ Allow: /
 Disallow: /admin
 Disallow: /auth
 
-Sitemap: https://lexorawords.com/sitemap.xml
+Sitemap: https://www.lexorawords.com/sitemap.xml

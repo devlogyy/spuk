@@ -3,7 +3,7 @@
 import { writeFileSync, readFileSync } from "fs";
 import { resolve } from "path";
 
-const BASE_URL = "https://lexorawords.com";
+const BASE_URL = "https://www.lexorawords.com";
 
 interface SitemapEntry {
   path: string;
@@ -88,40 +88,36 @@ const POPULAR_RACKS = [
 ];
 const UNIQUE_RACKS = Array.from(new Set(POPULAR_RACKS.map((r) => r.toLowerCase())));
 
-const today = new Date().toISOString().split("T")[0];
 
 const staticEntries: SitemapEntry[] = [
-  { path: "/", changefreq: "weekly", priority: "1.0", lastmod: today },
-  { path: "/scrabble-solver", changefreq: "weekly", priority: "0.9", lastmod: today },
-  { path: "/crossword-solver", changefreq: "weekly", priority: "0.9", lastmod: today },
-  { path: "/word-finder", changefreq: "weekly", priority: "0.9", lastmod: today },
-  { path: "/blog", changefreq: "weekly", priority: "0.8", lastmod: today },
-  { path: "/words", changefreq: "weekly", priority: "0.9", lastmod: today },
-  { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: today },
-  { path: "/contact", changefreq: "monthly", priority: "0.4", lastmod: today },
-  { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: today },
-  { path: "/terms", changefreq: "yearly", priority: "0.3", lastmod: today },
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/scrabble-solver", changefreq: "weekly", priority: "0.9" },
+  { path: "/crossword-solver", changefreq: "weekly", priority: "0.9" },
+  { path: "/word-finder", changefreq: "weekly", priority: "0.9" },
+  { path: "/blog", changefreq: "weekly", priority: "0.8" },
+  { path: "/words", changefreq: "weekly", priority: "0.9" },
+  { path: "/about", changefreq: "monthly", priority: "0.5" },
+  { path: "/contact", changefreq: "monthly", priority: "0.4" },
+  { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+  { path: "/terms", changefreq: "yearly", priority: "0.3" },
 ];
 
 const blogEntries: SitemapEntry[] = BLOG_SLUGS.map((slug) => ({
   path: `/blog/${slug}`,
   changefreq: "monthly",
   priority: "0.8",
-  lastmod: today,
 }));
 
 const startingEntries: SitemapEntry[] = LETTERS.map((l) => ({
   path: `/words/starting-with/${l}`,
   changefreq: "monthly",
   priority: "0.7",
-  lastmod: today,
 }));
 
 const endingEntries: SitemapEntry[] = LETTERS.map((l) => ({
   path: `/words/ending-in/${l}`,
   changefreq: "monthly",
   priority: "0.7",
-  lastmod: today,
 }));
 
 const nLetterEntries: SitemapEntry[] = [];
@@ -132,7 +128,6 @@ for (const n of N_LETTER_LENGTHS) {
       path: `/words/${n}-letter-words-with-${l}`,
       changefreq: "monthly",
       priority: "0.6",
-      lastmod: today,
     });
   }
 }
@@ -141,7 +136,6 @@ const unscrambleEntries: SitemapEntry[] = UNIQUE_RACKS.map((r) => ({
   path: `/unscramble/${r}`,
   changefreq: "monthly",
   priority: "0.6",
-  lastmod: today,
 }));
 
 const entries: SitemapEntry[] = [
