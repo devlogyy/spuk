@@ -90,12 +90,12 @@ export default function ScrabbleSolver() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Scrabble Solver — US & UK Dictionary | Lexora</title>
-        <meta name="description" content="Free AI Scrabble Solver. Enter your tiles to find the highest scoring words with US (TWL) and UK (SOWPODS) dictionary support, blanks, and advanced filters." />
+        <title>Scrabble Word Finder & Solver — Every Play From Your Rack | Lexora</title>
+        <meta name="description" content="Free Scrabble word finder. Enter your rack (blanks with ?) and get every legal play ranked by tile score, validated in TWL (US) and SOWPODS (UK), with starts-with and length filters." />
         <link rel="canonical" href={absoluteUrl("/scrabble-solver")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Scrabble Solver — US & UK Dictionary | Lexora" />
-        <meta property="og:description" content="Find the highest scoring Scrabble plays from your tiles. Supports blanks, advanced filters and both US (TWL) and UK (SOWPODS) dictionaries." />
+        <meta property="og:title" content="Scrabble Word Finder & Solver — Every Play From Your Rack | Lexora" />
+        <meta property="og:description" content="Scrabble word finder and cheat: every legal play from your rack, ranked by tile score, in US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content={absoluteUrl("/scrabble-solver")} />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(softwareApplicationSchema({
@@ -132,9 +132,12 @@ export default function ScrabbleSolver() {
           <Grid3x3 className="h-3.5 w-3.5 text-primary" /> Scrabble Solver
         </div>
         <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
-          Find the <span className="text-gradient">highest scoring</span> Scrabble plays
+          Scrabble word finder — every <span className="text-gradient">high scoring</span> play from your rack
         </h1>
-        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="speakable-intro mt-2 max-w-2xl rounded-2xl border border-border bg-card p-4 text-sm sm:text-base">
+          <strong>Quick answer:</strong> Enter the tiles on your Scrabble rack and Lexora returns every legal word you can play, ranked by real tile score. Use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for a blank tile. Every word is validated against TWL06 for US play and SOWPODS for UK play, and you can filter by starting letter, ending letter, contained letters or minimum length.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
           A Scrabble solver returns every legal word you can play from a rack of tiles, ranked by tile score. Lexora checks your letters against the official TWL (US) and SOWPODS (UK) tournament dictionaries and shows the best play in under a second. Type your tiles, tap <strong>Find Best Words</strong>, and get every legal play sorted by score.
         </p>
       </motion.header>
