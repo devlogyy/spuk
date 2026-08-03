@@ -130,15 +130,18 @@ function checkRobots() {
 }
 
 function checkSitemap() {
-  const path = resolve(SITEMAP);
-  if (!existsSync(path)) { err("sitemap.xml", "public/sitemap.xml is missing — run `bun run predev`"); return; }
-  const xml = readFileSync(path, "utf8");
+  // sitemap.xml is a sitemap index; the URLs live in the child sitemaps.
+  const files = [SITEMAP, "public/sitemap-pages.xml", "public/sitemap-blog.xml", "public/sitemap-words.xml"];
+  const present = files.filter((f) => existsSync(resolve(f)));
+  if (!present.length) { err("sitemap.xml", "public/sitemap.xml is missing — run `bun run predev`"); return; }
+  const xml = present.map((f) => readFileSync(resolve(f), "utf8")).join("\n");
   for (const p of PAGES) {
-    if (!xml.includes(`<loc>`) || !new RegExp(`<loc>[^<]*${p.route}(?:\\?[^<]*)?</loc>`).test(xml)) {
+    if (!new RegExp(`<loc>[^<]*${p.route}(?:\\?[^<]*)?</loc>`).test(xml)) {
       err("sitemap.xml", `missing entry for ${p.route}`);
     }
   }
 }
+
 
 // ----- Run -----
 PAGES.forEach(checkPage);
