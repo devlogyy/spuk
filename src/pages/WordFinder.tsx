@@ -17,6 +17,8 @@ import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, spe
 import { solveAnagram, warmDictionaries, type SolverResult } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
+  { q: "What is the best word unscrambler?", a: "Lexora unscrambles against the full TWL tournament word list, returns both full anagrams and every shorter sub-word, and filters by exact length for Wordle — free, instant, and running entirely in your browser." },
+  { q: "How many words can I make from my letters?", a: "It depends on the letters, but a typical 7-letter rack yields between 50 and 300 valid words. Lexora shows the exact count above the results along with each word's Scrabble score." },
   { q: "How do I unscramble letters?", a: "Type the letters you have in any order, then tap Find Words. The Word Finder returns every valid dictionary word that can be made from your letters." },
   { q: "What's the difference between Word Finder and Scrabble Solver?", a: "Word Finder shows every legal word from your letters in any order. Scrabble Solver does the same but ranks results by tile score and supports both US and UK Scrabble dictionaries." },
   { q: "Can I find words of a specific length?", a: "Yes. Use the length filter (2 through 7) to show only words of that exact length, which is perfect for Wordle, crosswords, and word puzzles." },
@@ -81,11 +83,11 @@ export default function WordFinder() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Word Finder & Anagram Solver | Lexora</title>
-        <meta name="description" content="Unscramble letters, find anagrams, and discover every possible word. Sort by score, length, popularity or alphabetical. Free and fast." />
+        <title>Word Unscrambler & Anagram Solver — Any Letters | Lexora</title>
+        <meta name="description" content="Free word unscrambler and anagram solver. Enter your letters to see every valid word you can make, sorted by score and length, with a 5-letter filter for Wordle." />
         <link rel="canonical" href={absoluteUrl("/word-finder")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Word Finder & Anagram Solver | Lexora" />
+        <meta property="og:title" content="Word Unscrambler & Anagram Solver — Any Letters | Lexora" />
         <meta property="og:description" content="Unscramble letters and find every possible word in seconds. Free anagram solver for Scrabble, Wordle, crosswords and more." />
         <meta property="og:url" content={absoluteUrl("/word-finder")} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -123,9 +125,12 @@ export default function WordFinder() {
           <Search className="h-3.5 w-3.5 text-primary" /> Word Finder
         </div>
         <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
-          Unscramble anything. <span className="text-gradient">Instantly.</span>
+          Word unscrambler — turn any letters into <span className="text-gradient">every valid word</span>
         </h1>
-        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="speakable-intro mt-2 max-w-2xl rounded-2xl border border-border bg-card p-4 text-sm sm:text-base">
+          <strong>Quick answer:</strong> Type your letters in any order and Lexora unscrambles them into every valid dictionary word, including all shorter sub-words, sorted by length and Scrabble score. Filter to an exact length between 2 and 7 for Wordle and crosswords, and use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for a blank or wildcard letter.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
           A word finder unscrambles a set of letters into every valid dictionary word you can make from them. Lexora checks your letters against the TWL Scrabble word list and returns every anagram, ranked by score and length. Type your letters, tap <strong>Find Words</strong>, and see every possible word — sorted, scored and ready to play.
         </p>
       </motion.header>

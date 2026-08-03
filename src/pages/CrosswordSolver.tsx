@@ -16,6 +16,8 @@ import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, spe
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
+  { q: "How does a crossword solver work?", a: "You enter the letters you already know and a ? for each blank square, for example C?T??. The solver pattern-matches that exact shape against a 260,000-word dictionary and returns every answer of the right length that fits your known letters." },
+  { q: "Can I solve a crossword clue knowing only the letter count?", a: "Yes. Enter one ? per square — ????? for a five-letter answer — then add letters as crossing words confirm them. Each confirmed letter typically cuts the candidate list by more than half." },
   { q: "How does the Lexora Crossword Solver work?", a: "Enter the letters you already have and use ? for unknown squares. The solver matches your pattern against the full US (TWL) or UK (SOWPODS) dictionary in real time." },
   { q: "What does C?T?? mean?", a: "It's a pattern: C in position 1, any letter in position 2, T in position 3, then any two letters. Matches include CATCH, CITED, CUTUP and more." },
   { q: "Can I solve cryptic crossword clues?", a: "The pattern matcher works on letters you have. For cryptic wordplay (anagrams, hidden words, charades), pair it with our guide to solving any crossword clue." },
@@ -73,11 +75,11 @@ export default function CrosswordSolver() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Crossword Solver — Pattern Matching | Lexora</title>
-        <meta name="description" content="Solve any crossword with pattern matching across US & UK dictionaries. Enter a pattern like C?T?? and get every legal answer." />
+        <title>Crossword Solver & Clue Finder — Answers by Pattern | Lexora</title>
+        <meta name="description" content="Free crossword solver and clue finder. Enter the letters you know and ? for the blanks (e.g. C?T??) to get every crossword answer that fits, across 260,000+ words." />
         <link rel="canonical" href={absoluteUrl("/crossword-solver")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Crossword Solver — Pattern Matching | Lexora" />
+        <meta property="og:title" content="Crossword Solver & Clue Finder — Answers by Pattern | Lexora" />
         <meta property="og:description" content="Crack any crossword clue with real-time pattern matching across the full US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content={absoluteUrl("/crossword-solver")} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -115,9 +117,12 @@ export default function CrosswordSolver() {
           <Puzzle className="h-3.5 w-3.5 text-primary" /> Crossword Solver
         </div>
         <h1 className="speakable-h1 mt-4 font-display text-3xl font-black tracking-tight sm:text-5xl">
-          Solve any clue with <span className="text-gradient">pattern matching</span>
+          Crossword solver — find <span className="text-gradient">answers by letter pattern</span>
         </h1>
-        <p className="speakable-intro mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="speakable-intro mt-2 max-w-2xl rounded-2xl border border-border bg-card p-4 text-sm sm:text-base">
+          <strong>Quick answer:</strong> Enter the letters you already have and a <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for every empty square — for example <code>C?T??</code> — and Lexora returns every dictionary word of that exact shape. It matches across more than 260,000 words, so partial answers with one or two known crossing letters still narrow down fast.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
           A crossword solver takes the letters you already have plus wildcards for the empty squares and returns every dictionary word that fits. Lexora pattern-matches against both the TWL and SOWPODS dictionaries in real time. Type your letters, use <kbd className="rounded bg-muted px-1.5 py-0.5 text-xs">?</kbd> for blanks, then tap <strong>Solve Puzzle</strong>.
         </p>
       </motion.header>

@@ -37,11 +37,11 @@ export default function Home() {
   return (
     <div className="relative">
       <Helmet>
-        <title>Lexora — Scrabble Solver, Crossword & Word Finder</title>
-        <meta name="description" content="Premium word game platform. Scrabble solver, crossword solver, anagram generator and word finder with US (TWL) & UK (SOWPODS) dictionaries." />
+        <title>Scrabble Word Finder, Crossword Solver & Unscrambler | Lexora</title>
+        <meta name="description" content="Free Scrabble word finder, crossword solver and word unscrambler. Enter your letters or clue pattern and get every valid word ranked by score — TWL (US) and SOWPODS (UK)." />
         <link rel="canonical" href="https://www.lexorawords.com/" />
-        <meta property="og:title" content="Lexora — Scrabble Solver, Crossword & Word Finder" />
-        <meta property="og:description" content="Premium word game platform. Scrabble solver, crossword solver, anagram generator and word finder." />
+        <meta property="og:title" content="Scrabble Word Finder, Crossword Solver & Unscrambler | Lexora" />
+        <meta property="og:description" content="Free Scrabble word finder, crossword solver and word unscrambler with US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content="https://www.lexorawords.com/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -94,10 +94,10 @@ export default function Home() {
               <span>Word Intelligence · v1.0</span>
             </div>
             <h1 className="speakable-h1 font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Dominate every <span className="text-gradient">word game</span> you play.
+              Scrabble word finder, crossword solver &amp; <span className="text-gradient">word unscrambler</span>.
             </h1>
             <p className="speakable-intro mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Lexora is a free, AI-powered word intelligence platform that finds the highest-scoring Scrabble plays, solves crossword patterns, and unscrambles anagrams — all validated against the official US (TWL) and UK (SOWPODS) tournament dictionaries. Built for serious players.
+              Enter your Scrabble rack to get every legal play ranked by tile score, type a crossword pattern like <code>C?T??</code> to find answers that fit, or unscramble any letters into every valid word. Free, instant, and validated against the TWL (US) and SOWPODS (UK) tournament dictionaries.
             </p>
 
 

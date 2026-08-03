@@ -170,5 +170,28 @@ function generateSitemap(entries: SitemapEntry[]) {
   ].join("\n");
 }
 
-writeFileSync(resolve("public/sitemap.xml"), generateSitemap(entries));
-console.log(`sitemap.xml written (${entries.length} entries)`);
+function generateIndex(files: string[]) {
+  return [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ...files.map((f) => `  <sitemap>\n    <loc>${BASE_URL}/${f}</loc>\n  </sitemap>`),
+    `</sitemapindex>`,
+    "",
+  ].join("\n");
+}
+
+// Split into a sitemap index so Search Console reports coverage per section
+// (pages / blog / word lists) instead of one opaque 550-URL blob.
+const pageEntries = [...staticEntries];
+const wordEntries = [...startingEntries, ...endingEntries, ...nLetterEntries, ...unscrambleEntries];
+
+writeFileSync(resolve("public/sitemap-pages.xml"), generateSitemap(pageEntries));
+writeFileSync(resolve("public/sitemap-blog.xml"), generateSitemap(blogEntries));
+writeFileSync(resolve("public/sitemap-words.xml"), generateSitemap(wordEntries));
+writeFileSync(
+  resolve("public/sitemap.xml"),
+  generateIndex(["sitemap-pages.xml", "sitemap-blog.xml", "sitemap-words.xml"]),
+);
+console.log(
+  `sitemap index written (${pageEntries.length} pages, ${blogEntries.length} blog, ${wordEntries.length} word lists = ${entries.length} URLs)`,
+);
