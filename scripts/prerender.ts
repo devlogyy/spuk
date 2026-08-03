@@ -65,6 +65,8 @@ function canMake(word: string, rack: string): boolean {
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+const article = (l: string) => ("AEFHILMNORSX".includes(l.toUpperCase()) ? "an" : "a");
+
 const abs = (p: string) => `${SITE_URL}${p.startsWith("/") ? p : `/${p}`}`;
 
 interface FAQ { q: string; a: string }
@@ -409,7 +411,7 @@ function buildPage(path: string): Page {
       title: `${n} Letter Words With ${L} — All ${total.toLocaleString()} Words${n === 5 ? " (Wordle Help)" : ""} | Lexora`,
       description: `Complete list of ${n} letter words containing ${L}, with Scrabble scores.${n === 5 ? " Perfect for narrowing Wordle guesses." : ""} ${total.toLocaleString()} valid words from the TWL dictionary.`,
       h1: `${n} letter words with ${L}`,
-      quickAnswer: `There are ${total.toLocaleString()} valid ${n}-letter words containing the letter ${L}. The highest scoring is ${top[0] ?? "—"} at ${top[0] ? scoreWord(top[0]) : 0} Scrabble points. ${n === 5 ? "Because every entry is exactly five letters, this list doubles as a Wordle shortlist once you know the puzzle contains a " + L + "." : "All words are validated against the TWL tournament dictionary."}`,
+      quickAnswer: `There are ${total.toLocaleString()} valid ${n}-letter words containing the letter ${L}. The highest scoring is ${top[0] ?? "—"} at ${top[0] ? scoreWord(top[0]) : 0} Scrabble points. ${n === 5 ? "Because every entry is exactly five letters, this list doubles as a Wordle shortlist once you know the puzzle contains " + article(L) + " " + L + "." : "All words are validated against the TWL tournament dictionary."}`,
       bodyHtml:
         `<section><h2>Highest scoring ${n} letter words with ${L}</h2>${wordGrid(top, 10)}</section>
 <section><h2>All ${n} letter words with ${L}</h2>${wordGrid(words, 400)}</section>` + TOOL_LINKS,
@@ -583,7 +585,7 @@ function render(template: string, path: string, page: Page): string {
     .replace(/<meta\s+name="twitter:(?:card|title|description)"[^>]*>\s*/gi, "")
     .replace(/<link\s+rel="canonical"[^>]*>\s*/gi, "");
 
-  html = html.replace("</head>", `    ${head}\n  </head>`);
+  html = html.replace("</head>", `    ${head}\n    <style id="prerender-style">.prerender-shell{max-width:56rem;margin:0 auto;padding:2.5rem 1.25rem 4rem;font-family:system-ui,-apple-system,"Plus Jakarta Sans",sans-serif;color:#1c1917;line-height:1.6}.prerender-shell h1{font-size:1.9rem;line-height:1.2;margin:0 0 .75rem}.prerender-shell h2{font-size:1.25rem;margin:2rem 0 .5rem}.prerender-shell h3{font-size:1rem;margin:1rem 0 .25rem}.prerender-answer{font-size:1.05rem;color:#44403c}.prerender-shell a{color:#c2410c;text-decoration:none}.prerender-words{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(11rem,1fr));gap:.35rem}@media(prefers-color-scheme:dark){.prerender-shell{color:#fafaf9}.prerender-answer{color:#d6d3d1}}</style>\n  </head>`);
   html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
   return html;
 }
