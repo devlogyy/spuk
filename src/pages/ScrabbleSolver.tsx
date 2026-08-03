@@ -17,6 +17,8 @@ import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, spe
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
+  { q: "What is the best Scrabble word finder?", a: "Lexora's Scrabble word finder ranks every legal play from your rack by real tile score and validates each word against both TWL (US) and SOWPODS (UK) tournament dictionaries. It is free, needs no sign-up, and supports blank tiles and starts-with, ends-with, contains and length filters." },
+  { q: "How do I find the highest scoring word from my letters?", a: "Enter all your tiles, keep the sort set to score, and the top result is the highest raw tile score available from that rack. Multiply mentally by any premium square you can reach on the board." },
   { q: "Is the Lexora Scrabble Solver free to use?", a: "Yes. The Scrabble Solver is completely free, supports both the US (TWL) and UK (SOWPODS) dictionaries, and has no sign-up." },
   { q: "How do I use a blank tile?", a: "Type ? for each blank tile in your rack. For example, AERST? returns every word that can be formed using those six letters plus one wildcard." },
   { q: "Is QI a valid Scrabble word?", a: "Yes. QI is valid in both TWL and SOWPODS dictionaries and is one of the most-played Q-without-U words at the competitive level." },

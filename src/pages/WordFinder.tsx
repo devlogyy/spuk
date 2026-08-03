@@ -17,6 +17,8 @@ import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, spe
 import { solveAnagram, warmDictionaries, type SolverResult } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
+  { q: "What is the best word unscrambler?", a: "Lexora unscrambles against the full TWL tournament word list, returns both full anagrams and every shorter sub-word, and filters by exact length for Wordle — free, instant, and running entirely in your browser." },
+  { q: "How many words can I make from my letters?", a: "It depends on the letters, but a typical 7-letter rack yields between 50 and 300 valid words. Lexora shows the exact count above the results along with each word's Scrabble score." },
   { q: "How do I unscramble letters?", a: "Type the letters you have in any order, then tap Find Words. The Word Finder returns every valid dictionary word that can be made from your letters." },
   { q: "What's the difference between Word Finder and Scrabble Solver?", a: "Word Finder shows every legal word from your letters in any order. Scrabble Solver does the same but ranks results by tile score and supports both US and UK Scrabble dictionaries." },
   { q: "Can I find words of a specific length?", a: "Yes. Use the length filter (2 through 7) to show only words of that exact length, which is perfect for Wordle, crosswords, and word puzzles." },

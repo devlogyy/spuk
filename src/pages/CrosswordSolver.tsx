@@ -16,6 +16,8 @@ import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, spe
 import { matchPattern, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
 
 const FAQS: FAQItem[] = [
+  { q: "How does a crossword solver work?", a: "You enter the letters you already know and a ? for each blank square, for example C?T??. The solver pattern-matches that exact shape against a 260,000-word dictionary and returns every answer of the right length that fits your known letters." },
+  { q: "Can I solve a crossword clue knowing only the letter count?", a: "Yes. Enter one ? per square — ????? for a five-letter answer — then add letters as crossing words confirm them. Each confirmed letter typically cuts the candidate list by more than half." },
   { q: "How does the Lexora Crossword Solver work?", a: "Enter the letters you already have and use ? for unknown squares. The solver matches your pattern against the full US (TWL) or UK (SOWPODS) dictionary in real time." },
   { q: "What does C?T?? mean?", a: "It's a pattern: C in position 1, any letter in position 2, T in position 3, then any two letters. Matches include CATCH, CITED, CUTUP and more." },
   { q: "Can I solve cryptic crossword clues?", a: "The pattern matcher works on letters you have. For cryptic wordplay (anagrams, hidden words, charades), pair it with our guide to solving any crossword clue." },
