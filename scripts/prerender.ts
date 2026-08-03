@@ -238,7 +238,7 @@ function buildPage(path: string): Page {
       { q: "Which dictionaries does Lexora use?", a: "TWL06 for US play and SOWPODS for UK and international play. You can switch between them on any tool." },
     ];
     return {
-      title: "Scrabble Word Finder, Crossword Solver & Word Unscrambler | Lexora",
+      title: "Scrabble Word Finder, Crossword Solver & Unscrambler | Lexora",
       description:
         "Free Scrabble word finder, crossword solver and word unscrambler. Enter your letters or clue pattern and get every valid word ranked by score — TWL (US) and SOWPODS (UK).",
       h1: "Scrabble word finder, crossword solver and word unscrambler",
@@ -259,9 +259,9 @@ function buildPage(path: string): Page {
   if (path === "/scrabble-solver") {
     const faqs = TOOL_FAQS[path];
     return {
-      title: "Scrabble Word Finder & Solver — Every Play From Your Rack | Lexora",
+      title: "Scrabble Word Finder — Every Play From Your Rack | Lexora",
       description:
-        "Free Scrabble word finder. Enter your rack (blanks with ?) and get every legal play ranked by tile score, validated in TWL (US) and SOWPODS (UK). Filters for starts with, ends with and length.",
+        "Free Scrabble word finder. Enter your rack (? for blanks) and get every legal play ranked by tile score, validated in TWL (US) and SOWPODS (UK).",
       h1: "Scrabble word finder — every legal play from your rack",
       quickAnswer:
         "Enter the tiles on your Scrabble rack and Lexora returns every legal word you can play, ranked by real tile score. Use ? for a blank tile. Each word is validated against TWL06 for US play and SOWPODS for UK play, and you can filter by starting letter, ending letter, contained letters or minimum length.",
@@ -282,7 +282,7 @@ function buildPage(path: string): Page {
   if (path === "/crossword-solver") {
     const faqs = TOOL_FAQS[path];
     return {
-      title: "Crossword Solver & Clue Finder — Answers by Letter Pattern | Lexora",
+      title: "Crossword Solver & Clue Finder — Answers by Pattern | Lexora",
       description:
         "Free crossword solver. Enter the letters you know and ? for the blanks (e.g. C?T??) to get every crossword answer that fits, across 260,000+ dictionary words.",
       h1: "Crossword solver — find answers by letter pattern",
@@ -309,7 +309,7 @@ function buildPage(path: string): Page {
   if (path === "/word-finder") {
     const faqs = TOOL_FAQS[path];
     return {
-      title: "Word Unscrambler & Anagram Solver — Unscramble Any Letters | Lexora",
+      title: "Word Unscrambler & Anagram Solver — Any Letters | Lexora",
       description:
         "Free word unscrambler and anagram solver. Enter your letters to see every valid word you can make, sorted by score and length, with a filter for 5-letter Wordle answers.",
       h1: "Word unscrambler — turn any letters into every valid word",

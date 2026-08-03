@@ -92,11 +92,11 @@ export default function ScrabbleSolver() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Scrabble Word Finder & Solver — Every Play From Your Rack | Lexora</title>
-        <meta name="description" content="Free Scrabble word finder. Enter your rack (blanks with ?) and get every legal play ranked by tile score, validated in TWL (US) and SOWPODS (UK), with starts-with and length filters." />
+        <title>Scrabble Word Finder — Every Play From Your Rack | Lexora</title>
+        <meta name="description" content="Free Scrabble word finder. Enter your rack (? for blanks) and get every legal play ranked by tile score, validated in TWL (US) and SOWPODS (UK)." />
         <link rel="canonical" href={absoluteUrl("/scrabble-solver")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Scrabble Word Finder & Solver — Every Play From Your Rack | Lexora" />
+        <meta property="og:title" content="Scrabble Word Finder — Every Play From Your Rack | Lexora" />
         <meta property="og:description" content="Scrabble word finder and cheat: every legal play from your rack, ranked by tile score, in US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content={absoluteUrl("/scrabble-solver")} />
         <meta name="twitter:card" content="summary_large_image" />

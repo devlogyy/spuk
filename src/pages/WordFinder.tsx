@@ -83,11 +83,11 @@ export default function WordFinder() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Word Unscrambler & Anagram Solver — Unscramble Any Letters | Lexora</title>
+        <title>Word Unscrambler & Anagram Solver — Any Letters | Lexora</title>
         <meta name="description" content="Free word unscrambler and anagram solver. Enter your letters to see every valid word you can make, sorted by score and length, with a 5-letter filter for Wordle." />
         <link rel="canonical" href={absoluteUrl("/word-finder")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Word Unscrambler & Anagram Solver — Unscramble Any Letters | Lexora" />
+        <meta property="og:title" content="Word Unscrambler & Anagram Solver — Any Letters | Lexora" />
         <meta property="og:description" content="Unscramble letters and find every possible word in seconds. Free anagram solver for Scrabble, Wordle, crosswords and more." />
         <meta property="og:url" content={absoluteUrl("/word-finder")} />
         <meta name="twitter:card" content="summary_large_image" />

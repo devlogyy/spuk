@@ -75,11 +75,11 @@ export default function CrosswordSolver() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Crossword Solver & Clue Finder — Answers by Letter Pattern | Lexora</title>
+        <title>Crossword Solver & Clue Finder — Answers by Pattern | Lexora</title>
         <meta name="description" content="Free crossword solver and clue finder. Enter the letters you know and ? for the blanks (e.g. C?T??) to get every crossword answer that fits, across 260,000+ words." />
         <link rel="canonical" href={absoluteUrl("/crossword-solver")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Crossword Solver & Clue Finder — Answers by Letter Pattern | Lexora" />
+        <meta property="og:title" content="Crossword Solver & Clue Finder — Answers by Pattern | Lexora" />
         <meta property="og:description" content="Crack any crossword clue with real-time pattern matching across the full US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content={absoluteUrl("/crossword-solver")} />
         <meta name="twitter:card" content="summary_large_image" />

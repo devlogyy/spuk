@@ -37,10 +37,10 @@ export default function Home() {
   return (
     <div className="relative">
       <Helmet>
-        <title>Scrabble Word Finder, Crossword Solver & Word Unscrambler | Lexora</title>
+        <title>Scrabble Word Finder, Crossword Solver & Unscrambler | Lexora</title>
         <meta name="description" content="Free Scrabble word finder, crossword solver and word unscrambler. Enter your letters or clue pattern and get every valid word ranked by score — TWL (US) and SOWPODS (UK)." />
         <link rel="canonical" href="https://www.lexorawords.com/" />
-        <meta property="og:title" content="Scrabble Word Finder, Crossword Solver & Word Unscrambler | Lexora" />
+        <meta property="og:title" content="Scrabble Word Finder, Crossword Solver & Unscrambler | Lexora" />
         <meta property="og:description" content="Free Scrabble word finder, crossword solver and word unscrambler with US (TWL) and UK (SOWPODS) dictionaries." />
         <meta property="og:url" content="https://www.lexorawords.com/" />
         <meta property="og:type" content="website" />
