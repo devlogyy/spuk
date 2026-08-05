@@ -12,7 +12,15 @@ export default defineConfig({
   server: { host: "::", port: 8080 },
   build: {
     cssCodeSplit: true,
+    // Only preload what the first paint actually needs; heavy vendor chunks
+    // (charts, database client, animation) load on demand instead of
+    // competing with the stylesheet for bandwidth.
+    modulePreload: {
+      resolveDependencies: (_url, deps) =>
+        deps.filter((d) => !/(charts|supabase|radix|motion)-/.test(d)),
+    },
     rollupOptions: {
+
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
