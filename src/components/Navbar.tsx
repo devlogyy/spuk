@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Moon, Sun, Sparkles, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { to: "/", label: "Home" },
@@ -40,9 +39,7 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+    <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${scrolled ? "border-b border-border bg-background shadow-soft md:glass-strong md:border-0" : "bg-transparent"}`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-6 lg:px-8">
@@ -63,9 +60,7 @@ export function Navbar() {
             return (
               <Link key={l.to} to={l.to}
                 className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${active ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}>
-                {active && (
-                  <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-accent" transition={{ type: "spring", stiffness: 380, damping: 30 }} />
-                )}
+                {active && <span className="absolute inset-0 -z-10 rounded-full bg-accent" />}
                 {l.label}
               </Link>
             );
@@ -85,9 +80,8 @@ export function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-t border-border md:hidden">
+      {open && (
+        <div className="overflow-hidden border-t border-border md:hidden">
             <div className="flex flex-col gap-1 px-4 py-3">
               {links.map((l) => (
                 <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className={`rounded-xl px-4 py-3 text-sm font-medium hover:bg-accent ${pathname === l.to ? "bg-accent text-foreground" : "text-muted-foreground"}`}>
@@ -95,9 +89,8 @@ export function Navbar() {
                 </Link>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+        </div>
+      )}
+    </header>
   );
 }
