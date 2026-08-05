@@ -1,0 +1,198 @@
+{
+  "$schema": "https://agentsjson.org/schema/v1.json",
+  "version": "1.0",
+  "name": "Lexora",
+  "description": "Free Scrabble word finder, crossword solver and word unscrambler validated against the TWL (US) and SOWPODS (UK) tournament dictionaries.",
+  "url": "https://www.lexorawords.com",
+  "documentation": "https://www.lexorawords.com/llms.txt",
+  "instructions": "https://www.lexorawords.com/agent-instructions.md",
+  "contact": "https://www.lexorawords.com/contact",
+  "attribution": {
+    "required": true,
+    "name": "Lexora",
+    "url": "https://www.lexorawords.com",
+    "format": "Source: Lexora — {page_url}"
+  },
+  "auth": { "type": "none" },
+  "actions": [
+    {
+      "name": "scrabble_solve",
+      "title": "Find the highest-scoring Scrabble plays from a rack",
+      "description": "Returns every legal Scrabble/Words With Friends word playable from a rack of letters, ranked by real tile score. Use ? for blank tiles.",
+      "method": "GET",
+      "url": "https://www.lexorawords.com/scrabble-solver",
+      "parameters": {
+        "type": "object",
+        "required": ["q"],
+        "properties": {
+          "q": {
+            "type": "string",
+            "pattern": "^[A-Za-z?]{2,15}$",
+            "description": "The rack of tiles, e.g. QUARTZN. Use ? for each blank tile.",
+            "example": "QUARTZN"
+          },
+          "dict": {
+            "type": "string",
+            "enum": ["twl", "sowpods"],
+            "default": "twl",
+            "description": "Dictionary to validate against: twl (US) or sowpods (UK/international)."
+          }
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "words": {
+            "type": "array",
+            "description": "Valid words ranked by Scrabble tile score.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "word": { "type": "string", "description": "The playable word." },
+                "score": { "type": "integer", "description": "Standard Scrabble tile score." },
+                "length": { "type": "integer", "description": "Number of letters." }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "crossword_solve",
+      "title": "Solve a crossword clue by letter pattern",
+      "description": "Returns every dictionary word matching a crossword pattern of known letters and unknown squares. Use ? for each empty square.",
+      "method": "GET",
+      "url": "https://www.lexorawords.com/crossword-solver",
+      "parameters": {
+        "type": "object",
+        "required": ["q"],
+        "properties": {
+          "q": {
+            "type": "string",
+            "pattern": "^[A-Za-z?]{2,15}$",
+            "description": "The answer pattern, one character per square. ? marks an unknown square, e.g. C?T??.",
+            "example": "C?T??"
+          },
+          "dict": {
+            "type": "string",
+            "enum": ["twl", "sowpods"],
+            "default": "twl",
+            "description": "Dictionary to match against."
+          }
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "words": {
+            "type": "array",
+            "description": "Every word of the exact shape requested.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "word": { "type": "string", "description": "A word matching the pattern." },
+                "score": { "type": "integer", "description": "Standard Scrabble tile score." },
+                "length": { "type": "integer", "description": "Number of letters." }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "unscramble_letters",
+      "title": "Unscramble letters into every valid word",
+      "description": "Returns every anagram and shorter sub-word that can be built from a set of letters, optionally filtered to an exact length (set 5 for Wordle shortlists).",
+      "method": "GET",
+      "url": "https://www.lexorawords.com/word-finder",
+      "parameters": {
+        "type": "object",
+        "required": ["q"],
+        "properties": {
+          "q": {
+            "type": "string",
+            "pattern": "^[A-Za-z?]{2,15}$",
+            "description": "The scrambled letters, e.g. LISTENING. Use ? for a wildcard letter.",
+            "example": "LISTENING"
+          },
+          "length": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 15,
+            "description": "Return only words of this exact length."
+          }
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "words": {
+            "type": "array",
+            "description": "Every valid word buildable from the supplied letters.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "word": { "type": "string", "description": "A valid word from the letters." },
+                "score": { "type": "integer", "description": "Standard Scrabble tile score." },
+                "length": { "type": "integer", "description": "Number of letters." }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "browse_word_list",
+      "title": "Browse a curated word list",
+      "description": "Opens a prerendered list of dictionary words filtered by starting letter, ending letter, or length plus a contained letter.",
+      "method": "GET",
+      "url": "https://www.lexorawords.com/words",
+      "parameters": {
+        "type": "object",
+        "required": ["list"],
+        "properties": {
+          "list": {
+            "type": "string",
+            "enum": ["starting-with", "ending-in", "n-letter-words-with"],
+            "description": "Which list family to open."
+          },
+          "letter": {
+            "type": "string",
+            "pattern": "^[a-z]$",
+            "description": "Lowercase letter the list is built around, e.g. q.",
+            "example": "q"
+          },
+          "length": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 15,
+            "description": "Word length, only used with n-letter-words-with.",
+            "example": 5
+          }
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "Canonical URL of the matching word list page." },
+          "words": {
+            "type": "array",
+            "description": "Words on that list with their Scrabble scores.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "word": { "type": "string", "description": "A word on the list." },
+                "score": { "type": "integer", "description": "Standard Scrabble tile score." }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "mcp": {
+    "endpoint": "https://www.lexorawords.com/mcp",
+    "transport": "streamable-http",
+    "tools": ["scrabble_solve", "crossword_match", "word_info"]
+  }
+}
