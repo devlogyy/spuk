@@ -83,12 +83,10 @@ export default function Home() {
         <div className="absolute left-1/2 top-20 -z-10 h-72 w-72 -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
             className="mx-auto max-w-3xl text-center"
           >
+
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-soft">
               <Sparkles className="h-3 w-3 text-primary" />
               <span>Word Intelligence · v1.0</span>
