@@ -19,7 +19,22 @@
     <meta name="twitter:description" content="Premium AI Scrabble Solver, Crossword Solver, Anagram & Word Finder with US (TWL) and UK (SOWPODS) dictionaries." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@600;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@600;800&display=swap" />
+    </noscript>
+
+    <!-- Agent auto-discovery -->
+    <link rel="llms-txt" type="text/plain" href="/llms.txt" />
+    <link rel="agents-json" type="application/json" href="/agents.json" />
+    <link rel="agent-instructions" type="text/markdown" href="/agent-instructions.md" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
