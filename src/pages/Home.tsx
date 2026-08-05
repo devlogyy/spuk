@@ -261,15 +261,12 @@ export default function Home() {
           <Link to="/blog" className="shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary">All posts →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {homeBlogPosts.map((p, i) => (
-            <motion.article
+          {homeBlogPosts.map((p) => (
+            <article
               key={p.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
               className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
             >
+
               <Link to={`/blog/${p.slug}`} rel="bookmark" aria-label={`Read: ${p.title}`} className="block">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <img
