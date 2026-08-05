@@ -149,7 +149,7 @@ export default function Home() {
               <div className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-gold" /> Realtime scoring</div>
               <div className="hidden items-center gap-1.5 sm:flex"><Brain className="h-3.5 w-3.5 text-primary" /> AI coming soon</div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
