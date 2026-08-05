@@ -68,10 +68,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
     };
 
-    const idle = (cb: () => void) =>
-      "requestIdleCallback" in window
-        ? (window as unknown as { requestIdleCallback: (c: () => void, o?: object) => number }).requestIdleCallback(cb, { timeout: 2000 })
-        : window.setTimeout(cb, 200);
+    const idle = (cb: () => void) => {
+      const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
+      if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 3000 });
+      else setTimeout(cb, 400);
+    };
     idle(() => void start());
 
     return () => {

@@ -49,10 +49,11 @@ export function useAnalytics() {
       if (data && !cancelled) sessionRowId.current = data.id;
     };
 
-    const idle = (cb: () => void) =>
-      "requestIdleCallback" in window
-        ? (window as unknown as { requestIdleCallback: (c: () => void, o?: object) => number }).requestIdleCallback(cb, { timeout: 3000 })
-        : window.setTimeout(cb, 400);
+    const idle = (cb: () => void) => {
+      const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
+      if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 3000 });
+      else setTimeout(cb, 400);
+    };
     idle(() => void track());
 
     const onScroll = () => {
