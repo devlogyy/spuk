@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { useConsent } from "@/hooks/useConsent";
+
+/** Loaded lazily so analytics never blocks first paint or hydration. */
+const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
 function getSessionId(): string {
   let id = sessionStorage.getItem("lex_sid");
@@ -26,22 +28,33 @@ export function useAnalytics() {
     enteredAt.current = Date.now();
     maxScroll.current = 0;
     sessionRowId.current = null;
+    let cancelled = false;
 
-    supabase.from("page_views").insert({
-      path: pathname,
-      session_id: sid,
-      referrer: document.referrer || null,
-      user_agent: navigator.userAgent,
-    });
+    const track = async () => {
+      const supabase = await loadSupabase();
+      if (cancelled) return;
 
-    supabase
-      .from("page_sessions")
-      .insert({ session_id: sid, path: pathname })
-      .select("id")
-      .single()
-      .then(({ data }) => {
-        if (data) sessionRowId.current = data.id;
+      supabase.from("page_views").insert({
+        path: pathname,
+        session_id: sid,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
       });
+
+      const { data } = await supabase
+        .from("page_sessions")
+        .insert({ session_id: sid, path: pathname })
+        .select("id")
+        .single();
+      if (data && !cancelled) sessionRowId.current = data.id;
+    };
+
+    const idle = (cb: () => void) => {
+      const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
+      if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 3000 });
+      else setTimeout(cb, 400);
+    };
+    idle(() => void track());
 
     const onScroll = () => {
       const h = document.documentElement;
@@ -53,21 +66,26 @@ export function useAnalytics() {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const flush = () => {
-      if (!sessionRowId.current) return;
+      const rowId = sessionRowId.current;
+      if (!rowId) return;
       const duration = Date.now() - enteredAt.current;
-      supabase
-        .from("page_sessions")
-        .update({
-          left_at: new Date().toISOString(),
-          duration_ms: duration,
-          max_scroll_pct: maxScroll.current,
-        })
-        .eq("id", sessionRowId.current);
+      const scroll = maxScroll.current;
+      void loadSupabase().then((supabase) =>
+        supabase
+          .from("page_sessions")
+          .update({
+            left_at: new Date().toISOString(),
+            duration_ms: duration,
+            max_scroll_pct: scroll,
+          })
+          .eq("id", rowId),
+      );
     };
 
     window.addEventListener("pagehide", flush);
 
     return () => {
+      cancelled = true;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pagehide", flush);
       flush();

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
+
 import {
   Grid3x3, Puzzle, Search, Sparkles, ArrowRight, Trophy, Zap,
   TrendingUp, Brain, Globe, Flame
@@ -83,12 +83,10 @@ export default function Home() {
         <div className="absolute left-1/2 top-20 -z-10 h-72 w-72 -translate-x-1/2 rounded-full opacity-30 blur-3xl" style={{ background: "var(--gradient-mesh)" }} />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
             className="mx-auto max-w-3xl text-center"
           >
+
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-soft">
               <Sparkles className="h-3 w-3 text-primary" />
               <span>Word Intelligence · v1.0</span>
@@ -151,7 +149,7 @@ export default function Home() {
               <div className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-gold" /> Realtime scoring</div>
               <div className="hidden items-center gap-1.5 sm:flex"><Brain className="h-3.5 w-3.5 text-primary" /> AI coming soon</div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -263,15 +261,12 @@ export default function Home() {
           <Link to="/blog" className="shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-primary hover:text-primary">All posts →</Link>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {homeBlogPosts.map((p, i) => (
-            <motion.article
+          {homeBlogPosts.map((p) => (
+            <article
               key={p.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
               className="group overflow-hidden rounded-3xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:shadow-glow"
             >
+
               <Link to={`/blog/${p.slug}`} rel="bookmark" aria-label={`Read: ${p.title}`} className="block">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <img
@@ -297,7 +292,7 @@ export default function Home() {
                 </div>
               </Link>
 
-            </motion.article>
+            </article>
           ))}
         </div>
       </section>

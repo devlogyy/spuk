@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
+import type { Session, User } from "@supabase/supabase-js";
+
+/** Loaded lazily so the ~54 kB auth/database client stays off the critical path. */
+const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
 interface AuthCtx {
   user: User | null;
@@ -25,7 +27,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+    let unsubscribe: (() => void) | undefined;
+    let cancelled = false;
+
+    const start = async () => {
+      const supabase = await loadSupabase();
+      if (cancelled) return;
+      const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
       setSession(s);
       setUser(s?.user ?? null);
       if (s?.user) {
@@ -41,9 +49,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } else {
         setIsAdmin(false);
       }
-    });
+      });
+      unsubscribe = () => sub.subscription.unsubscribe();
 
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
+      supabase.auth.getSession().then(({ data: { session: s } }) => {
       setSession(s);
       setUser(s?.user ?? null);
       setLoading(false);
@@ -55,13 +64,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .eq("role", "admin")
           .maybeSingle()
           .then(({ data }) => setIsAdmin(!!data));
-      }
-    });
+        }
+      });
+    };
 
-    return () => sub.subscription.unsubscribe();
+    const idle = (cb: () => void) => {
+      const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
+      if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 3000 });
+      else setTimeout(cb, 400);
+    };
+    idle(() => void start());
+
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   const signOut = async () => {
+    const supabase = await loadSupabase();
     await supabase.auth.signOut();
   };
 

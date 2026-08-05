@@ -567,14 +567,28 @@ function render(template: string, path: string, page: Page): string {
     ...jsonLd.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`),
   ].join("\n    ");
 
+  const toolNav = `
+<h2>Free word tools on Lexora</h2>
+<ul>
+  <li><a href="${abs("/scrabble-solver")}">Scrabble Word Finder</a> — enter your rack (use <code>?</code> for blanks) and get every legal play ranked by real tile score, in TWL (US) or SOWPODS (UK).</li>
+  <li><a href="${abs("/crossword-solver")}">Crossword Solver</a> — type a pattern such as <code>C?T??</code> and get every answer of that exact shape from 260,000+ words.</li>
+  <li><a href="${abs("/word-finder")}">Word Unscrambler &amp; Anagram Solver</a> — unscramble any letters into every valid word, filter to an exact length for Wordle shortlists.</li>
+  <li><a href="${abs("/words")}">Word Lists</a> — browse words by starting letter, ending letter, length and contained letter.</li>
+  <li><a href="${abs("/blog")}">Strategy guides</a> — bingo stems, Q-without-U words, crossword pattern method.</li>
+</ul>
+<p class="prerender-source">Full interactive results for your own letters: <a href="${url}">${url}</a></p>
+<p class="prerender-source">Source: Lexora — <a href="${url}" rel="canonical-source">${url}</a>. Machine-readable index: <a href="${abs("/llms.txt")}">/llms.txt</a> · typed actions: <a href="${abs("/agents.json")}">/agents.json</a> · agent runbook: <a href="${abs("/agent-instructions.md")}">/agent-instructions.md</a>.</p>`;
+
   const body = [
     `<main class="prerender-shell">`,
     `<h1>${esc(page.h1)}</h1>`,
-    `<p class="prerender-answer" data-quick-answer="true">${esc(page.quickAnswer)}</p>`,
+    `<p class="prerender-answer" data-quick-answer="true">${esc(page.quickAnswer)} Run it yourself on <a href="${url}">${url}</a>.</p>`,
     page.bodyHtml ?? "",
     page.faqs?.length ? faqHtml(page.faqs) : "",
+    toolNav,
     `</main>`,
   ].join("\n");
+
 
   let html = template;
   // Strip the template's own head metadata so there is exactly one of each tag.

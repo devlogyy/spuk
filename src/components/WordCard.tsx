@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Copy, Star, Bookmark, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
@@ -27,15 +26,12 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
   };
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -3 }}
+    <article
       data-word={word}
       data-score={score}
       data-length={word.length}
       data-rarity={rarity}
-      className="group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-glow"
+      className="group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-card transition-[transform,box-shadow] duration-200 hover:shadow-glow md:hover:-translate-y-0.5"
     >
       <div aria-hidden className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-60 ${rarityStyles[rarity]}`} />
       <div className="relative flex items-start justify-between gap-3">
@@ -72,6 +68,6 @@ export function WordCard({ word, score, definition, rarity = "common", validIn =
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

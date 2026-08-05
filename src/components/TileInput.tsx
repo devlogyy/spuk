@@ -14,6 +14,7 @@ export function TileInput({ value, onChange, placeholder = "Enter your letters",
     <div className="space-y-3">
       <div className="glass-strong flex items-center gap-2 rounded-2xl p-2 shadow-soft">
         <input
+          aria-label={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value.replace(/[^a-zA-Z?*]/g, "").slice(0, max))}
           placeholder={placeholder}
@@ -22,6 +23,8 @@ export function TileInput({ value, onChange, placeholder = "Enter your letters",
           spellCheck={false}
         />
         <button
+          type="button"
+          aria-label="Clear letters"
           onClick={() => onChange("")}
           className="rounded-xl px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:bg-accent"
         >

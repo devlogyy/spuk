@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+/** Loaded lazily so the database client stays off the critical rendering path. */
+const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 import { useConsent } from "@/hooks/useConsent";
 
 interface Props {
@@ -34,23 +35,35 @@ export function AdSlot({ zoneKey, className }: Props) {
   const [zone, setZone] = useState<{ id: string; enabled: boolean; ad_slot_id: string | null } | null>(null);
 
   useEffect(() => {
-    supabase
-      .from("ad_zones")
-      .select("id, enabled, ad_slot_id")
-      .eq("key", zoneKey)
-      .maybeSingle()
-      .then(({ data }) => setZone(data));
+    let cancelled = false;
+    const load = async () => {
+      const supabase = await loadSupabase();
+      const { data } = await supabase
+        .from("ad_zones")
+        .select("id, enabled, ad_slot_id")
+        .eq("key", zoneKey)
+        .maybeSingle();
+      if (!cancelled) setZone(data);
+    };
+    const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
+    if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(() => void load(), { timeout: 3000 });
+    else setTimeout(() => void load(), 400);
+    return () => {
+      cancelled = true;
+    };
   }, [zoneKey]);
 
   useEffect(() => {
     if (!zone?.enabled || !consent.ads) return;
     const sid = getSessionId();
-    supabase.from("ad_events").insert({
-      zone_id: zone.id,
-      zone_key: zoneKey,
-      session_id: sid,
-      event_type: "impression",
-    });
+    void loadSupabase().then((supabase) =>
+      supabase.from("ad_events").insert({
+        zone_id: zone.id,
+        zone_key: zoneKey,
+        session_id: sid,
+        event_type: "impression",
+      }),
+    );
     if (ADSENSE_CLIENT && zone.ad_slot_id) {
       ensureAdsenseScript();
       try {
@@ -65,12 +78,14 @@ export function AdSlot({ zoneKey, className }: Props) {
 
   const trackClick = () => {
     const sid = getSessionId();
-    supabase.from("ad_events").insert({
-      zone_id: zone.id,
-      zone_key: zoneKey,
-      session_id: sid,
-      event_type: "click",
-    });
+    void loadSupabase().then((supabase) =>
+      supabase.from("ad_events").insert({
+        zone_id: zone.id,
+        zone_key: zoneKey,
+        session_id: sid,
+        event_type: "click",
+      }),
+    );
   };
 
   if (!ADSENSE_CLIENT || !zone.ad_slot_id) {

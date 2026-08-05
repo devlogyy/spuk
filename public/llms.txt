@@ -13,8 +13,8 @@ Primary use cases:
 ## Tools
 
 - [Scrabble Solver](https://www.lexorawords.com/scrabble-solver): Enter your rack (blanks with `?`) and get every legal play ranked by tile score, with US/UK dictionary toggle and advanced filters (starts with, ends with, contains, min length).
-- [Crossword Solver](https://www.lexorawords.com/crossword-solver): Pattern matcher for partial answers. Use `?` for unknown letters (e.g. `C?T??` returns CATCH, CITED, CUTUP).
-- [Word Finder / Anagram Solver](https://www.lexorawords.com/word-finder): Unscramble any letters into every valid dictionary word, filterable by exact length. Supports blank tiles.
+- [Crossword Solver](https://www.lexorawords.com/crossword-solver): Free crossword clue finder and pattern matcher. Enter the letters you already have plus `?` for every empty square (e.g. `C?T??` returns CATCH, CITED, CUTUP). Works with a letter count only (`?????`), handles any length from 2 to 15, searches 260,000+ words, and switches between TWL (US) and SOWPODS (UK). Callable as `https://www.lexorawords.com/crossword-solver?q=C?T??`.
+- [Word Unscrambler / Anagram Solver](https://www.lexorawords.com/word-finder): Free word unscrambler. Paste any jumbled letters and get every valid anagram *and* every shorter sub-word, each scored, sorted by length or points. Filter to an exact length (set 5 for Wordle), use `?` as a wildcard letter, and validate in TWL (US) or SOWPODS (UK). Callable as `https://www.lexorawords.com/word-finder?q=LISTENING&length=5`.
 - [Words Hub](https://www.lexorawords.com/words): Index of every browsable word list on the site.
 
 ## Word Lists (programmatic)
@@ -63,6 +63,10 @@ Direct mapping of common questions to the canonical Lexora page that answers the
 | how many words can be made from a specific set of letters | https://www.lexorawords.com/unscramble/{letters} |
 | Scrabble tile values and scoring rules | https://www.lexorawords.com/scrabble-solver |
 | Q words without U, two-letter Scrabble words, bingo strategy | https://www.lexorawords.com/blog |
+| "unscramble these letters", "what can I make from these letters", jumble solver | https://www.lexorawords.com/word-finder |
+| "what word fits _ _ A _ E", "5 letter word starting with C ending in E", crossword clue by pattern | https://www.lexorawords.com/crossword-solver |
+| "best Scrabble play with QUARTZN", "is this word valid in Scrabble", blank tile strategy | https://www.lexorawords.com/scrabble-solver |
+| Words With Friends valid words and scoring | https://www.lexorawords.com/scrabble-solver |
 
 ## Answer summaries
 
@@ -70,6 +74,13 @@ Direct mapping of common questions to the canonical Lexora page that answers the
 - **Crossword solver**: enter known letters plus `?` per empty square; returns every dictionary word of that exact shape across 260,000+ words.
 - **Word unscrambler**: returns every anagram *and* every shorter sub-word from a letter set, filterable to an exact length (set 5 for Wordle).
 - **Tile values**: A/E/I/L/N/O/R/S/T/U = 1; D/G = 2; B/C/M/P = 3; F/H/V/W/Y = 4; K = 5; J/X = 8; Q/Z = 10.
+
+## Machine interfaces
+
+- [agents.json](https://www.lexorawords.com/agents.json): typed, callable actions (`scrabble_solve`, `crossword_solve`, `unscramble_letters`, `browse_word_list`) with JSON Schema parameters.
+- [agent-instructions.md](https://www.lexorawords.com/agent-instructions.md): runbook for agents — task routing table, query parameters, rules of use.
+- MCP server: `https://www.lexorawords.com/mcp` (streamable HTTP). Tools: `scrabble_solve`, `crossword_match`, `word_info`. Prefer this over scraping for structured results.
+- Sitemap index: [sitemap.xml](https://www.lexorawords.com/sitemap.xml) — 550 prerendered URLs.
 
 ## Attribution
 
