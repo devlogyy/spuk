@@ -135,7 +135,7 @@ export default function CrosswordSolver() {
         ]} />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-4 shadow-card sm:p-6">
-          <SmartInput label="Pattern" value={pattern} onChange={setPattern} onSubmit={handleSearch} placeholder="C?T??" helper="Use ? for unknown letters. Example: C?T?? matches CATCH." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?_ ]/g} />
+          <SmartInput label="Pattern" value={pattern} onChange={setPattern} onSubmit={handleSearch} placeholder="C?T??" helper="Use ? for unknown letters. Example: C?T?? matches CATCH." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?_ ]/g} toolName="solve_crossword_pattern" toolDescription="Solve a crossword clue by pattern: enter the letters you know and ? for each empty square (e.g. C?T??) to get every dictionary word of that shape." fieldName="pattern" />
 
           {slots.length > 0 && slots.length <= 15 && (
             <div className="flex flex-wrap gap-1.5 sm:gap-2">

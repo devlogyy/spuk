@@ -35,6 +35,9 @@ export function AdSlot({ zoneKey, className }: Props) {
   const [zone, setZone] = useState<{ id: string; enabled: boolean; ad_slot_id: string | null } | null>(null);
 
   useEffect(() => {
+    // Without ads consent no ad can render, so skip the zone lookup entirely
+    // and keep the database client off the main thread.
+    if (!consent.ads) return;
     let cancelled = false;
     const load = async () => {
       const supabase = await loadSupabase();
@@ -51,7 +54,7 @@ export function AdSlot({ zoneKey, className }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [zoneKey]);
+  }, [zoneKey, consent.ads]);
 
   useEffect(() => {
     if (!zone?.enabled || !consent.ads) return;
@@ -73,7 +76,13 @@ export function AdSlot({ zoneKey, className }: Props) {
     }
   }, [zone, zoneKey, consent.ads]);
 
-  if (!zone?.enabled) return null;
+  // Reserve the slot height for consenting users while the zone resolves, so
+  // an ad appearing later never pushes content down (CLS / agentic layout
+  // stability). Non-consenting users get nothing at all, so nothing shifts.
+  if (!zone) {
+    return consent.ads ? <div className={`my-4 min-h-[100px] ${className ?? ""}`} aria-hidden="true" /> : null;
+  }
+  if (!zone.enabled) return null;
   if (!consent.ads) return null;
 
   const trackClick = () => {

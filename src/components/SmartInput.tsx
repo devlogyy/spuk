@@ -14,9 +14,16 @@ interface Props {
   allow?: RegExp;
   /** uppercase the value */
   upper?: boolean;
+  /** WebMCP declarative tool name exposed to browser agents */
+  toolName?: string;
+  /** WebMCP declarative tool description exposed to browser agents */
+  toolDescription?: string;
+  /** name attribute of the input, used as the agent-facing parameter name */
+  fieldName?: string;
 }
 
 export function SmartInput({
+
   label,
   value,
   onChange,
@@ -27,6 +34,9 @@ export function SmartInput({
   max = 20,
   allow = /[^a-zA-Z?*_ ]/g,
   upper = true,
+  toolName,
+  toolDescription,
+  fieldName = "query",
 }: Props) {
   const id = useId();
   const helperId = `${id}-helper`;
@@ -44,18 +54,33 @@ export function SmartInput({
     }
   };
 
+  // Declarative WebMCP: agents discover this form as a callable tool.
+  const toolAttrs = toolName
+    ? { toolname: toolName, tooldescription: toolDescription ?? label }
+    : {};
+
   return (
-    <div className="space-y-2">
+    <form
+      className="space-y-2"
+      {...toolAttrs}
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit?.();
+      }}
+    >
       <label htmlFor={id} className="block text-sm font-semibold text-foreground">
         {label}
       </label>
       <div className="glass-strong flex items-center gap-2 rounded-2xl p-2 shadow-soft">
         <input
           id={id}
+          name={fieldName}
+          type="text"
           value={value}
           onChange={(e) => handle(e.target.value)}
           onKeyDown={onKey}
           placeholder={placeholder}
+          aria-label={label}
           aria-describedby={helper ? helperId : undefined}
           inputMode="text"
           autoCapitalize="characters"
@@ -65,6 +90,7 @@ export function SmartInput({
         />
         {value && (
           <button
+            type="button"
             onClick={() => onChange("")}
             aria-label="Clear input"
             className="grid h-11 w-11 place-items-center rounded-xl text-muted-foreground transition hover:bg-accent hover:text-foreground"
@@ -84,14 +110,16 @@ export function SmartInput({
           {examples.map((ex) => (
             <button
               key={ex}
+              type="button"
               onClick={() => onChange(ex)}
               className="min-h-9 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-semibold tracking-wider text-foreground transition hover:border-primary hover:text-primary"
             >
               {ex}
             </button>
           ))}
+
         </div>
       )}
-    </div>
+    </form>
   );
 }

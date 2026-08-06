@@ -101,28 +101,35 @@ export default function Home() {
 
             <div className="mx-auto mt-8 max-w-xl">
               <label htmlFor="hero-search" className="sr-only">Enter your letters</label>
-              <div className="glass-strong flex flex-col gap-2 rounded-3xl p-2 shadow-glow sm:flex-row sm:items-center sm:rounded-2xl">
+              <form
+                onSubmit={(e) => { e.preventDefault(); goFind(); }}
+                {...{ toolname: "find_words_from_letters", tooldescription: "Find every valid Scrabble, crossword and anagram word from a set of letters. Enter letters (use ? for a blank tile or unknown crossword square) and submit to open the ranked results." }}
+                className="glass-strong flex flex-col gap-2 rounded-3xl p-2 shadow-glow sm:flex-row sm:items-center sm:rounded-2xl"
+              >
                 <div className="flex items-center gap-2">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
+                  <div aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary to-gold text-primary-foreground">
                     <Search className="h-5 w-5" />
                   </div>
                   <input
                     id="hero-search"
+                    name="letters"
+                    type="text"
+                    aria-label="Letters to find words from"
                     value={q}
                     onChange={(e) => setQ(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && goFind()}
                     placeholder="Type your letters, e.g. QUARTZN"
                     autoCapitalize="characters"
                     className="h-12 min-w-0 flex-1 bg-transparent px-2 text-base font-semibold tracking-wider outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-muted-foreground"
                   />
                 </div>
                 <button
-                  onClick={() => goFind()}
+                  type="submit"
                   className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-gradient-to-r from-primary to-gold px-5 text-sm font-bold text-primary-foreground shadow-glow sm:w-auto"
                 >
                   Find words
                 </button>
-              </div>
+              </form>
+
               <p className="mt-2 text-center text-xs text-muted-foreground">
                 Use <kbd className="rounded bg-muted px-1.5 py-0.5">?</kbd> for blank tiles. We'll find every legal word.
               </p>

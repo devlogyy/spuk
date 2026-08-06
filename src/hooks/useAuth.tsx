@@ -68,6 +68,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
     };
 
+    // Nothing on the public site needs auth. Only boot the client when a stored
+    // session exists or the visitor is on an auth-gated route, so the 200 kB
+    // database chunk never lands on a first-time visitor's main thread.
+    const needsAuth =
+      /^\/(auth|admin)/.test(window.location.pathname) ||
+      Object.keys(localStorage).some((k) => k.startsWith("sb-") && k.endsWith("-auth-token"));
+    if (!needsAuth) {
+      setLoading(false);
+      return;
+    }
+
     const idle = (cb: () => void) => {
       const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
       if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 3000 });
