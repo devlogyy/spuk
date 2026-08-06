@@ -6,6 +6,7 @@ import { MobileNav } from "@/components/MobileNav";
 import Home from "@/pages/Home";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { CookieConsent } from "@/components/CookieConsent";
+import { WebMcpTools } from "@/components/WebMcpTools";
 import { lazyRoute } from "@/lib/lazy-route";
 
 const ScrabbleSolver = lazyRoute(() => import("@/pages/ScrabbleSolver"));
