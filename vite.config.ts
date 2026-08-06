@@ -24,9 +24,9 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
-          // Tiny shared utilities stay in the entry chunk. They can be nested
-          // inside recharts, and grouping them into "charts" would drag the
-          // whole 400 kB chart bundle onto every page.
+          // Tiny shared class-name helpers get their own chunk: left to
+          // Rollup they get merged into "charts", which would drag the 400 kB
+          // chart bundle onto every page.
           if (/[\\/](clsx|tailwind-merge|class-variance-authority)[\\/]/.test(id)) return "utils";
           if (id.includes("recharts") || id.includes("victory-vendor") || /node_modules\/d3-/.test(id)) return "charts";
           if (id.includes("framer-motion") || id.includes("motion-dom") || id.includes("motion-utils")) return "motion";
