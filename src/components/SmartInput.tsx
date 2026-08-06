@@ -14,9 +14,16 @@ interface Props {
   allow?: RegExp;
   /** uppercase the value */
   upper?: boolean;
+  /** WebMCP declarative tool name exposed to browser agents */
+  toolName?: string;
+  /** WebMCP declarative tool description exposed to browser agents */
+  toolDescription?: string;
+  /** name attribute of the input, used as the agent-facing parameter name */
+  fieldName?: string;
 }
 
 export function SmartInput({
+
   label,
   value,
   onChange,
