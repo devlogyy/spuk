@@ -69,6 +69,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen">
       <AnalyticsTracker />
+      <WebMcpTools />
       <Navbar />
       <main className="pb-24 md:pb-0">
         <Suspense fallback={<RouteFallback />}>
