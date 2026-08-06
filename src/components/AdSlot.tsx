@@ -54,7 +54,7 @@ export function AdSlot({ zoneKey, className }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [zoneKey]);
+  }, [zoneKey, consent.ads]);
 
   useEffect(() => {
     if (!zone?.enabled || !consent.ads) return;
