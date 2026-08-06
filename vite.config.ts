@@ -24,11 +24,10 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
-          if (/clsx/.test(id)) console.log("CLSXID", id);
           // Tiny shared utilities stay in the entry chunk. They can be nested
           // inside recharts, and grouping them into "charts" would drag the
           // whole 400 kB chart bundle onto every page.
-          if (/[\\/](clsx|tailwind-merge|class-variance-authority)[\\/]/.test(id)) return;
+          if (/[\\/](clsx|tailwind-merge|class-variance-authority)[\\/]/.test(id)) return "utils";
           if (id.includes("recharts") || id.includes("victory-vendor") || /node_modules\/d3-/.test(id)) return "charts";
           if (id.includes("framer-motion") || id.includes("motion-dom") || id.includes("motion-utils")) return "motion";
           if (id.includes("@supabase")) return "supabase";
