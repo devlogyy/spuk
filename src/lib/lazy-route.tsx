@@ -1,9 +1,9 @@
-import type { ComponentType } from "react";
+import type { ComponentType, ReactElement } from "react";
 
 type Loader = () => Promise<{ default: ComponentType<Record<string, never>> }>;
 
 export interface PreloadableComponent {
-  (props: Record<string, never>): JSX.Element;
+  (props: Record<string, never>): ReactElement;
   preload: () => Promise<void>;
 }
 
