@@ -120,6 +120,6 @@ export function SmartInput({
 
         </div>
       )}
-    </div>
+    </form>
   );
 }
