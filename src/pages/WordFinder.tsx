@@ -139,7 +139,7 @@ export default function WordFinder() {
         <HowItWorks />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-4 shadow-card sm:p-6">
-          <SmartInput label="Your letters" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. LISTENING" helper="Enter the letters you have. We'll find every word that fits." examples={EXAMPLES} max={20} allow={/[^a-zA-Z?]/g} />
+          <SmartInput label="Your letters" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. LISTENING" helper="Enter the letters you have. We'll find every word that fits." examples={EXAMPLES} max={20} allow={/[^a-zA-Z?]/g} toolName="unscramble_letters" toolDescription="Unscramble letters into every valid anagram and shorter sub-word, scored and sortable. Set a length filter for Wordle." fieldName="letters" />
 
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Length:</span>

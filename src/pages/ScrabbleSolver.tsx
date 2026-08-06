@@ -148,7 +148,7 @@ export default function ScrabbleSolver() {
         <HowItWorks />
 
         <div className="space-y-4 rounded-3xl border border-border bg-card p-4 shadow-card sm:p-6">
-          <SmartInput label="Your tiles" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. AERST?" helper="Type up to 15 letters. Use ? for a blank tile." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?]/g} />
+          <SmartInput label="Your tiles" value={letters} onChange={setLetters} onSubmit={handleSearch} placeholder="e.g. AERST?" helper="Type up to 15 letters. Use ? for a blank tile." examples={EXAMPLES} max={15} allow={/[^a-zA-Z?]/g} toolName="find_scrabble_words" toolDescription="Find the highest-scoring Scrabble and Words With Friends plays from a rack of letters. Use ? for a blank tile." fieldName="letters" />
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <div className="glass flex w-full rounded-full p-1 sm:w-auto" role="tablist" aria-label="Dictionary">
