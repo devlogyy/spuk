@@ -24,6 +24,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
+          if (/clsx/.test(id)) console.log("CLSXID", id);
           // Tiny shared utilities stay in the entry chunk. They can be nested
           // inside recharts, and grouping them into "charts" would drag the
           // whole 400 kB chart bundle onto every page.
