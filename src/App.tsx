@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -6,24 +6,54 @@ import { MobileNav } from "@/components/MobileNav";
 import Home from "@/pages/Home";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { CookieConsent } from "@/components/CookieConsent";
+import { lazyRoute } from "@/lib/lazy-route";
 
-const ScrabbleSolver = lazy(() => import("@/pages/ScrabbleSolver"));
-const CrosswordSolver = lazy(() => import("@/pages/CrosswordSolver"));
-const WordFinder = lazy(() => import("@/pages/WordFinder"));
-const Blog = lazy(() => import("@/pages/Blog"));
-const BlogPost = lazy(() => import("@/pages/BlogPost"));
-const Auth = lazy(() => import("@/pages/Auth"));
-const Admin = lazy(() => import("@/pages/Admin"));
-const NotFound = lazy(() => import("@/pages/NotFound"));
-const WordsHub = lazy(() => import("@/pages/WordsHub"));
-const WordsStartingWith = lazy(() => import("@/pages/programmatic/WordsStartingWith"));
-const WordsEndingIn = lazy(() => import("@/pages/programmatic/WordsEndingIn"));
-const NLetterWordsWith = lazy(() => import("@/pages/programmatic/NLetterWordsWith"));
-const Unscramble = lazy(() => import("@/pages/programmatic/Unscramble"));
-const About = lazy(() => import("@/pages/About"));
-const Contact = lazy(() => import("@/pages/Contact"));
-const Privacy = lazy(() => import("@/pages/Privacy"));
-const Terms = lazy(() => import("@/pages/Terms"));
+const ScrabbleSolver = lazyRoute(() => import("@/pages/ScrabbleSolver"));
+const CrosswordSolver = lazyRoute(() => import("@/pages/CrosswordSolver"));
+const WordFinder = lazyRoute(() => import("@/pages/WordFinder"));
+const Blog = lazyRoute(() => import("@/pages/Blog"));
+const BlogPost = lazyRoute(() => import("@/pages/BlogPost"));
+const Auth = lazyRoute(() => import("@/pages/Auth"));
+const Admin = lazyRoute(() => import("@/pages/Admin"));
+const NotFound = lazyRoute(() => import("@/pages/NotFound"));
+const WordsHub = lazyRoute(() => import("@/pages/WordsHub"));
+const WordsStartingWith = lazyRoute(() => import("@/pages/programmatic/WordsStartingWith"));
+const WordsEndingIn = lazyRoute(() => import("@/pages/programmatic/WordsEndingIn"));
+const NLetterWordsWith = lazyRoute(() => import("@/pages/programmatic/NLetterWordsWith"));
+const Unscramble = lazyRoute(() => import("@/pages/programmatic/Unscramble"));
+const About = lazyRoute(() => import("@/pages/About"));
+const Contact = lazyRoute(() => import("@/pages/Contact"));
+const Privacy = lazyRoute(() => import("@/pages/Privacy"));
+const Terms = lazyRoute(() => import("@/pages/Terms"));
+
+/**
+ * Resolve the chunk for the current URL *before* hydration so the prerendered
+ * markup is replaced by the real page in one commit — no placeholder frame,
+ * no layout shift.
+ */
+export function preloadRouteFor(pathname: string): Promise<unknown> {
+  const p = pathname.replace(/\/+$/, "") || "/";
+  const map: Array<[RegExp, { preload: () => Promise<void> }]> = [
+    [/^\/scrabble-solver$/, ScrabbleSolver],
+    [/^\/crossword-solver$/, CrosswordSolver],
+    [/^\/word-finder$/, WordFinder],
+    [/^\/blog$/, Blog],
+    [/^\/blog\/.+/, BlogPost],
+    [/^\/words$/, WordsHub],
+    [/^\/words\/starting-with\/.+/, WordsStartingWith],
+    [/^\/words\/ending-in\/.+/, WordsEndingIn],
+    [/^\/words\/.+/, NLetterWordsWith],
+    [/^\/unscramble\/.+/, Unscramble],
+    [/^\/about$/, About],
+    [/^\/contact$/, Contact],
+    [/^\/privacy$/, Privacy],
+    [/^\/terms$/, Terms],
+    [/^\/auth$/, Auth],
+    [/^\/admin$/, Admin],
+  ];
+  const hit = map.find(([re]) => re.test(p));
+  return hit ? hit[1].preload() : Promise.resolve();
+}
 
 function AnalyticsTracker() {
   useAnalytics();
@@ -31,7 +61,7 @@ function AnalyticsTracker() {
 }
 
 function RouteFallback() {
-  return <div className="min-h-[60vh]" aria-busy="true" aria-label="Loading page" />;
+  return <div className="min-h-screen" aria-busy="true" aria-label="Loading page" />;
 }
 
 export default function App() {
