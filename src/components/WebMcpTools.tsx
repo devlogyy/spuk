@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import type { DictName, SolverResult } from "@/lib/dictionary";
 
 /**
  * WebMCP (experimental Chrome API). Registers Lexora's word tools with the
@@ -19,26 +20,19 @@ const text = (value: unknown) => ({
   content: [{ type: "text" as const, text: JSON.stringify(value) }],
 });
 
+const toDict = (v: unknown): DictName => (String(v ?? "US").toUpperCase() === "UK" ? "UK" : "US");
+const slim = (rows: SolverResult[]) => rows.map((r) => ({ word: r.word, score: r.score }));
+
 export function WebMcpTools() {
   useEffect(() => {
     const ctx = (document as unknown as { modelContext?: ModelContext }).modelContext;
     if (!ctx || typeof ctx.registerTool !== "function") return;
 
-    const dict = () => import("@/lib/dictionary");
-
-    const register = async () => {
-      const { solveRack, matchPattern, wordInfo } = (await dict()) as unknown as Record<string, never>;
-      void solveRack;
-      void matchPattern;
-      void wordInfo;
-    };
-    void register;
-
     const tools = [
       {
         name: "find_scrabble_words",
         description:
-          "Find every legal Scrabble or Words With Friends play from a rack of letters, ranked by tile score. Use '?' for a blank tile. Returns words with scores from the TWL (US) or SOWPODS (UK) dictionary.",
+          "Find every legal Scrabble or Words With Friends play from a rack of letters, ranked by tile score. Use '?' for a blank tile. Validated against the TWL (US) or SOWPODS (UK) dictionary.",
         inputSchema: {
           type: "object",
           properties: {
@@ -48,15 +42,11 @@ export function WebMcpTools() {
           required: ["letters"],
         },
         execute: async (args: Record<string, unknown>) => {
-          const { solveRack } = await import("@/lib/dictionary");
-          const res = await solveRack(
-            String(args.letters ?? ""),
-            (String(args.dictionary ?? "US").toUpperCase() === "UK" ? "UK" : "US") as "US" | "UK",
-            50,
-          );
+          const { solveAnagram } = await import("@/lib/dictionary");
+          const res = await solveAnagram(String(args.letters ?? ""), { dict: toDict(args.dictionary), max: 50 });
           return text({
             source: "Lexora — https://www.lexorawords.com/scrabble-solver",
-            results: res.map((r) => ({ word: r.word, score: r.score })),
+            results: slim(res),
           });
         },
       },
@@ -74,42 +64,37 @@ export function WebMcpTools() {
         },
         execute: async (args: Record<string, unknown>) => {
           const { matchPattern } = await import("@/lib/dictionary");
-          const res = await matchPattern(
-            String(args.pattern ?? ""),
-            (String(args.dictionary ?? "US").toUpperCase() === "UK" ? "UK" : "US") as "US" | "UK",
-            50,
-          );
+          const res = await matchPattern(String(args.pattern ?? ""), toDict(args.dictionary), 50);
           return text({
             source: "Lexora — https://www.lexorawords.com/crossword-solver",
-            results: res.map((r) => ({ word: r.word, score: r.score })),
+            results: slim(res),
           });
         },
       },
       {
         name: "unscramble_letters",
         description:
-          "Unscramble letters into every valid anagram and sub-word, each with its Scrabble score. Useful for anagrams, jumbles and Wordle shortlists.",
+          "Unscramble letters into every valid anagram and shorter sub-word, each with its Scrabble score. Useful for anagrams, jumble puzzles and Wordle shortlists.",
         inputSchema: {
           type: "object",
           properties: {
             letters: { type: "string", description: "Letters to unscramble, e.g. LISTENING." },
-            length: { type: "number", description: "Optional exact word length filter." },
+            length: { type: "number", description: "Optional exact word length filter (set 5 for Wordle)." },
             dictionary: { type: "string", description: "US or UK" },
           },
           required: ["letters"],
         },
         execute: async (args: Record<string, unknown>) => {
-          const { solveRack } = await import("@/lib/dictionary");
-          const res = await solveRack(
-            String(args.letters ?? ""),
-            (String(args.dictionary ?? "US").toUpperCase() === "UK" ? "UK" : "US") as "US" | "UK",
-            100,
-          );
-          const len = Number(args.length ?? 0);
-          const filtered = len > 0 ? res.filter((r) => r.word.length === len) : res;
+          const { solveAnagram } = await import("@/lib/dictionary");
+          const exactLen = Number(args.length ?? 0);
+          const res = await solveAnagram(String(args.letters ?? ""), {
+            dict: toDict(args.dictionary),
+            max: 100,
+            ...(exactLen > 0 ? { exactLen } : {}),
+          });
           return text({
             source: "Lexora — https://www.lexorawords.com/word-finder",
-            results: filtered.map((r) => ({ word: r.word, score: r.score })),
+            results: slim(res),
           });
         },
       },
