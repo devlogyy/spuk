@@ -73,7 +73,13 @@ export function AdSlot({ zoneKey, className }: Props) {
     }
   }, [zone, zoneKey, consent.ads]);
 
-  if (!zone?.enabled) return null;
+  // Reserve the slot height for consenting users while the zone resolves, so
+  // an ad appearing later never pushes content down (CLS / agentic layout
+  // stability). Non-consenting users get nothing at all, so nothing shifts.
+  if (!zone) {
+    return consent.ads ? <div className={`my-4 min-h-[100px] ${className ?? ""}`} aria-hidden="true" /> : null;
+  }
+  if (!zone.enabled) return null;
   if (!consent.ads) return null;
 
   const trackClick = () => {
