@@ -35,6 +35,9 @@ export function AdSlot({ zoneKey, className }: Props) {
   const [zone, setZone] = useState<{ id: string; enabled: boolean; ad_slot_id: string | null } | null>(null);
 
   useEffect(() => {
+    // Without ads consent no ad can render, so skip the zone lookup entirely
+    // and keep the database client off the main thread.
+    if (!consent.ads) return;
     let cancelled = false;
     const load = async () => {
       const supabase = await loadSupabase();
