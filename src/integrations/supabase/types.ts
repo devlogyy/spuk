@@ -167,6 +167,27 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          adsense_publisher_id: string | null
+          adsense_verified_at: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          adsense_publisher_id?: string | null
+          adsense_verified_at?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          adsense_publisher_id?: string | null
+          adsense_verified_at?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
