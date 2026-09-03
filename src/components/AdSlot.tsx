@@ -17,15 +17,32 @@ function getSessionId(): string {
   return id;
 }
 
-const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
+let publisherIdPromise: Promise<string | null> | null = null;
 
-function ensureAdsenseScript() {
-  if (!ADSENSE_CLIENT) return;
+function loadPublisherId(): Promise<string | null> {
+  if (!publisherIdPromise) {
+    publisherIdPromise = loadSupabase()
+      .then(async (supabase) => {
+        const query = (supabase as unknown as {
+          from: (table: string) => ReturnType<typeof supabase.from>;
+        }).from("site_settings");
+        const { data } = await query
+          .select("adsense_publisher_id")
+          .eq("id", "default")
+          .maybeSingle();
+        return (data as { adsense_publisher_id?: string | null } | null)?.adsense_publisher_id ?? null;
+      })
+      .catch(() => null);
+  }
+  return publisherIdPromise;
+}
+
+function ensureAdsenseScript(publisherId: string) {
   if (document.querySelector("script[data-adsense]")) return;
   const s = document.createElement("script");
   s.async = true;
   s.crossOrigin = "anonymous";
-  s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
+  s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}`;
   s.setAttribute("data-adsense", "1");
   document.head.appendChild(s);
 }
@@ -33,6 +50,7 @@ function ensureAdsenseScript() {
 export function AdSlot({ zoneKey, className }: Props) {
   const { consent } = useConsent();
   const [zone, setZone] = useState<{ id: string; enabled: boolean; ad_slot_id: string | null } | null>(null);
+  const [publisherId, setPublisherId] = useState<string | null>(null);
 
   useEffect(() => {
     // Without ads consent no ad can render, so skip the zone lookup entirely
@@ -40,13 +58,18 @@ export function AdSlot({ zoneKey, className }: Props) {
     if (!consent.ads) return;
     let cancelled = false;
     const load = async () => {
-      const supabase = await loadSupabase();
-      const { data } = await supabase
-        .from("ad_zones")
+      const [supabase, savedPublisherId] = await Promise.all([loadSupabase(), loadPublisherId()]);
+      const query = (supabase as unknown as {
+        from: (table: string) => ReturnType<typeof supabase.from>;
+      }).from("ad_zones");
+      const { data } = await query
         .select("id, enabled, ad_slot_id")
         .eq("key", zoneKey)
         .maybeSingle();
-      if (!cancelled) setZone(data);
+      if (!cancelled) {
+        setZone(data);
+        setPublisherId(savedPublisherId);
+      }
     };
     const w = window as unknown as { requestIdleCallback?: (c: () => void, o?: object) => number };
     if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(() => void load(), { timeout: 3000 });
@@ -67,14 +90,14 @@ export function AdSlot({ zoneKey, className }: Props) {
         event_type: "impression",
       }),
     );
-    if (ADSENSE_CLIENT && zone.ad_slot_id) {
-      ensureAdsenseScript();
+    if (publisherId && zone.ad_slot_id) {
+      ensureAdsenseScript(publisherId);
       try {
         // @ts-expect-error adsbygoogle global
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch {}
     }
-  }, [zone, zoneKey, consent.ads]);
+  }, [zone, publisherId, zoneKey, consent.ads]);
 
   // Reserve the slot height for consenting users while the zone resolves, so
   // an ad appearing later never pushes content down (CLS / agentic layout
@@ -97,7 +120,7 @@ export function AdSlot({ zoneKey, className }: Props) {
     );
   };
 
-  if (!ADSENSE_CLIENT || !zone.ad_slot_id) {
+  if (!publisherId || !zone.ad_slot_id) {
     return (
       <div
         className={`my-4 rounded-lg border border-dashed border-border bg-muted/30 p-4 text-center text-xs text-muted-foreground ${className ?? ""}`}
@@ -112,7 +135,7 @@ export function AdSlot({ zoneKey, className }: Props) {
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client={ADSENSE_CLIENT}
+         data-ad-client={publisherId}
         data-ad-slot={zone.ad_slot_id}
         data-ad-format="auto"
         data-full-width-responsive="true"
