@@ -11,9 +11,26 @@ export interface AdsenseSettings {
 
 type SettingsRow = AdsenseSettings;
 
+type QueryResult = Promise<{ data: unknown; error: { message?: string } | null }>;
+
+type SettingsQuery = {
+  select: (columns: string) => {
+    eq: (column: string, value: string) => {
+      maybeSingle: () => QueryResult;
+      single: () => QueryResult;
+    };
+  };
+  upsert: (values: Record<string, unknown>, options: { onConflict: string }) => {
+    select: (columns: string) => { single: () => QueryResult };
+  };
+  update: (values: Record<string, unknown>) => {
+    eq: (column: string, value: string) => QueryResult;
+  };
+};
+
 function settingsQuery() {
   return (supabase as unknown as {
-    from: (table: string) => ReturnType<typeof supabase.from>;
+    from: (table: string) => SettingsQuery;
   }).from("site_settings");
 }
 

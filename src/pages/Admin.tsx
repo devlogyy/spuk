@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, TrendingUp, FileText, Search, DollarSign, Sliders, Loader2 } from "lucide-react";
+import { LayoutDashboard, TrendingUp, FileText, Search, DollarSign, Sliders, BadgeDollarSign, Loader2 } from "lucide-react";
 import {
   avgDurationMs,
   avgScrollPct,
@@ -30,6 +30,7 @@ import { ContentTab } from "@/components/admin/tabs/ContentTab";
 import { SeoTab } from "@/components/admin/tabs/SeoTab";
 import { AdsTab } from "@/components/admin/tabs/AdsTab";
 import { ZonesTab } from "@/components/admin/tabs/ZonesTab";
+import { AdSenseTab } from "@/components/admin/tabs/AdSenseTab";
 import type { RangeBundle } from "@/components/admin/tabs/types";
 
 export default function Admin() {
@@ -172,6 +173,7 @@ VALUES ('${user.id}', 'admin');`}</pre>
           <TabsTrigger value="seo" className="gap-1.5"><Search className="h-3.5 w-3.5" />SEO</TabsTrigger>
           <TabsTrigger value="ads" className="gap-1.5"><DollarSign className="h-3.5 w-3.5" />Ads</TabsTrigger>
           <TabsTrigger value="zones" className="gap-1.5"><Sliders className="h-3.5 w-3.5" />Zones</TabsTrigger>
+           <TabsTrigger value="adsense" className="gap-1.5"><BadgeDollarSign className="h-3.5 w-3.5" />AdSense</TabsTrigger>
         </TabsList>
 
         {!bundle ? (
@@ -189,6 +191,7 @@ VALUES ('${user.id}', 'admin');`}</pre>
             <TabsContent value="zones"><ZonesTab data={bundle} /></TabsContent>
           </>
         )}
+         <TabsContent value="adsense"><AdSenseTab /></TabsContent>
       </Tabs>
     </div>
   );
