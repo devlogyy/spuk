@@ -19,12 +19,20 @@ function getSessionId(): string {
 
 let publisherIdPromise: Promise<string | null> | null = null;
 
+type PublicQuery = {
+  select: (columns: string) => {
+    eq: (column: string, value: string) => {
+      maybeSingle: () => Promise<{ data: unknown; error: unknown }>;
+    };
+  };
+};
+
 function loadPublisherId(): Promise<string | null> {
   if (!publisherIdPromise) {
     publisherIdPromise = loadSupabase()
       .then(async (supabase) => {
         const query = (supabase as unknown as {
-          from: (table: string) => ReturnType<typeof supabase.from>;
+          from: (table: string) => PublicQuery;
         }).from("site_settings");
         const { data } = await query
           .select("adsense_publisher_id")
@@ -32,7 +40,14 @@ function loadPublisherId(): Promise<string | null> {
           .maybeSingle();
         return (data as { adsense_publisher_id?: string | null } | null)?.adsense_publisher_id ?? null;
       })
-      .catch(() => null);
+      .then((publisherId) => {
+        if (!publisherId) publisherIdPromise = null;
+        return publisherId;
+      })
+      .catch(() => {
+        publisherIdPromise = null;
+        return null;
+      });
   }
   return publisherIdPromise;
 }
@@ -60,14 +75,14 @@ export function AdSlot({ zoneKey, className }: Props) {
     const load = async () => {
       const [supabase, savedPublisherId] = await Promise.all([loadSupabase(), loadPublisherId()]);
       const query = (supabase as unknown as {
-        from: (table: string) => ReturnType<typeof supabase.from>;
+        from: (table: string) => PublicQuery;
       }).from("ad_zones");
       const { data } = await query
         .select("id, enabled, ad_slot_id")
         .eq("key", zoneKey)
         .maybeSingle();
       if (!cancelled) {
-        setZone(data);
+        setZone(data as { id: string; enabled: boolean; ad_slot_id: string | null } | null);
         setPublisherId(savedPublisherId);
       }
     };
@@ -90,6 +105,10 @@ export function AdSlot({ zoneKey, className }: Props) {
         event_type: "impression",
       }),
     );
+  }, [zone, zoneKey, consent.ads]);
+
+  useEffect(() => {
+    if (!zone?.enabled || !publisherId || !zone.ad_slot_id || !consent.ads) return;
     if (publisherId && zone.ad_slot_id) {
       ensureAdsenseScript(publisherId);
       try {
@@ -97,7 +116,7 @@ export function AdSlot({ zoneKey, className }: Props) {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch {}
     }
-  }, [zone, publisherId, zoneKey, consent.ads]);
+  }, [zone, publisherId, consent.ads]);
 
   // Reserve the slot height for consenting users while the zone resolves, so
   // an ad appearing later never pushes content down (CLS / agentic layout
@@ -135,7 +154,7 @@ export function AdSlot({ zoneKey, className }: Props) {
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-         data-ad-client={publisherId}
+        data-ad-client={publisherId}
         data-ad-slot={zone.ad_slot_id}
         data-ad-format="auto"
         data-full-width-responsive="true"
