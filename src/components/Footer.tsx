@@ -10,6 +10,7 @@ const cols = [
       { to: "/scrabble-solver", label: "Scrabble Solver" },
       { to: "/crossword-solver", label: "Crossword Solver" },
       { to: "/word-finder", label: "Word Finder" },
+      { to: "/tools", label: "All word tools" },
       { to: "/word-finder", label: "Anagram Solver" },
     ],
   },

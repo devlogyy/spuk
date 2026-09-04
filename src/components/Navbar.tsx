@@ -7,6 +7,7 @@ const links = [
   { to: "/scrabble-solver", label: "Scrabble" },
   { to: "/crossword-solver", label: "Crossword" },
   { to: "/word-finder", label: "Word Finder" },
+  { to: "/tools", label: "All Tools" },
   { to: "/blog", label: "Blog" },
 ];
 

@@ -94,6 +94,7 @@ const staticEntries: SitemapEntry[] = [
   { path: "/scrabble-solver", changefreq: "weekly", priority: "0.9" },
   { path: "/crossword-solver", changefreq: "weekly", priority: "0.9" },
   { path: "/word-finder", changefreq: "weekly", priority: "0.9" },
+  { path: "/tools", changefreq: "weekly", priority: "0.9" },
   { path: "/blog", changefreq: "weekly", priority: "0.8" },
   { path: "/words", changefreq: "weekly", priority: "0.9" },
   { path: "/about", changefreq: "monthly", priority: "0.5" },
