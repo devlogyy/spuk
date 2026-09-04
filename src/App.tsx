@@ -18,6 +18,7 @@ const Auth = lazyRoute(() => import("@/pages/Auth"));
 const Admin = lazyRoute(() => import("@/pages/Admin"));
 const NotFound = lazyRoute(() => import("@/pages/NotFound"));
 const WordsHub = lazyRoute(() => import("@/pages/WordsHub"));
+const Tools = lazyRoute(() => import("@/pages/Tools"));
 const WordsStartingWith = lazyRoute(() => import("@/pages/programmatic/WordsStartingWith"));
 const WordsEndingIn = lazyRoute(() => import("@/pages/programmatic/WordsEndingIn"));
 const NLetterWordsWith = lazyRoute(() => import("@/pages/programmatic/NLetterWordsWith"));
@@ -41,6 +42,7 @@ export function preloadRouteFor(pathname: string): Promise<unknown> {
     [/^\/blog$/, Blog],
     [/^\/blog\/.+/, BlogPost],
     [/^\/words$/, WordsHub],
+    [/^\/tools$/, Tools],
     [/^\/words\/starting-with\/.+/, WordsStartingWith],
     [/^\/words\/ending-in\/.+/, WordsEndingIn],
     [/^\/words\/.+/, NLetterWordsWith],
@@ -81,6 +83,7 @@ export default function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/words" element={<WordsHub />} />
+            <Route path="/tools" element={<Tools />} />
             <Route path="/words/starting-with/:letter" element={<WordsStartingWith />} />
             <Route path="/words/ending-in/:letter" element={<WordsEndingIn />} />
             <Route path="/words/:slug" element={<NLetterWordsWith />} />
