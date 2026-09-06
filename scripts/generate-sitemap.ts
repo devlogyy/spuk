@@ -91,6 +91,7 @@ const UNIQUE_RACKS = Array.from(new Set(POPULAR_RACKS.map((r) => r.toLowerCase()
 
 const staticEntries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/scrabble", changefreq: "weekly", priority: "0.95" },
   { path: "/scrabble-solver", changefreq: "weekly", priority: "0.9" },
   { path: "/crossword-solver", changefreq: "weekly", priority: "0.9" },
   { path: "/word-finder", changefreq: "weekly", priority: "0.9" },

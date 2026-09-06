@@ -4,7 +4,7 @@ import { Moon, Sun, Sparkles, Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/scrabble-solver", label: "Scrabble" },
+  { to: "/scrabble", label: "Scrabble" },
   { to: "/crossword-solver", label: "Crossword" },
   { to: "/word-finder", label: "Word Finder" },
   { to: "/tools", label: "All Tools" },

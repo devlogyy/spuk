@@ -3,7 +3,7 @@ import { Home, Grid3x3, Puzzle, Search, BookOpen } from "lucide-react";
 
 const items = [
   { to: "/", label: "Home", icon: Home },
-  { to: "/scrabble-solver", label: "Scrabble", icon: Grid3x3 },
+  { to: "/scrabble", label: "Scrabble", icon: Grid3x3 },
   { to: "/word-finder", label: "Find", icon: Search, primary: true },
   { to: "/crossword-solver", label: "Cross", icon: Puzzle },
   { to: "/blog", label: "Blog", icon: BookOpen },

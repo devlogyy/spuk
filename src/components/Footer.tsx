@@ -7,6 +7,7 @@ const cols = [
   {
     title: "Tools",
     links: [
+      { to: "/scrabble", label: "Scrabble word hub" },
       { to: "/scrabble-solver", label: "Scrabble Solver" },
       { to: "/crossword-solver", label: "Crossword Solver" },
       { to: "/word-finder", label: "Word Finder" },

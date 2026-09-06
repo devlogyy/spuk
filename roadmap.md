@@ -1,2 +1,3 @@
-- [ ] Restore admin login access and verify the protected admin route
-- [ ] Add a searchable tools directory listing every finder, solver, and unscrambler with clear CTAs
+- [x] Restore admin login access and verify the protected admin route
+- [x] Add a searchable tools directory listing every finder, solver, and unscrambler with clear CTAs
+- [x] Add the dedicated Scrabble hub with route, navigation, sitemap, word lists, tile values, and solver scoring tools

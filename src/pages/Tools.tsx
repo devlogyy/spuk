@@ -58,9 +58,9 @@ const toolGroups = [
       {
         icon: Lightbulb,
         name: "Scrabble Word Finder",
-        description: "Find playable words from any rack using US TWL or UK SOWPODS validation.",
-        to: "/scrabble-solver",
-        action: "Find Scrabble words",
+        description: "Browse Scrabble word lists, tile values, scoring examples, and a rack solver in one place.",
+        to: "/scrabble",
+        action: "Explore Scrabble words",
       },
     ],
   },
