@@ -10,6 +10,7 @@ import { WebMcpTools } from "@/components/WebMcpTools";
 import { lazyRoute } from "@/lib/lazy-route";
 
 const ScrabbleSolver = lazyRoute(() => import("@/pages/ScrabbleSolver"));
+const Scrabble = lazyRoute(() => import("@/pages/Scrabble"));
 const CrosswordSolver = lazyRoute(() => import("@/pages/CrosswordSolver"));
 const WordFinder = lazyRoute(() => import("@/pages/WordFinder"));
 const Blog = lazyRoute(() => import("@/pages/Blog"));
@@ -36,6 +37,7 @@ const Terms = lazyRoute(() => import("@/pages/Terms"));
 export function preloadRouteFor(pathname: string): Promise<unknown> {
   const p = pathname.replace(/\/+$/, "") || "/";
   const map: Array<[RegExp, { preload: () => Promise<void> }]> = [
+    [/^\/scrabble$/, Scrabble],
     [/^\/scrabble-solver$/, ScrabbleSolver],
     [/^\/crossword-solver$/, CrosswordSolver],
     [/^\/word-finder$/, WordFinder],
@@ -77,6 +79,7 @@ export default function App() {
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/scrabble" element={<Scrabble />} />
             <Route path="/scrabble-solver" element={<ScrabbleSolver />} />
             <Route path="/crossword-solver" element={<CrosswordSolver />} />
             <Route path="/word-finder" element={<WordFinder />} />

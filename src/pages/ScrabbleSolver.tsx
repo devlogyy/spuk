@@ -15,6 +15,7 @@ import { RelatedTools } from "@/components/RelatedTools";
 import { absoluteUrl, faqPageSchema, softwareApplicationSchema, howToSchema, speakableSchema, resultsItemListSchema, type FAQItem } from "@/lib/seo";
 
 import { solveAnagram, warmDictionaries, type SolverResult, type DictName } from "@/lib/dictionary";
+import { scoreWord, TILE_VALUES } from "@/lib/words";
 
 const FAQS: FAQItem[] = [
   { q: "What is the best Scrabble word finder?", a: "Lexora's Scrabble word finder ranks every legal play from your rack by real tile score and validates each word against both TWL (US) and SOWPODS (UK) tournament dictionaries. It is free, needs no sign-up, and supports blank tiles and starts-with, ends-with, contains and length filters." },
@@ -43,6 +44,7 @@ export default function ScrabbleSolver() {
   const [ends, setEnds] = useState("");
   const [contains, setContains] = useState("");
   const [minLen, setMinLen] = useState(2);
+  const [scoreInput, setScoreInput] = useState("");
 
   const [submitted, setSubmitted] = useState("");
   const [loading, setLoading] = useState(false);
@@ -83,6 +85,20 @@ export default function ScrabbleSolver() {
     }
     return results;
   }, [results, sort]);
+
+  const rackStats = useMemo(() => {
+    const rack = letters.toUpperCase().replace(/[^A-Z?*]/g, "");
+    const tileCount = rack.length;
+    const blanks = [...rack].filter((tile) => tile === "?" || tile === "*").length;
+    const points = [...rack].reduce((total, tile) => total + (TILE_VALUES[tile] ?? 0), 0);
+    const counts = [...rack].reduce<Record<string, number>>((all, tile) => {
+      if (tile !== "?" && tile !== "*") all[tile] = (all[tile] ?? 0) + 1;
+      return all;
+    }, {});
+    return { tileCount, blanks, points, counts };
+  }, [letters]);
+
+  const wordScore = useMemo(() => scoreWord(scoreInput.replace(/[^a-zA-Z]/g, "")), [scoreInput]);
 
   const runExample = (ex: string) => {
     setLetters(ex);
@@ -173,6 +189,66 @@ export default function ScrabbleSolver() {
           <PrimaryActionButton onClick={handleSearch} loading={loading} disabled={!letters.trim()} sticky icon={<Sparkles className="h-5 w-5" />}>
             Find Best Words
           </PrimaryActionButton>
+
+           <div className="grid gap-4 border-t border-border pt-5 lg:grid-cols-[1.1fr_0.9fr]">
+             <section aria-labelledby="rack-stats-heading" className="rounded-2xl border border-border bg-background p-4">
+               <div className="flex items-center justify-between gap-3">
+                 <div>
+                   <h2 id="rack-stats-heading" className="font-display text-lg font-bold">Rack tile count and points</h2>
+                   <p className="mt-1 text-xs text-muted-foreground">Raw tile points before board bonuses.</p>
+                 </div>
+                 <div className="text-right">
+                   <div className="font-display text-2xl font-black text-primary">{rackStats.points}</div>
+                   <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">rack points</div>
+                 </div>
+               </div>
+               <div className="mt-4 grid grid-cols-3 gap-2">
+                 {[
+                   { label: "Tiles", value: rackStats.tileCount },
+                   { label: "Blanks", value: rackStats.blanks },
+                   { label: "Letters", value: Object.keys(rackStats.counts).length },
+                 ].map((stat) => (
+                   <div key={stat.label} className="rounded-xl border border-border bg-card px-3 py-2">
+                     <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{stat.label}</div>
+                     <div className="mt-1 font-display text-xl font-black">{stat.value}</div>
+                   </div>
+                 ))}
+               </div>
+               {rackStats.tileCount > 0 && (
+                 <div className="mt-3 flex flex-wrap gap-1.5" aria-label="Tile count breakdown">
+                   {Object.entries(rackStats.counts).map(([tile, count]) => (
+                     <span key={tile} className="rounded-lg border border-border bg-card px-2 py-1 text-xs font-bold">
+                       {tile} × {count}
+                     </span>
+                   ))}
+                 </div>
+               )}
+             </section>
+
+             <section aria-labelledby="word-score-heading" className="rounded-2xl border border-border bg-background p-4">
+               <div className="flex items-start justify-between gap-3">
+                 <div>
+                   <h2 id="word-score-heading" className="font-display text-lg font-bold">Points calculator</h2>
+                   <p className="mt-1 text-xs text-muted-foreground">Check a word’s standard tile score.</p>
+                 </div>
+                 <div className="text-right">
+                   <div className="font-display text-2xl font-black text-primary">{wordScore}</div>
+                   <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">points</div>
+                 </div>
+               </div>
+               <label htmlFor="scrabble-score-input" className="sr-only">Word to score</label>
+               <input
+                 id="scrabble-score-input"
+                 value={scoreInput}
+                 onChange={(event) => setScoreInput(event.target.value.replace(/[^a-zA-Z]/g, "").slice(0, 15).toUpperCase())}
+                 placeholder="Enter a word, e.g. QUIZ"
+                 className="mt-4 h-11 w-full rounded-xl border border-border bg-card px-3 text-sm font-semibold tracking-wider outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                 autoComplete="off"
+                 spellCheck={false}
+               />
+               <p className="mt-2 text-xs text-muted-foreground">Q and Z are worth 10 points each; blank tiles score 0.</p>
+             </section>
+           </div>
         </div>
 
         <AdvancedFiltersAccordion count={activeFilters}>
